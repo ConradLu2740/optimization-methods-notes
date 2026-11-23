@@ -1,0 +1,276 @@
+<template id="modern-template">
+  <div data-composition-id="modern" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+      [data-composition-id="mt"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="mt"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bgmt { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bgmt .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glowmt { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glowmtb { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-topmt { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-labelmt { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badgemt { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottommt { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-rowmt { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-labelmt { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #captionmt { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-footmt { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-trackmt { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #progmt { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scenemt { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #s2mt { z-index: 2; opacity: 0; }
+      #s3mt { z-index: 3; opacity: 0; }
+      #s4mt { z-index: 4; opacity: 0; }
+      #s5mt { z-index: 5; opacity: 0; }
+      #s1mt .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #s1mt .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #s1mt h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #s1mt h1 .hl { color: #ffc53d; }
+      #s1mt .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1mt .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1mt .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #s1mt .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #s1mt .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panelmt { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-titlemt { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .gridmt { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .leftmt { width: 1090px; }
+      .rightmt { width: 666px; }
+      .mathboxmt { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathboxmt .lbl { color: #8fa3c8; }
+      .mathboxmt .hi { color: #ffc53d; }
+      .stepmt { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .stepmt .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .stepmt .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .stepmt .st b { color: #ffc53d; font-weight: 400; }
+      .stepmt .st .mono { color: #3ecf8e; }
+      .verdictmt { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdictmt.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdictmt.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcardmt { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcardmt .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcardmt .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcardmt .fl .mono { color: #3ecf8e; }
+      .ans-bigmt { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-bigmt .lbl { font-size: 28px; color: #8fa3c8; }
+      .ans-cardmt { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 28px 32px; }
+      .ans-warnmt { margin-top: 20px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 16px; line-height: 1.6; }
+    </style>
+    <div id="bgmt"><div class="grid"></div><div id="glowmt"></div><div id="glowmtb"></div></div>
+    <div id="chrome-topmt">
+      <div id="series-labelmt" class="mono">最优化方法与应用 · 知识点动画 15</div>
+      <div id="topic-badgemt">开放题 · 现代优化算法 vs 传统优化算法</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scenemt" id="s1mt">
+      <div class="wrap">
+        <div class="kicker mono">开放题 · 10 分 · 课堂笔记原题</div>
+        <h1>现代 vs <span class="hl">传统</span>优化算法</h1>
+        <div class="sub">同一副骨架，两种活法</div>
+        <div class="badges">
+          <span class="badge">开放题 10 分</span>
+          <span class="badge">差别 5 + 联系 4</span>
+          <span class="badge hot">背模板就能拿分</span>
+        </div>
+        <div class="formula mono">共同骨架：xₖ₊₁ = xₖ + λₖdᵏ ｜ 目标一致：求 min f(x)</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scenemt" id="s2mt">
+      <div class="gridmt">
+        <div class="leftmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">先写"同源"：所有迭代优化算法共用一副骨架</div>
+            <div class="mathboxmt">
+              <div><span class="lbl">xₖ₊₁ =</span> xₖ + λₖ·dᵏ</div>
+              <div><span class="lbl">两大组件：方向 dᵏ + 步长 λₖ</span></div>
+            </div>
+            <div class="stepmt"><span class="sn">·</span><div class="st"><b>传统</b>：d = −∇f 或 −H⁻¹∇f（靠<b>导数信息</b>定向）</div></div>
+            <div class="stepmt"><span class="sn">·</span><div class="st"><b>现代</b>：d 来自种群/邻域/随机采样（GA 的交叉变异、SA 的随机跳、蚁群的信息素）</div></div>
+            <div class="stepmt"><span class="sn">·</span><div class="st">两者都在回答同一个问题：<b>从当前点往哪走、走多远</b></div></div>
+            <div class="verdictmt ok">开场这样写立刻拿框架分："两类算法共享迭代骨架 xₖ₊₁ = xₖ + λₖdᵏ，差别在于方向与步长从哪来、以及收敛性如何保证。"</div>
+          </div>
+        </div>
+        <div class="rightmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">两种问法的答题骨架</div>
+            <div class="formcardmt">
+              <div class="fh">问法 A：介绍一种现代算法 + 与传统对比</div>
+              <div class="fl">算法 80 字 → 流程（编码 → 种群 → 评价 → 选择 → 交叉 → 变异）→ 差别 5 条 → 联系 4 条 → 收尾"牺牲精度与理论保证换 NP-hard 全局能力"</div>
+            </div>
+            <div class="formcardmt">
+              <div class="fh">问法 B：凸算法两种 + 非凸算法两种 + 五行对比表</div>
+              <div class="fl">凸：最速下降 / 阻尼牛顿；非凸：GA / SA → 五行对比表 → 相似 4 条 → 全局优化原理（NP-hard ⇒ 满意解）</div>
+            </div>
+            <div class="verdictmt warn" style="margin-top:16px">口径提醒：说"全局最优"必须补一句<b>"概率意义 / 近似满意解"</b>，不能说成保证找到严格全局最优。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scenemt" id="s3mt">
+      <div class="gridmt">
+        <div class="leftmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">差别 5 条（表格直接抄）</div>
+            <table class="tblmt">
+              <tr><th>维度</th><th>传统优化算法</th><th>现代优化算法</th></tr>
+              <tr><td class="k">解的性质</td><td>局部、确定性</td><td>全局、随机性</td></tr>
+              <tr><td class="k">需要的信息</td><td>至少一阶可微（梯度）</td><td>只需函数值</td></tr>
+              <tr><td class="k">最优性保证</td><td>有（凸规划下 KKT 即全局）</td><td>无严格保证</td></tr>
+              <tr><td class="k">适用问题</td><td>凸、小规模</td><td>非凸、NP-hard、大规模</td></tr>
+              <tr><td class="k">代价</td><td>收敛慢但每步便宜</td><td>海量函数评价（计算量大）</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="rightmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">联系 4 条（别只写差别）</div>
+            <div class="stepmt"><span class="sn">1</span><div class="st"><b>迭代骨架同源</b>：都是 xₖ₊₁ = xₖ + λₖdᵏ，"方向 + 步长"两大组件</div></div>
+            <div class="stepmt"><span class="sn">2</span><div class="st"><b>理论工具共用</b>：凸性、KKT、罚函数（罚函数法本身就是两者的桥）</div></div>
+            <div class="stepmt"><span class="sn">3</span><div class="st"><b>可以融合</b>：memetic 算法（GA + 局部搜索）、Multi-Start（多起点 + 传统下降）</div></div>
+            <div class="stepmt"><span class="sn">4</span><div class="st"><b>跳出局部的机制同源</b>：随机重启 / 邻域扰动 vs 现代算法的变异 / 退火跳</div></div>
+            <div class="verdictmt ok">收尾句："<b>牺牲精度与理论保证，换来处理 NP-hard 全局问题的能力</b>"——这句是给分点。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scenemt" id="s4mt">
+      <div class="gridmt">
+        <div class="leftmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">一张图看懂：两类算法在"确定 ↔ 随机"光谱上的位置</div>
+            <svg width="1020" height="440" viewBox="0 0 900 440">
+              <line x1="80" y1="220" x2="830" y2="220" stroke="#8fa3c8" stroke-width="2"/>
+              <polygon points="830,220 808,210 808,230" fill="#8fa3c8"/>
+              <text x="836" y="252" fill="#8fa3c8" font-size="20">随机 / 全局</text>
+              <text x="60" y="252" fill="#8fa3c8" font-size="20" text-anchor="start">确定 / 局部</text>
+              <g>
+                <circle cx="180" cy="220" r="14" fill="#5aa9ff"/>
+                <text x="180" y="180" fill="#5aa9ff" font-size="21" text-anchor="middle">最速下降</text>
+                <circle cx="280" cy="220" r="14" fill="#5aa9ff"/>
+                <text x="280" y="180" fill="#5aa9ff" font-size="21" text-anchor="middle">牛顿</text>
+                <circle cx="380" cy="220" r="14" fill="#5aa9ff"/>
+                <text x="380" y="180" fill="#5aa9ff" font-size="21" text-anchor="middle">共轭梯度</text>
+                <circle cx="480" cy="220" r="14" fill="#5aa9ff"/>
+                <text x="480" y="180" fill="#5aa9ff" font-size="21" text-anchor="middle">拟牛顿</text>
+                <circle cx="560" cy="220" r="14" fill="#ffc53d"/>
+                <text x="560" y="180" fill="#ffc53d" font-size="21" text-anchor="middle">罚函数 / 可行方向</text>
+                <circle cx="660" cy="220" r="14" fill="#3ecf8e"/>
+                <text x="660" y="180" fill="#3ecf8e" font-size="21" text-anchor="middle">模拟退火</text>
+                <circle cx="740" cy="220" r="14" fill="#3ecf8e"/>
+                <text x="740" y="180" fill="#3ecf8e" font-size="21" text-anchor="middle">遗传算法</text>
+              </g>
+              <text x="450" y="300" fill="#8fa3c8" font-size="21" text-anchor="middle">蓝色 = 传统（导数驱动）｜ 黄色 = 桥梁（罚函数把约束变无约束）｜ 绿色 = 现代（随机驱动）</text>
+              <text x="450" y="336" fill="#8fa3c8" font-size="21" text-anchor="middle">越往右：越不需要导数、越能碰非凸、越没有理论保证</text>
+            </svg>
+          </div>
+        </div>
+        <div class="rightmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">课堂笔记的原始考点</div>
+            <div class="stepmt"><span class="sn">·</span><div class="st">CH1-2 讲义：Global Optimization、NP-hard、确定性 GO（Covering / 广义下降 / 学习 / B&amp;B）</div></div>
+            <div class="stepmt"><span class="sn">·</span><div class="st">随机性 GO：Multi-Start / Tabu / 蚁群 / Bayesian / 聚类 / SA / GA / DE</div></div>
+            <div class="stepmt"><span class="sn">·</span><div class="st">考点清单第 9 条"智能优化的概念了解一下" ⇒ 考的是<b>概念对比</b>，不是算法细节</div></div>
+            <div class="verdictmt warn">别在卷面上推 GA 的选择/交叉算子——10 分题考的是<b>对比框架</b>，写流程 6 步 + 差别 5 + 联系 4 就够。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scenemt" id="s5mt">
+      <div class="gridmt">
+        <div class="leftmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">全局优化原理（收尾必写）</div>
+            <div class="mathboxmt">
+              <div><span class="lbl">NP-hard：</span>不存在多项式时间算法保证找到严格全局最优</div>
+              <div><span class="lbl">推论：</span>"既不可能、也不现实"⇒ 退而求<b>近似满意解</b></div>
+            </div>
+            <div class="stepmt"><span class="sn">1</span><div class="st">现代算法用<b>随机搜索 + 种群</b>换"跳出去"的能力</div></div>
+            <div class="stepmt"><span class="sn">2</span><div class="st">收敛性只能说成"<b>概率意义下收敛 / 以概率 1 收敛</b>"</div></div>
+            <div class="stepmt"><span class="sn">3</span><div class="st">评价标准从"找到最优"变成"<b>在可接受代价内找到足够好的解</b>"</div></div>
+            <div class="verdictmt ok">三句话版本：NP-hard 决定严格全局最优不现实 ⇒ 用随机性换全局能力 ⇒ 以概率意义和近似解为验收标准。</div>
+          </div>
+        </div>
+        <div class="rightmt">
+          <div class="panelmt">
+            <div class="panel-titlemt mono">考前 5 句自查</div>
+            <div class="stepmt"><span class="sn">1</span><div class="st">骨架句写了吗：<span class="mono">xₖ₊₁ = xₖ + λₖdᵏ</span>，方向 + 步长？</div></div>
+            <div class="stepmt"><span class="sn">2</span><div class="st">差别 5 条齐了吗（局部/确定 vs 全局/随机、可微 vs 函数值、保证有无、问题规模、代价）？</div></div>
+            <div class="stepmt"><span class="sn">3</span><div class="st">联系 4 条齐了吗（骨架、理论工具、可融合、跳出局部机制）？</div></div>
+            <div class="stepmt"><span class="sn">4</span><div class="st">"全局最优"后面补了"<b>概率意义 / 近似</b>"吗？</div></div>
+            <div class="stepmt"><span class="sn">5</span><div class="st">收尾句"牺牲精度与理论保证换 NP-hard 全局能力"写了吗？</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 50;
+    tl.fromTo("#glowmt", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glowmtb", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",       text: "现代 vs 传统：同一副骨架 xₖ₊₁ = xₖ + λₖdᵏ，两种活法" },
+      { t: 6.45,  label: "2 / 5 · 同源骨架",   text: "两大组件：方向 + 步长；传统靠导数，现代靠随机" },
+      { t: 17.45, label: "3 / 5 · 差别与联系", text: "差别 5 条 + 联系 4 条，一张表抄完" },
+      { t: 29.45, label: "4 / 5 · 光谱定位",   text: "确定 → 随机光谱：蓝传统、黄桥梁、绿现代" },
+      { t: 40.45, label: "5 / 5 · 原理与自查", text: "NP-hard ⇒ 满意解；概率意义 / 近似；考前 5 句" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-labelmt", { textContent: s.label }, s.t);
+      tl.set("#captionmt", { innerHTML: s.text }, s.t);
+      tl.fromTo("#captionmt", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#progmt", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#s1mt .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1mt h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1mt .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1mt .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1mt .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function pushM(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    pushM("#s1mt", "#s2mt", 6); pushM("#s2mt", "#s3mt", 17); pushM("#s3mt", "#s4mt", 29); pushM("#s4mt", "#s5mt", 40);
+
+    tl.from("#s2mt .leftmt .panelmt", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#s2mt .mathboxmt", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 6.9);
+    tl.from("#s2mt .stepmt", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 7.8);
+    tl.fromTo("#s2mt .verdictmt", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 11.0);
+    tl.from("#s2mt .rightmt .panelmt", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#s2mt .formcardmt", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 7.7);
+    tl.fromTo("#s2mt .rightmt .verdictmt", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 11.6);
+
+    tl.from("#s3mt .leftmt .panelmt", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.5);
+    tl.from("#s3mt .tblmt tr", { opacity: 0, x: -20, duration: 0.4, ease: "power2.out", stagger: 0.13 }, 17.9);
+    tl.from("#s3mt .rightmt .panelmt", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 18.4);
+    tl.from("#s3mt .stepmt", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 18.8);
+    tl.fromTo("#s3mt .rightmt .verdictmt", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 25.0);
+
+    tl.from("#s4mt .leftmt .panelmt", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 29.5);
+    tl.from("#s4mt svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 29.8);
+    tl.from("#s4mt circle", { scale: 0, duration: 0.4, ease: "back.out(2)", stagger: 0.12, transformOrigin: "center" }, 30.6);
+    tl.from("#s4mt g text", { opacity: 0, duration: 0.4, stagger: 0.1 }, 31.4);
+    tl.from("#s4mt .rightmt .panelmt", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 30.4);
+    tl.from("#s4mt .stepmt", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 30.8);
+    tl.fromTo("#s4mt .rightmt .verdictmt", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 36.0);
+
+    tl.from("#s5mt .leftmt .panelmt", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 40.5);
+    tl.from("#s5mt .mathboxmt", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 40.9);
+    tl.from("#s5mt .leftmt .stepmt", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 42.4);
+    tl.fromTo("#s5mt .leftmt .verdictmt", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 45.4);
+    tl.from("#s5mt .rightmt .panelmt", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 41.4);
+    tl.from("#s5mt .rightmt .stepmt", { x: 30, opacity: 0, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 41.8);
+    tl.to('[data-composition-id="modern"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 49.2);
+    window.__timelines["modern"] = tl;
+  </script>
+</template>

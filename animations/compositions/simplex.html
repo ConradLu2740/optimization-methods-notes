@@ -1,0 +1,904 @@
+<template id="simplex-template">
+  <div data-composition-id="simplex" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                                                                          [data-composition-id="simplex"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Noto Serif SC", serif;
+        color: #e9eef8;
+      }
+      [data-composition-id="simplex"] .mono {
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+      }
+      /* ---------- persistent background ---------- */
+      #bg {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        background-color: #0e1526;
+        z-index: 0;
+      }
+      #bg .grid {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        background-image:
+          linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+      #glow {
+        position: absolute;
+        left: 300px; top: -260px;
+        width: 1320px; height: 1320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%);
+      }
+      #glow2 {
+        position: absolute;
+        left: -320px; bottom: -420px;
+        width: 1100px; height: 1100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%);
+      }
+      /* ---------- chrome ---------- */
+      #chrome-top {
+        position: absolute;
+        top: 36px; left: 64px; right: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 20;
+      }
+      #series-label { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge {
+        font-size: 22px;
+        color: #ffc53d;
+        border: 1.5px solid rgba(255,197,61,0.55);
+        border-radius: 999px;
+        padding: 8px 22px;
+        letter-spacing: 0.04em;
+      }
+      #chrome-bottom {
+        position: absolute;
+        left: 64px; right: 64px; bottom: 34px;
+        z-index: 20;
+      }
+      #cap-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 40px;
+      }
+      #step-label { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track {
+        margin-top: 14px;
+        height: 3px;
+        width: 100%;
+        background: rgba(143,163,200,0.18);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      #prog {
+        height: 100%;
+        width: 100%;
+        background: #ffc53d;
+        transform-origin: left center;
+        transform: scaleX(0);
+      }
+      /* ---------- scenes ---------- */
+      .scene {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        z-index: 1;
+      }
+      #s2 { z-index: 2; opacity: 0; }
+      #s3 { z-index: 3; opacity: 0; }
+      #s4 { z-index: 4; opacity: 0; }
+      #s5 { z-index: 5; opacity: 0; }
+      #s6 { z-index: 6; opacity: 0; }
+      #s7 { z-index: 7; opacity: 0; }
+      /* ---------- scene 1 : title ---------- */
+      #s1 .s1-wrap {
+        position: absolute;
+        left: 150px; top: 250px;
+        width: 1620px;
+      }
+      #s1 .kicker {
+        font-size: 26px;
+        color: #ffc53d;
+        letter-spacing: 0.22em;
+        margin-bottom: 26px;
+      }
+      #s1 h1 {
+        font-size: 172px;
+        font-weight: 400;
+        line-height: 1.02;
+        letter-spacing: 0.02em;
+        margin: 0 0 30px 0;
+        color: #e9eef8;
+      }
+      #s1 h1 .hl { color: #ffc53d; }
+      #s1 .sub { font-size: 34px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1 .badge {
+        font-size: 24px;
+        color: #e9eef8;
+        border: 1.5px solid rgba(143,163,200,0.45);
+        border-radius: 999px;
+        padding: 10px 26px;
+      }
+      #s1 .badge.hot {
+        color: #0e1526;
+        background: #ffc53d;
+        border-color: #ffc53d;
+        font-weight: 500;
+      }
+      #s1 .formula {
+        font-size: 32px;
+        color: #3ecf8e;
+        letter-spacing: 0.05em;
+        border-left: 4px solid #3ecf8e;
+        padding-left: 22px;
+      }
+      /* ---------- scene 2 : geometry ---------- */
+      #s2 .s2-grid {
+        position: absolute;
+        left: 70px; top: 118px;
+        width: 1790px;
+        display: flex;
+        gap: 46px;
+        align-items: flex-start;
+      }
+      #s2 .s2-left { width: 1050px; }
+      #s2 .s2-right { width: 660px; padding-top: 40px; }
+      #s2 .pt {
+        font-size: 30px;
+        line-height: 1.5;
+        color: #e9eef8;
+        margin-bottom: 40px;
+      }
+      #s2 .pt .num { color: #ffc53d; margin-right: 10px; }
+      #s2 .pt b { color: #3ecf8e; font-weight: 400; }
+      #s2 .pt.hint {
+        font-size: 25px;
+        color: #8fa3c8;
+        border-top: 1px solid rgba(143,163,200,0.3);
+        padding-top: 26px;
+        margin-top: 8px;
+      }
+      /* ---------- shared table ---------- */
+      .panel {
+        background: #17233f;
+        border: 1px solid rgba(143,163,200,0.22);
+        border-radius: 14px;
+        padding: 26px 30px;
+      }
+      .panel-title {
+        font-size: 24px;
+        color: #8fa3c8;
+        margin-bottom: 18px;
+        letter-spacing: 0.03em;
+      }
+      .tbl { display: flex; flex-direction: column; }
+      .trow { display: flex; }
+      .cell {
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+        font-size: 30px;
+        line-height: 1;
+        height: 58px;
+        min-width: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e9eef8;
+        background: transparent;
+        border-radius: 6px;
+      }
+      .thead .cell {
+        font-size: 25px;
+        color: #8fa3c8;
+        height: 48px;
+        border-bottom: 1.5px solid rgba(143,163,200,0.35);
+      }
+      .c-base { min-width: 104px; color: #ffc53d !important; justify-content: flex-start !important; }
+      .c-note {
+        min-width: 300px;
+        justify-content: flex-start !important;
+        font-family: "Noto Serif SC", serif;
+        font-size: 23px;
+        color: #8fa3c8;
+        padding-left: 20px;
+      }
+      .c-b { min-width: 88px; }
+      .sigrow { margin-top: 10px; border-top: 2px solid rgba(255,197,61,0.5); padding-top: 8px; }
+      .sigrow .c-base { color: #ffc53d; }
+      .z-read {
+        margin-top: 20px;
+        font-size: 36px;
+        color: #ffc53d;
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+      }
+      /* ---------- scenes 3-5 : iteration layout ---------- */
+      .iter-grid {
+        position: absolute;
+        left: 64px; top: 112px;
+        width: 1800px;
+        display: flex;
+        gap: 44px;
+        align-items: flex-start;
+      }
+      .iter-left { width: 1080px; }
+      .iter-right { width: 660px; }
+      .std-form {
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+        font-size: 25px;
+        line-height: 1.75;
+        color: #e9eef8;
+        margin-bottom: 26px;
+      }
+      .std-form .lbl { color: #8fa3c8; }
+      .note-line {
+        margin-top: 22px;
+        font-size: 28px;
+        color: #ffc53d;
+        min-height: 44px;
+      }
+      .note-line .k { color: #3ecf8e; }
+      /* ---------- scene 6 : answer ---------- */
+      #s6 .s6-grid {
+        position: absolute;
+        left: 64px; top: 118px;
+        width: 1800px;
+        display: flex;
+        gap: 44px;
+        align-items: flex-start;
+      }
+      #s6 .left { width: 1080px; }
+      #s6 .right { width: 660px; }
+      .ans-card {
+        background: #17233f;
+        border: 1.5px solid rgba(255,197,61,0.45);
+        border-radius: 16px;
+        padding: 34px 38px;
+      }
+      .ans-q { font-size: 24px; color: #8fa3c8; line-height: 1.6; margin-bottom: 26px; }
+      .ans-big {
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+        font-size: 54px;
+        color: #ffc53d;
+        margin-bottom: 8px;
+      }
+      .ans-big .lbl { font-size: 30px; color: #8fa3c8; }
+      .ans-sub { font-size: 26px; color: #e9eef8; line-height: 1.65; margin-top: 18px; }
+      .ans-sub .mono { color: #3ecf8e; }
+      .ans-warn {
+        margin-top: 24px;
+        font-size: 24px;
+        color: #ff9b9b;
+        border-top: 1px solid rgba(143,163,200,0.25);
+        padding-top: 20px;
+        line-height: 1.6;
+      }
+      /* ---------- scene 7 : recap ---------- */
+      #s7 .s7-wrap {
+        position: absolute;
+        left: 150px; top: 130px;
+        width: 1620px;
+      }
+      #s7 h2 { font-size: 62px; font-weight: 400; margin: 0 0 20px 0; }
+      #s7 h2 .hl { color: #ffc53d; }
+      #s7 .lead { font-size: 27px; color: #8fa3c8; margin-bottom: 46px; }
+      #s7 .recap {
+        display: flex;
+        gap: 22px;
+        align-items: flex-start;
+        margin-bottom: 30px;
+      }
+      #s7 .rn {
+        font-family: "IBM Plex Mono", Consolas, monospace;
+        font-size: 30px;
+        color: #0e1526;
+        background: #ffc53d;
+        border-radius: 10px;
+        min-width: 58px;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      #s7 .rt { font-size: 30px; line-height: 1.5; color: #e9eef8; padding-top: 4px; }
+      #s7 .rt .mono { color: #3ecf8e; }
+      #s7 .rt b { color: #ffc53d; font-weight: 400; }
+      #s7 .end {
+        margin-top: 44px;
+        font-size: 26px;
+        color: #8fa3c8;
+        letter-spacing: 0.3em;
+      }
+    </style>
+    <div id="bg">
+      <div class="grid"></div>
+      <div id="glow"></div>
+      <div id="glow2"></div>
+    </div>
+    <div id="chrome-top">
+      <div id="series-label" class="mono">最优化方法与应用 · 知识点动画 01</div>
+      <div id="topic-badge">CH3 · 单纯形法 · 20 分必考</div>
+    </div>
+    <div id="chrome-bottom">
+      <div id="cap-row">
+        <div id="step-label" class="mono">1 / 7 · 导入</div>
+        <div id="caption">单纯形法：把线性规划装进一张表，沿棱走向最优极点</div>
+        <div id="topic-foot" class="mono">单纯形法</div>
+      </div>
+      <div id="prog-track"><div id="prog"></div></div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene" id="s1">
+      <div class="s1-wrap">
+        <div class="kicker mono">CH3 · SIMPLEX METHOD · 表格形式</div>
+        <h1>单纯形<span class="hl">法</span></h1>
+        <div class="sub">把线性规划装进一张表：从一个极点，沿棱走到下一个更优极点</div>
+        <div class="badges">
+          <span class="badge">表格迭代</span>
+          <span class="badge hot">20 分 · 必考</span>
+          <span class="badge">老师原话：多写点会捞</span>
+        </div>
+        <div class="formula mono">入基看 σ ｜ 出基算 θ ｜ 收尾报 x* 和 z*</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene" id="s2">
+      <div class="s2-grid">
+        <div class="s2-left">
+          <svg id="geo-big" width="1050" height="800" viewBox="0 0 1040 800">
+            <!-- axes -->
+            <line x1="90" y1="720" x2="985" y2="720" stroke="#8fa3c8" stroke-width="2"/>
+            <line x1="90" y1="720" x2="90" y2="55" stroke="#8fa3c8" stroke-width="2"/>
+            <text x="988" y="766" fill="#8fa3c8" font-size="30" text-anchor="end">x1</text>
+            <text x="30" y="72" fill="#8fa3c8" font-size="30">x2</text>
+            <!-- constraint lines -->
+            <line x1="730" y1="720" x2="730" y2="60" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="9 7"/>
+            <text x="742" y="112" fill="#5aa9ff" font-size="28">x1 ≤ 4</text>
+            <line x1="90" y1="180" x2="985" y2="180" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="9 7"/>
+            <text x="138" y="166" fill="#5aa9ff" font-size="28">x2 ≤ 6</text>
+            <line x1="282" y1="72" x2="970" y2="652" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="9 7"/>
+            <text x="828" y="648" fill="#5aa9ff" font-size="28">3x1+2x2≤18</text>
+            <!-- feasible polygon -->
+            <polygon id="poly" points="90,720 730,720 730,450 410,180 90,180"
+              fill="rgba(62,207,142,0.13)" stroke="#3ecf8e" stroke-width="3"/>
+            <!-- contour lines -->
+            <g id="contours" stroke="#8fa3c8" stroke-width="2" fill="none">
+              <line id="ct-6" x1="90" y1="612" x2="410" y2="720"/>
+              <line id="ct-18" x1="90" y1="396" x2="970" y2="693"/>
+              <line id="ct-30" x1="90" y1="180" x2="970" y2="477"/>
+            </g>
+            <text id="ct-6-l" x="98" y="600" fill="#8fa3c8" font-size="28">z=-6</text>
+            <text id="ct-18-l" x="98" y="384" fill="#8fa3c8" font-size="28">z=-18</text>
+            <text id="ct-30-l" x="876" y="492" fill="#8fa3c8" font-size="28">z=-30</text>
+            <!-- optimal contour -->
+            <line id="ct-36" x1="90" y1="72" x2="970" y2="299" stroke="#ffc53d" stroke-width="3.5" opacity="0"/>
+            <text id="ct-36-l" x="96" y="62" fill="#ffc53d" font-size="28" opacity="0">z=-36</text>
+            <!-- simplex path -->
+            <path id="path-main" d="M 90 720 L 90 180 L 410 180" pathLength="1"
+              fill="none" stroke="#ffc53d" stroke-width="3.5" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <!-- direction arrow -->
+            <g id="arrow" opacity="0">
+              <line x1="150" y1="620" x2="300" y2="440" stroke="#3ecf8e" stroke-width="3"/>
+              <polygon points="300,440 274,452 288,478" fill="#3ecf8e"/>
+              <text x="312" y="492" fill="#3ecf8e" font-size="28">改进方向 -∇f</text>
+            </g>
+            <!-- vertices -->
+            <g id="verts" fill="#8fa3c8">
+              <circle cx="90" cy="720" r="8"/>
+              <circle cx="730" cy="720" r="8"/>
+              <circle cx="730" cy="450" r="8"/>
+              <circle id="v-star" cx="410" cy="180" r="9"/>
+              <circle cx="90" cy="180" r="8"/>
+            </g>
+            <circle id="ring" cx="410" cy="180" r="26" fill="none" stroke="#ffc53d" stroke-width="3" opacity="0"/>
+            <text id="star-l" x="436" y="176" fill="#ffc53d" font-size="30" opacity="0">(2,6) 最优点</text>
+          </svg>
+        </div>
+        <div class="s2-right">
+          <div class="pt"><span class="num mono">01</span>可行域：≤ 型约束 + 非负 ⇒ <b>凸多边形</b>，顶点共 5 个</div>
+          <div class="pt"><span class="num mono">02</span>Th2.3：LP 的<b>最优解必在某个极点</b>达到，只需比较顶点</div>
+          <div class="pt"><span class="num mono">03</span>单纯形：从原点出发，每轮换一条棱，走到<b>更优的极点</b></div>
+          <div class="pt hint">起点原点是初始基本可行解：松弛变量 x3、x4、x5 全在基里，b 列即顶点坐标</div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 : initial table & pivot choice ============ -->
+    <div class="scene" id="s3">
+      <div class="iter-grid">
+        <div class="iter-left">
+          <div class="std-form" id="std3">
+            <div><span class="lbl">min</span> z = -3x1 - 5x2 + 0x3 + 0x4 + 0x5</div>
+            <div><span class="lbl">s.t.</span> x1 + x3 = 4　　2x2 + x4 = 12　　3x1 + 2x2 + x5 = 18</div>
+            <div><span class="lbl">　　　</span> x3,x4,x5 为松弛变量　x1,…,x5 ≥ 0</div>
+          </div>
+          <div class="panel">
+            <div class="panel-title mono">单纯形表 ｜ σ = c<sub>j</sub> − c<sub>B</sub>B<sup>-1</sup>A<sub>j</sub>（最小化口径）</div>
+            <div class="tbl">
+              <div class="trow thead">
+                <span class="cell c-base">基变量</span>
+                <span class="cell cx1">x1</span><span class="cell cx2">x2</span><span class="cell cx3">x3</span>
+                <span class="cell cx4">x4</span><span class="cell cx5">x5</span>
+                <span class="cell c-b">b</span><span class="cell c-note">选基说明</span>
+              </div>
+              <div class="trow row1">
+                <span class="cell c-base b1">x3</span>
+                <span class="cell num c1">1</span><span class="cell num c2">0</span><span class="cell num c3">1</span>
+                <span class="cell num c4">0</span><span class="cell num c5">0</span>
+                <span class="cell num c6">4</span><span class="cell c-note n1"></span>
+              </div>
+              <div class="trow row2">
+                <span class="cell c-base b2">x4</span>
+                <span class="cell num c1">0</span><span class="cell num c2">2</span><span class="cell num c3">0</span>
+                <span class="cell num c4">1</span><span class="cell num c5">0</span>
+                <span class="cell num c6">12</span><span class="cell c-note n2"></span>
+              </div>
+              <div class="trow row3">
+                <span class="cell c-base b3">x5</span>
+                <span class="cell num c1">3</span><span class="cell num c2">2</span><span class="cell num c3">0</span>
+                <span class="cell num c4">0</span><span class="cell num c5">1</span>
+                <span class="cell num c6">18</span><span class="cell c-note n3"></span>
+              </div>
+              <div class="trow sigrow">
+                <span class="cell c-base">σ</span>
+                <span class="cell num s1">-3</span><span class="cell num s2">-5</span><span class="cell num s3">0</span>
+                <span class="cell num s4">0</span><span class="cell num s5">0</span>
+                <span class="cell num s6">0</span><span class="cell c-note">末列 = -z</span>
+              </div>
+            </div>
+            <div class="note-line" id="note3">σ<sub>2</sub> = -5 最负 ⇒ <span class="k">x<sub>2</sub> 入基</span></div>
+          </div>
+        </div>
+        <div class="iter-right">
+          <div class="panel">
+            <div class="panel-title mono">可行域与当前顶点</div>
+            <svg id="geo3" width="600" height="460" viewBox="0 0 620 470">
+              <line x1="70" y1="420" x2="566" y2="420" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="70" y1="420" x2="70" y2="38" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="566" y="456" fill="#8fa3c8" font-size="29" text-anchor="end">x1</text>
+              <text x="38" y="52" fill="#8fa3c8" font-size="29">x2</text>
+              <line x1="410" y1="420" x2="410" y2="38" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="70" y1="108" x2="566" y2="108" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="172" y1="46" x2="537" y2="381" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <polygon points="70,420 410,420 410,264 240,108 70,108" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="2"/>
+              <g fill="#8fa3c8">
+                <circle cx="70" cy="420" r="5"/><circle cx="410" cy="420" r="5"/>
+                <circle cx="410" cy="264" r="5"/><circle cx="240" cy="108" r="5"/><circle cx="70" cy="108" r="5"/>
+              </g>
+              <circle id="pt3" cx="70" cy="420" r="10" fill="#ffc53d"/>
+              <text x="88" y="408" fill="#ffc53d" font-size="29">当前顶点 (0,0)</text>
+            </svg>
+          </div>
+          <div class="panel" style="margin-top:26px">
+            <div class="panel-title mono">本轮目标</div>
+            <div style="font-size:27px;line-height:1.6">
+              入基：<span style="color:#ffc53d">σ&lt;0 中最负</span><br/>
+              出基：<span style="color:#ffc53d">θ = b<sub>i</sub>/a<sub>ij</sub> 只算 a<sub>ij</sub> &gt; 0 的行，取最小</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 : iteration 1 row ops ============ -->
+    <div class="scene" id="s4">
+      <div class="iter-grid">
+        <div class="iter-left">
+          <div class="panel">
+            <div class="panel-title mono">迭代 ① ｜ 主行归一 → 其余行消去 → σ 重算</div>
+            <div class="tbl">
+              <div class="trow thead">
+                <span class="cell c-base">基变量</span>
+                <span class="cell cx1">x1</span><span class="cell cx2">x2</span><span class="cell cx3">x3</span>
+                <span class="cell cx4">x4</span><span class="cell cx5">x5</span>
+                <span class="cell c-b">b</span><span class="cell c-note">选基说明</span>
+              </div>
+              <div class="trow row1">
+                <span class="cell c-base b1">x3</span>
+                <span class="cell num c1">1</span><span class="cell num c2">0</span><span class="cell num c3">1</span>
+                <span class="cell num c4">0</span><span class="cell num c5">0</span>
+                <span class="cell num c6">4</span><span class="cell c-note n1">a<sub>12</sub>=0，不用消</span>
+              </div>
+              <div class="trow row2">
+                <span class="cell c-base b2">x4</span>
+                <span class="cell num c1">0</span><span class="cell num c2">2</span><span class="cell num c3">0</span>
+                <span class="cell num c4">1</span><span class="cell num c5">0</span>
+                <span class="cell num c6">12</span><span class="cell c-note n2">主元行 ÷ 2</span>
+              </div>
+              <div class="trow row3">
+                <span class="cell c-base b3">x5</span>
+                <span class="cell num c1">3</span><span class="cell num c2">2</span><span class="cell num c3">0</span>
+                <span class="cell num c4">0</span><span class="cell num c5">1</span>
+                <span class="cell num c6">18</span><span class="cell c-note n3">本行 - 1×主行</span>
+              </div>
+              <div class="trow sigrow">
+                <span class="cell c-base">σ</span>
+                <span class="cell num s1">-3</span><span class="cell num s2">-5</span><span class="cell num s3">0</span>
+                <span class="cell num s4">0</span><span class="cell num s5">0</span>
+                <span class="cell num s6">0</span><span class="cell c-note">末列 = -z</span>
+              </div>
+            </div>
+            <div class="z-read" id="z4">z = 0</div>
+            <div class="note-line" id="note4"></div>
+          </div>
+        </div>
+        <div class="iter-right">
+          <div class="panel">
+            <div class="panel-title mono">顶点沿棱移动</div>
+            <svg id="geo4" width="600" height="460" viewBox="0 0 620 470">
+              <line x1="70" y1="420" x2="566" y2="420" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="70" y1="420" x2="70" y2="38" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="566" y="456" fill="#8fa3c8" font-size="29" text-anchor="end">x1</text>
+              <text x="38" y="52" fill="#8fa3c8" font-size="29">x2</text>
+              <line x1="410" y1="420" x2="410" y2="38" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="70" y1="108" x2="566" y2="108" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="172" y1="46" x2="537" y2="381" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <polygon points="70,420 410,420 410,264 240,108 70,108" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="2"/>
+              <line id="ct30-4" x1="70" y1="108" x2="537" y2="280" stroke="#8fa3c8" stroke-width="2" opacity="0"/>
+              <text id="ct30-4-l" x="78" y="100" fill="#8fa3c8" font-size="28" opacity="0">z=-30</text>
+              <path id="trail4" d="M 70 420 L 70 108" pathLength="1" fill="none" stroke="#ffc53d" stroke-width="3" stroke-dasharray="1" stroke-dashoffset="1"/>
+              <g fill="#8fa3c8">
+                <circle cx="70" cy="420" r="5"/><circle cx="410" cy="420" r="5"/>
+                <circle cx="410" cy="264" r="5"/><circle cx="240" cy="108" r="5"/><circle cx="70" cy="108" r="5"/>
+              </g>
+              <circle id="pt4" cx="70" cy="420" r="10" fill="#ffc53d"/>
+              <text id="pt4-l" x="88" y="408" fill="#ffc53d" font-size="29">当前顶点 (0,0)</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 : iteration 2 ============ -->
+    <div class="scene" id="s5">
+      <div class="iter-grid">
+        <div class="iter-left">
+          <div class="panel">
+            <div class="panel-title mono">迭代 ② ｜ σ<sub>1</sub> = -3 &lt; 0 ⇒ 继续换基</div>
+            <div class="tbl">
+              <div class="trow thead">
+                <span class="cell c-base">基变量</span>
+                <span class="cell cx1">x1</span><span class="cell cx2">x2</span><span class="cell cx3">x3</span>
+                <span class="cell cx4">x4</span><span class="cell cx5">x5</span>
+                <span class="cell c-b">b</span><span class="cell c-note">选基说明</span>
+              </div>
+              <div class="trow row1">
+                <span class="cell c-base b1">x3</span>
+                <span class="cell num c1">1</span><span class="cell num c2">0</span><span class="cell num c3">1</span>
+                <span class="cell num c4">0</span><span class="cell num c5">0</span>
+                <span class="cell num c6">4</span><span class="cell c-note n1">θ = 4/1 = 4</span>
+              </div>
+              <div class="trow row2">
+                <span class="cell c-base b2">x2</span>
+                <span class="cell num c1">0</span><span class="cell num c2">1</span><span class="cell num c3">0</span>
+                <span class="cell num c4">1/2</span><span class="cell num c5">0</span>
+                <span class="cell num c6">6</span><span class="cell c-note n2">系数 0，不参与</span>
+              </div>
+              <div class="trow row3">
+                <span class="cell c-base b3">x5</span>
+                <span class="cell num c1">3</span><span class="cell num c2">0</span><span class="cell num c3">0</span>
+                <span class="cell num c4">-1</span><span class="cell num c5">1</span>
+                <span class="cell num c6">6</span><span class="cell c-note n3">θ = 6/3 = 2 ✓ 最小</span>
+              </div>
+              <div class="trow sigrow">
+                <span class="cell c-base">σ</span>
+                <span class="cell num s1">-3</span><span class="cell num s2">0</span><span class="cell num s3">0</span>
+                <span class="cell num s4">5/2</span><span class="cell num s5">0</span>
+                <span class="cell num s6">30</span><span class="cell c-note">末列 = -z</span>
+              </div>
+            </div>
+            <div class="z-read" id="z5">z = -30</div>
+            <div class="note-line" id="note5"></div>
+          </div>
+        </div>
+        <div class="iter-right">
+          <div class="panel">
+            <div class="panel-title mono">顶点沿棱移动</div>
+            <svg id="geo5" width="600" height="460" viewBox="0 0 620 470">
+              <line x1="70" y1="420" x2="566" y2="420" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="70" y1="420" x2="70" y2="38" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="566" y="456" fill="#8fa3c8" font-size="29" text-anchor="end">x1</text>
+              <text x="38" y="52" fill="#8fa3c8" font-size="29">x2</text>
+              <line x1="410" y1="420" x2="410" y2="38" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="70" y1="108" x2="566" y2="108" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <line x1="172" y1="46" x2="537" y2="381" stroke="#5aa9ff" stroke-width="1.5" stroke-dasharray="7 6"/>
+              <polygon points="70,420 410,420 410,264 240,108 70,108" fill="rgba(62,207,142,0.12)" stroke="#3ecf8e" stroke-width="2"/>
+              <path id="trail5a" d="M 70 420 L 70 108" pathLength="1" fill="none" stroke="#ffc53d" stroke-width="3" stroke-dasharray="1" stroke-dashoffset="0"/>
+              <path id="trail5b" d="M 70 108 L 240 108" pathLength="1" fill="none" stroke="#ffc53d" stroke-width="3" stroke-dasharray="1" stroke-dashoffset="1"/>
+              <line id="ct36-5" x1="70" y1="46" x2="240" y2="108" stroke="#ffc53d" stroke-width="3" opacity="0"/>
+              <g fill="#8fa3c8">
+                <circle cx="70" cy="420" r="5"/><circle cx="410" cy="420" r="5"/>
+                <circle cx="410" cy="264" r="5"/><circle cx="240" cy="108" r="5"/><circle cx="70" cy="108" r="5"/>
+              </g>
+              <circle id="pt5" cx="70" cy="108" r="10" fill="#ffc53d"/>
+              <text id="pt5-l" x="88" y="94" fill="#ffc53d" font-size="29">当前顶点 (0,6)</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 6 : optimality & answer ============ -->
+    <div class="scene" id="s6">
+      <div class="s6-grid">
+        <div class="left">
+          <div class="panel">
+            <div class="panel-title mono">最优表 ｜ 全部 σ ≥ 0 ⇒ 检验数无法再改进</div>
+            <div class="tbl">
+              <div class="trow thead">
+                <span class="cell c-base">基变量</span>
+                <span class="cell cx1">x1</span><span class="cell cx2">x2</span><span class="cell cx3">x3</span>
+                <span class="cell cx4">x4</span><span class="cell cx5">x5</span>
+                <span class="cell c-b">b</span><span class="cell c-note">选基说明</span>
+              </div>
+              <div class="trow row1">
+                <span class="cell c-base b1">x3</span>
+                <span class="cell num c1">0</span><span class="cell num c2">0</span><span class="cell num c3">1</span>
+                <span class="cell num c4">1/3</span><span class="cell num c5">-1/3</span>
+                <span class="cell num c6">2</span><span class="cell c-note"></span>
+              </div>
+              <div class="trow row2">
+                <span class="cell c-base b2">x2</span>
+                <span class="cell num c1">0</span><span class="cell num c2">1</span><span class="cell num c3">0</span>
+                <span class="cell num c4">1/2</span><span class="cell num c5">0</span>
+                <span class="cell num c6">6</span><span class="cell c-note"></span>
+              </div>
+              <div class="trow row3">
+                <span class="cell c-base b3">x1</span>
+                <span class="cell num c1">1</span><span class="cell num c2">0</span><span class="cell num c3">0</span>
+                <span class="cell num c4">-1/3</span><span class="cell num c5">1/3</span>
+                <span class="cell num c6">2</span><span class="cell c-note"></span>
+              </div>
+              <div class="trow sigrow ok">
+                <span class="cell c-base">σ</span>
+                <span class="cell num s1">0</span><span class="cell num s2">0</span><span class="cell num s3">0</span>
+                <span class="cell num s4">3/2</span><span class="cell num s5">1</span>
+                <span class="cell num s6">36</span><span class="cell c-note">末列 = -z</span>
+              </div>
+            </div>
+            <div class="z-read">z = -36</div>
+            <div style="margin-top:18px;font-size:26px;color:#3ecf8e">✓ 最优性判别：σ<sub>j</sub> ≥ 0 对一切 j 成立 ⇒ 当前基本可行解即最优解</div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="ans-card">
+            <div class="ans-q mono">min z = -3x1 - 5x2　s.t.　x1 ≤ 4，2x2 ≤ 12，3x1 + 2x2 ≤ 18</div>
+            <div class="ans-big"><span class="lbl">x* =</span> (2, 6)</div>
+            <div class="ans-big"><span class="lbl">z* =</span> -36</div>
+            <div class="ans-sub">基变量：<span class="mono">x1 = 2，x2 = 6，x3 = 2</span><br/>非基变量取 0：<span class="mono">x4 = 0，x5 = 0</span></div>
+            <div class="ans-sub">交叉验证：可行域 5 个顶点逐一求 z，(2,6) 处最小，与表格结论一致</div>
+            <div class="ans-warn">易错：① 别忘了报 z*；② 最小化口径 σ = c<sub>j</sub> − c<sub>B</sub>B<sup>-1</sup>A<sub>j</sub>，入基取最负者；检验数全 ≥ 0 才最优；③ θ 只算主元列系数为正的行</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 7 : recap ============ -->
+    <div class="scene" id="s7">
+      <div class="s7-wrap">
+        <h2>单纯形法 · <span class="hl">四步速记</span></h2>
+        <div class="lead">考前默一遍，表格题不丢步骤分</div>
+        <div class="recap">
+          <span class="rn mono">1</span>
+          <div class="rt">入基：σ 行找 <b>σ &lt; 0 中最负</b>的变量（最小化口径）</div>
+        </div>
+        <div class="recap">
+          <span class="rn mono">2</span>
+          <div class="rt">出基：<span class="mono">θ = b<sub>i</sub>/a<sub>ij</sub></span> 只算 <span class="mono">a<sub>ij</sub> &gt; 0</span> 的行，取最小比值</div>
+        </div>
+        <div class="recap">
+          <span class="rn mono">3</span>
+          <div class="rt">换基四步：<b>主行归一 → 其余行消去 → 改写基变量 → σ 重算</b></div>
+        </div>
+        <div class="recap">
+          <span class="rn mono">4</span>
+          <div class="rt">收尾：σ 全部 ≥ 0 时停，报出 <b>x* 和 z*</b>（z* 最常被漏）</div>
+        </div>
+        <div class="end mono">SIMPLEX · 完</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 64; // composition duration
+
+    /* ---------- ambient background ---------- */
+    tl.fromTo("#glow", { scale: 1, opacity: 0.55 },
+      { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow2", { scale: 1.08, opacity: 0.5 },
+      { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+
+    /* ---------- captions & progress ---------- */
+    const steps = [
+      { t: 0.15,  label: "1 / 7 · 导入",       text: "单纯形法：把线性规划装进一张表，沿棱走向最优极点" },
+      { t: 6.45,  label: "2 / 7 · 几何直觉",   text: "可行域是凸多边形；Th2.3：最优解必在某个极点达到" },
+      { t: 14.45, label: "3 / 7 · 初始表选基", text: "标准形 → 初始表；σ&lt;0 最负者入基，θ 最小者出基" },
+      { t: 26.45, label: "4 / 7 · 迭代①",      text: "主行归一 → 其余行消去 → σ 重算；顶点 (0,0) → (0,6)" },
+      { t: 36.45, label: "5 / 7 · 迭代②",      text: "第二轮：x<sub>1</sub> 入基、x<sub>5</sub> 出基；顶点 (0,6) → (2,6)" },
+      { t: 48.45, label: "6 / 7 · 最优与答案", text: "σ 全部 ≥ 0 ⇒ 最优；x* = (2, 6)，z* = -36" },
+      { t: 56.45, label: "7 / 7 · 速记",       text: "四步速记：入基看 σ、出基算 θ、换基四步、报 x* 和 z*" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label", { textContent: s.label }, s.t);
+      tl.set("#caption", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+
+    /* ---------- scene 1 ---------- */
+    tl.from("#s1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+
+    /* ---------- transitions ---------- */
+    function push(oldSel, newSel, T) {
+      tl.to(oldSel, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T);
+      tl.fromTo(newSel, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T);
+    }
+    function blurX(oldSel, newSel, T) {
+      tl.to(oldSel, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(newSel, { filter: "blur(12px)", scale: 0.98, opacity: 0 },
+        { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push("#s1", "#s2", 6);
+    push("#s2", "#s3", 14);
+    blurX("#s3", "#s4", 26);
+    push("#s4", "#s5", 36);
+    push("#s5", "#s6", 48);
+    push("#s6", "#s7", 56);
+
+    /* ---------- scene 2 : geometry ---------- */
+    tl.from("#geo-big", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center bottom" }, 6.45);
+    tl.from("#s2 .pt:not(.hint)", { x: 40, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.16 }, 6.8);
+    tl.from("#s2 .pt.hint", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 8.3);
+    tl.from("#poly", { opacity: 0, scale: 0.9, duration: 0.7, ease: "power3.out", transformOrigin: "center" }, 7.0);
+    tl.from("#verts circle", { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)", stagger: 0.09, transformOrigin: "center" }, 7.5);
+    tl.fromTo("#ct-6", { x: 0, y: 120, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 8.0);
+    tl.fromTo("#ct-18", { x: 0, y: 120, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 8.3);
+    tl.fromTo("#ct-30", { x: 0, y: 120, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 8.6);
+    tl.from("#ct-6-l", { opacity: 0, duration: 0.3 }, 8.5);
+    tl.from("#ct-18-l", { opacity: 0, duration: 0.3 }, 8.8);
+    tl.from("#ct-30-l", { opacity: 0, duration: 0.3 }, 9.1);
+    tl.fromTo("#path-main", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 9.2);
+    tl.fromTo("#arrow", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 10.4);
+    tl.to("#ct-36", { opacity: 1, duration: 0.5 }, 11.2);
+    tl.to("#ct-36-l", { opacity: 1, duration: 0.5 }, 11.2);
+    tl.to("#ring", { opacity: 1, scale: 1.25, duration: 0.6, ease: "back.out(2)", transformOrigin: "center" }, 11.5);
+    tl.to("#star-l", { opacity: 1, duration: 0.4 }, 11.9);
+    tl.to("#v-star", { fill: "#ffc53d", scale: 1.5, duration: 0.5, ease: "back.out(2)", transformOrigin: "center" }, 11.5);
+
+    /* ---------- scene 3 : initial table ---------- */
+    tl.from("#std3 div", { x: -30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 14.5);
+    tl.from("#s3 .iter-left .panel", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 15.5);
+    tl.from("#s3 .thead .cell", { y: -18, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 16.0);
+    tl.from("#s3 .row1 .cell, #s3 .row2 .cell, #s3 .row3 .cell", { opacity: 0, duration: 0.3, stagger: 0.03 }, 16.4);
+    tl.from("#s3 .sigrow .cell", { y: 16, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 16.9);
+    tl.fromTo("#s3 .iter-right .panel", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.12 }, 16.3);
+    tl.to("#s3 .s1, #s3 .s2", { color: "#ffc53d", duration: 0.3 }, 17.6);
+    tl.to("#s3 .cx2", { backgroundColor: "rgba(255,197,61,0.14)", duration: 0.35 }, 18.0);
+    tl.set("#note3", { innerHTML: "σ<sub>2</sub> = -5 最负 ⇒ x<sub>2</sub> 入基" }, 18.0);
+    tl.fromTo("#note3", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.05);
+    tl.set("#s3 .n1", { innerHTML: "a<sub>12</sub> = 0，不参与比值" }, 19.7);
+    tl.set("#s3 .n2", { textContent: "θ = 12/2 = 6 ✓ 最小" }, 19.9);
+    tl.set("#s3 .n3", { textContent: "θ = 18/2 = 9" }, 20.1);
+    tl.fromTo("#s3 .n1, #s3 .n2, #s3 .n3", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 19.7);
+    tl.to("#s3 .row2", { backgroundColor: "rgba(255,107,107,0.10)", duration: 0.35 }, 20.6);
+    tl.to("#s3 .b2", { color: "#ff6b6b", opacity: 0.6, duration: 0.35 }, 20.6);
+    tl.to("#s3 .n2", { color: "#ffc53d", duration: 0.3 }, 20.9);
+    tl.set("#note3", { innerHTML: "θ 最小 ⇒ x<sub>4</sub> 出基；主元 = 第2行第2列的 2" }, 21.4);
+    tl.fromTo("#note3", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 21.45);
+    tl.to("#s3 .row2 .c2", { backgroundColor: "#ffc53d", color: "#0e1526", scale: 1.12, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 22.2);
+    tl.fromTo("#pt3", { scale: 1 }, { scale: 1.35, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "center" }, 23.2);
+    /* reset highlights before transition */
+    tl.to("#s3 .cx2", { backgroundColor: "rgba(255,197,61,0)", duration: 0.3 }, 24.6);
+    tl.to("#s3 .row2", { backgroundColor: "rgba(255,107,107,0)", duration: 0.3 }, 24.6);
+    tl.to("#s3 .row2 .c2", { backgroundColor: "rgba(255,197,61,0)", color: "#e9eef8", scale: 1, duration: 0.3 }, 24.6);
+    tl.to("#s3 .b2", { color: "#ffc53d", opacity: 1, duration: 0.3 }, 24.6);
+
+    /* ---------- scene 4 : iteration 1 ---------- */
+    tl.from("#s4 .panel", { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 26.5);
+    tl.set("#note4", { textContent: "第 2 行 ÷ 2（主行归一）" }, 26.7);
+    tl.fromTo("#note4", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 26.75);
+    tl.set("#s4 .row2 .num", { textContent: (i) => ["0", "1", "0", "1/2", "0", "6"][i] }, 27.4);
+    tl.fromTo("#s4 .row2 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 27.4);
+    tl.set("#s4 .b2", { textContent: "x2" }, 27.5);
+    tl.fromTo("#s4 .b2", { scale: 1.4, color: "#ffc53d", transformOrigin: "left center" }, { scale: 1, color: "#ffc53d", duration: 0.45, ease: "back.out(2)" }, 27.5);
+    tl.set("#note4", { innerHTML: "其余行消去 x<sub>2</sub> 列（第 1 行系数为 0，不用动）" }, 28.8);
+    tl.fromTo("#note4", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 28.85);
+    tl.set("#s4 .row3 .num", { textContent: (i) => ["3", "0", "0", "-1", "1", "6"][i] }, 29.5);
+    tl.fromTo("#s4 .row3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 29.5);
+    tl.set("#note4", { textContent: "σ 行按新基重算" }, 30.6);
+    tl.fromTo("#note4", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 30.65);
+    tl.set("#s4 .sigrow .num", { innerHTML: (i) => ["-3", "0", "0", "5/2", "0", "30"][i] }, 31.0);
+    tl.fromTo("#s4 .sigrow .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 31.0);
+    tl.to("#s4 .s1", { color: "#ffc53d", duration: 0.3 }, 31.8);
+    tl.set("#z4", { textContent: "z = -30" }, 32.0);
+    tl.fromTo("#z4", { scale: 1.25, transformOrigin: "left center" }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 32.0);
+    tl.to("#ct30-4", { opacity: 1, duration: 0.4 }, 32.3);
+    tl.to("#ct30-4-l", { opacity: 1, duration: 0.4 }, 32.3);
+    tl.to("#pt4", { attr: { cx: 70, cy: 108 }, duration: 1.2, ease: "power2.inOut" }, 32.4);
+    tl.set("#pt4-l", { textContent: "当前顶点 (0,6)" }, 33.4);
+    tl.fromTo("#trail4", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, 32.4);
+    tl.set("#note4", { innerHTML: "z：0 → -30 下降了，但 σ<sub>1</sub> = -3 &lt; 0 ⇒ 继续迭代" }, 34.0);
+    tl.fromTo("#note4", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 34.05);
+    tl.to("#s4 .s1", { scale: 1.25, duration: 0.4, ease: "back.out(2)", transformOrigin: "center" }, 34.4);
+
+    /* ---------- scene 5 : iteration 2 ---------- */
+    tl.from("#s5 .panel", { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 36.5);
+    tl.set("#note5", { innerHTML: "σ<sub>1</sub> = -3 最负 ⇒ x<sub>1</sub> 入基" }, 36.7);
+    tl.fromTo("#note5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 36.75);
+    tl.to("#s5 .cx1", { backgroundColor: "rgba(255,197,61,0.14)", duration: 0.35 }, 37.0);
+    tl.to("#s5 .n3", { color: "#ffc53d", duration: 0.3 }, 38.2);
+    tl.to("#s5 .row3", { backgroundColor: "rgba(255,107,107,0.10)", duration: 0.35 }, 38.6);
+    tl.to("#s5 .b3", { color: "#ff6b6b", opacity: 0.6, duration: 0.35 }, 38.6);
+    tl.set("#note5", { innerHTML: "θ 最小 = 2 ⇒ x<sub>5</sub> 出基；主元 = 第3行第1列的 3" }, 39.2);
+    tl.fromTo("#note5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 39.25);
+    tl.to("#s5 .row3 .c1", { backgroundColor: "#ffc53d", color: "#0e1526", scale: 1.12, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 39.8);
+    tl.set("#note5", { textContent: "第 3 行 ÷ 3（主行归一）" }, 40.6);
+    tl.fromTo("#note5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 40.65);
+    tl.set("#s5 .row3 .num", { textContent: (i) => ["1", "0", "0", "-1/3", "1/3", "2"][i] }, 41.1);
+    tl.fromTo("#s5 .row3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 41.1);
+    tl.set("#s5 .b3", { textContent: "x1" }, 41.2);
+    tl.to("#s5 .b3", { color: "#ffc53d", opacity: 1, duration: 0.35 }, 41.2);
+    tl.set("#note5", { innerHTML: "第 1 行 - 1×主行，消去 x<sub>1</sub> 列（第 2 行系数为 0，不用动）" }, 42.4);
+    tl.fromTo("#note5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 42.45);
+    tl.set("#s5 .row1 .num", { textContent: (i) => ["0", "0", "1", "1/3", "-1/3", "2"][i] }, 43.0);
+    tl.fromTo("#s5 .row1 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 43.0);
+    tl.set("#note5", { innerHTML: "σ 行重算：全部 ≥ 0 ⇒ 达到最优" }, 44.0);
+    tl.fromTo("#note5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 44.05);
+    tl.set("#s5 .sigrow .num", { innerHTML: (i) => ["0", "0", "0", "3/2", "1", "36"][i] }, 44.4);
+    tl.fromTo("#s5 .sigrow .num", { color: "#ffc53d" }, { color: "#3ecf8e", duration: 0.5, stagger: 0.07, ease: "power2.out" }, 44.4);
+    tl.set("#z5", { textContent: "z = -36" }, 45.0);
+    tl.fromTo("#z5", { scale: 1.25, transformOrigin: "left center" }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 45.0);
+    tl.to("#s5 .row3 .c1", { backgroundColor: "rgba(255,197,61,0)", color: "#e9eef8", scale: 1, duration: 0.3 }, 45.2);
+    tl.to("#s5 .row3", { backgroundColor: "rgba(255,107,107,0)", duration: 0.3 }, 45.2);
+    tl.to("#ct36-5", { opacity: 1, duration: 0.4 }, 45.4);
+    tl.to("#pt5", { attr: { cx: 240, cy: 108 }, duration: 1.1, ease: "power2.inOut" }, 45.5);
+    tl.set("#pt5-l", { textContent: "当前顶点 (2,6)" }, 46.4);
+    tl.fromTo("#trail5b", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, 45.5);
+    tl.fromTo("#pt5", { scale: 1 }, { scale: 1.35, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "center" }, 46.7);
+
+    /* ---------- scene 6 : answer ---------- */
+    tl.from("#s6 .left .panel", { x: -40, opacity: 0, duration: 0.55, ease: "power3.out" }, 48.5);
+    tl.from("#s6 .trow", { opacity: 0, x: -20, duration: 0.4, ease: "power2.out", stagger: 0.1 }, 48.9);
+    tl.from("#s6 .ans-card", { x: 44, opacity: 0, duration: 0.6, ease: "power3.out" }, 49.2);
+    tl.from("#s6 .ans-q", { y: 18, opacity: 0, duration: 0.4, ease: "power2.out" }, 49.6);
+    tl.from("#s6 .ans-big", { y: 22, opacity: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.16 }, 49.9);
+    tl.from("#s6 .ans-sub", { y: 20, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 50.8);
+    tl.from("#s6 .ans-warn", { y: 20, opacity: 0, duration: 0.45, ease: "power2.out" }, 51.0);
+    tl.fromTo("#s6 .z-read", { scale: 1.3, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 51.4);
+    tl.to("#s6 .sigrow.ok .num", { color: "#3ecf8e", duration: 0.4, stagger: 0.06 }, 51.8);
+    tl.fromTo("#s6 .ans-card", { scale: 1 }, { scale: 1.018, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "center" }, 53.0);
+
+    /* ---------- scene 7 : recap ---------- */
+    tl.from("#s7 h2", { y: 40, opacity: 0, duration: 0.55, ease: "power3.out" }, 56.5);
+    tl.from("#s7 .lead", { y: 24, opacity: 0, duration: 0.45, ease: "power2.out" }, 56.9);
+    tl.from("#s7 .recap", { x: -36, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 57.3);
+    tl.from("#s7 .end", { opacity: 0, duration: 0.5 }, 58.6);
+    tl.to('[data-composition-id="simplex"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 63.2);
+
+    window.__timelines["simplex"] = tl;
+  </script>
+</template>

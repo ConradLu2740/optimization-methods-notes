@@ -1,0 +1,301 @@
+<template id="convex-template">
+  <div data-composition-id="convex" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+            [data-composition-id="cx"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="cx"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bgcx { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bgcx .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glowcx { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glowcxb { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-topcx { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-labelcx { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badgecx { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottomcx { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-rowcx { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-labelcx { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #captioncx { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-footcx { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-trackcx { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #progcx { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scenecx { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #s2cx { z-index: 2; opacity: 0; }
+      #s3cx { z-index: 3; opacity: 0; }
+      #s4cx { z-index: 4; opacity: 0; }
+      #s5cx { z-index: 5; opacity: 0; }
+      #s1cx .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #s1cx .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #s1cx h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #s1cx h1 .hl { color: #ffc53d; }
+      #s1cx .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1cx .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1cx .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #s1cx .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #s1cx .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panelcx { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-titlecx { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .gridcx { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .leftcx { width: 1090px; }
+      .rightcx { width: 666px; }
+      .mathboxcx { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathboxcx .lbl { color: #8fa3c8; }
+      .mathboxcx .hi { color: #ffc53d; }
+      .stepcx { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .stepcx .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .stepcx .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .stepcx .st b { color: #ffc53d; font-weight: 400; }
+      .stepcx .st .mono { color: #3ecf8e; }
+      .verdictcx { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdictcx.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdictcx.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcardcx { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcardcx .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcardcx .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcardcx .fl .mono { color: #3ecf8e; }
+      .ans-bigcx { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-bigcx .lbl { font-size: 28px; color: #8fa3c8; }
+      .ans-cardcx { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 28px 32px; }
+      .ans-warncx { margin-top: 20px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 16px; line-height: 1.6; }
+    </style>
+    <div id="bgcx"><div class="grid"></div><div id="glowcx"></div><div id="glowcxb"></div></div>
+    <div id="chrome-topcx">
+      <div id="series-labelcx" class="mono">最优化方法与应用 · 知识点动画 14</div>
+      <div id="topic-badgecx">凸分析 · 凸集与凸函数 · 简答三连</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scenecx" id="s1cx">
+      <div class="wrap">
+        <div class="kicker mono">补充知识2 · 凸分析 · 简答/判断题高发区</div>
+        <h1>凸集与<span class="hl">凸函数</span></h1>
+        <div class="sub">定义怎么验、Hessian 怎么用、两者什么关系</div>
+        <div class="badges">
+          <span class="badge">定义验证</span>
+          <span class="badge">一阶二阶判别</span>
+          <span class="badge hot">凸规划 ⇒ 局部=全局</span>
+        </div>
+        <div class="formula mono">凸集：λa + (1−λ)b ∈ S ｜ 凸函数：f(λa+(1−λ)b) ≤ λf(a) + (1−λ)f(b) ｜ 上镜图凸 ⟺ f 凸</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scenecx" id="s2cx">
+      <div class="gridcx">
+        <div class="leftcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">复习课题1：用定义验证 S = {(x₁, x₂) : x₂ ≥ |x₁|} 是凸集</div>
+            <div class="mathboxcx">
+              <div><span class="lbl">任取 a = (a₁, a₂)、b = (b₁, b₂) ∈ S，λ ∈ [0, 1]</span></div>
+              <div><span class="lbl">要证：λa + (1−λ)b ∈ S，即</span></div>
+              <div>λa₂ + (1−λ)b₂ ≥ |λa₁ + (1−λ)b₁|</div>
+            </div>
+            <div class="mathboxcx">
+              <div><span class="lbl">左边：</span>λa₂ + (1−λ)b₂ ≥ λ|a₁| + (1−λ)|b₁|</div>
+              <div><span class="lbl">（因为 a₂ ≥ |a₁|、b₂ ≥ |b₁|，同乘非负系数）</span></div>
+              <div><span class="lbl">右边放缩（三角不等式）：</span></div>
+              <div>λ|a₁| + (1−λ)|b₁| ≥ |λa₁ + (1−λ)b₁|</div>
+            </div>
+            <div class="verdictcx ok">两步放缩串起来即得证。<b>第二步的三角不等式正是凸性的来源</b>——这就是这道题的标准写法。</div>
+          </div>
+        </div>
+        <div class="rightcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">几何：弦永远在里面</div>
+            <svg width="600" height="500" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="52" fill="#8fa3c8" font-size="22">x2</text>
+              <path d="M 380 310 L 160 110 L 380 310 L 600 110 L 380 310 L 160 510 L 380 310 L 600 510 Z" fill="rgba(62,207,142,0.13)"/>
+              <polyline points="160,110 600,110 160,510 600,510" fill="none" stroke="#3ecf8e" stroke-width="3"/>
+              <circle id="cxa" cx="220" cy="170" r="8" fill="#ffc53d"/>
+              <circle id="cxb" cx="540" cy="230" r="8" fill="#ffc53d"/>
+              <line id="cxchord" x1="220" y1="170" x2="540" y2="230" stroke="#ffc53d" stroke-width="3.5"/>
+              <text id="cxal" x="180" y="160" fill="#ffc53d" font-size="21">a</text>
+              <text id="cxbl" x="552" y="224" fill="#ffc53d" font-size="21">b</text>
+              <text x="160" y="90" fill="#8fa3c8" font-size="20">x2 = |x1|（V 形边界）</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">V 形上方整片都是 S；两点连线（黄）完全落在 S 内——这就是凸集的直观。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scenecx" id="s3cx">
+      <div class="gridcx">
+        <div class="leftcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">复习课题2：判别 f(x₁, x₂) = x₁² − 2x₁x₂ + x₂² + x₁ + x₂</div>
+            <div class="mathboxcx">
+              <div><span class="lbl">配方：</span>f = (x1 − x2)² + x1 + x2</div>
+              <div><span class="lbl">Hessian：</span>H = [[2, −2], [−2, 2]]</div>
+              <div><span class="lbl">特征值：</span>0 和 4（迹 4、行列式 0）</div>
+            </div>
+            <div class="mathboxcx">
+              <div><span class="lbl">H 半正定（特征值 0, 4 ≥ 0）⇒ f 是凸函数</span></div>
+              <div><span class="lbl">但存在零特征值 ⇒</span> <b>凸而非严格凸</b></div>
+            </div>
+            <div class="stepcx"><span class="sn">·</span><div class="st">判别顺序：<b>Hessian 半正定最快</b>；一阶/定义法用于证不了二阶的题</div></div>
+            <div class="stepcx"><span class="sn">·</span><div class="st"><b>保凸运算</b>：凸函数之和、非负倍数之和仍凸（f₁ + f₂ 那问就是这么证）</div></div>
+            <div class="verdictcx warn">易错：算出零特征值时，答案必须写全"<b>凸但非严格凸</b>"——只写"凸"丢一半分。</div>
+          </div>
+        </div>
+        <div class="rightcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">几何：切线恒在曲线上方</div>
+            <svg width="600" height="500" viewBox="0 0 760 620">
+              <line x1="80" y1="540" x2="700" y2="540" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="80" y1="540" x2="80" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path id="cxcurve" d="M 120 460 Q 380 420 640 120" fill="none" stroke="#3ecf8e" stroke-width="3.5"/>
+              <line id="cxtan" x1="180" y1="450" x2="560" y2="180" stroke="#ffc53d" stroke-width="3"/>
+              <circle id="cxp" cx="380" cy="290" r="8" fill="#ffc53d"/>
+              <text x="396" y="284" fill="#ffc53d" font-size="21">切点</text>
+              <text x="200" y="200" fill="#8fa3c8" font-size="21">一阶判别：f(y) ≥ f(x) + ∇f(x)ᵀ(y−x)</text>
+              <text x="200" y="470" fill="#3ecf8e" font-size="21">f 凸</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">凸函数的等价判据：定义法 / 一阶（切线在下方）/ 二阶（Hessian 半正定）。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scenecx" id="s4cx">
+      <div class="gridcx">
+        <div class="leftcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">凸集 vs 凸函数：关系只有一条充要条件</div>
+            <div class="mathboxcx">
+              <div><span class="lbl">上镜图 epi f = {(x, t) : t ≥ f(x)}</span></div>
+              <div><span class="hi">epi f 是凸集 ⟺ f 是凸函数</span>　<span class="lbl">（充要）</span></div>
+            </div>
+            <div class="mathboxcx">
+              <div><span class="lbl">水平集 S_α = {x : f(x) ≤ α}：</span></div>
+              <div>f 凸 ⇒ S_α 是凸集（<b>必要</b>，非充分）</div>
+              <div><span class="lbl">逆过来叫"拟凸"——水平集凸不保证 f 凸</span></div>
+            </div>
+            <div class="stepcx"><span class="sn">·</span><div class="st">凸函数定义在<b>凸集</b>上才有意义；凸集上凸函数的<b>局部极小即全局极小</b></div></div>
+            <div class="stepcx"><span class="sn">·</span><div class="st">凸集本身不要求函数；凸函数必须声明定义域是凸集</div></div>
+            <div class="verdictcx ok">一句话：<b>凸集说"线段在里面"，凸函数说"弦在图上"；两者的桥是上镜图。</b></div>
+          </div>
+        </div>
+        <div class="rightcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">几何：上镜图（曲面以上的空间）</div>
+            <svg width="600" height="500" viewBox="0 0 760 620">
+              <line x1="80" y1="540" x2="700" y2="540" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="80" y1="540" x2="80" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path d="M 120 480 Q 380 440 640 140 L 640 480 Z" fill="rgba(62,207,142,0.12)"/>
+              <path d="M 120 480 Q 380 440 640 140" fill="none" stroke="#3ecf8e" stroke-width="3.5"/>
+              <line id="cxepi" x1="180" y1="460" x2="560" y2="200" stroke="#ffc53d" stroke-width="3"/>
+              <circle cx="380" cy="300" r="8" fill="#ffc53d"/>
+              <text x="396" y="294" fill="#ffc53d" font-size="21">(x, f(x))</text>
+              <text x="200" y="180" fill="#8fa3c8" font-size="21">绿色区域 = 上镜图（凸）</text>
+              <text x="200" y="210" fill="#8fa3c8" font-size="21">弦两端点在区域内 ⇒ 整条弦在内</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">把函数图像"往上填满"得到上镜图；它是凸集当且仅当原函数凸。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scenecx" id="s5cx">
+      <div class="gridcx">
+        <div class="leftcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">凸规划：为什么整套理论都建立在凸性上</div>
+            <div class="mathboxcx">
+              <div><span class="lbl">凸规划 = 目标凸 + 不等式约束 gᵢ 凸（写成 gᵢ(x) ≤ 0）+ 等式约束线性</span></div>
+              <div><span class="lbl">可行域是凸集；正则点处 KKT 点即全局最优</span></div>
+            </div>
+            <div class="stepcx"><span class="sn">1</span><div class="st">无约束：<b>∇f = 0 且 H 正定</b> ⇒ 严格局部极小；凸函数时 ∇f = 0 即全局最优</div></div>
+            <div class="stepcx"><span class="sn">2</span><div class="st">有约束：<b>KKT + 凸性</b> ⇒ 全局最优（这就是"KKT 过了就是最小点"的唯一合法场景）</div></div>
+            <div class="stepcx"><span class="sn">3</span><div class="st">非凸时 KKT 只是必要条件，必须再过二阶（见动画 04）</div></div>
+            <div class="verdictcx ok">三句话收尾：凸集验定义（三角不等式放缩）；凸函数看 Hessian（半正定，零特征值要注明"非严格"）；两者的桥是上镜图，落点是凸规划。</div>
+          </div>
+        </div>
+        <div class="rightcx">
+          <div class="panelcx">
+            <div class="panel-titlecx mono">判断/mini 速记</div>
+            <div class="formcardcx"><div class="fh">凸集三问</div><div class="fl">定义验证（任取两点 + λ∈[0,1]）｜ 交集仍凸｜ 凸组合仍在 S</div></div>
+            <div class="formcardcx"><div class="fh">凸函数三问</div><div class="fl">定义（弦在图上方）｜ 一阶（切线在下方）｜ 二阶（Hessian 半正定）</div></div>
+            <div class="formcardcx"><div class="fh">关系三问</div><div class="fl">上镜图凸 ⟺ f 凸｜ 水平集凸仅必要（拟凸）｜ 凸集上凸函数局部 = 全局</div></div>
+            <div class="formcardcx"><div class="fh">运算三问</div><div class="fl">和仍凸｜ 非负倍数之和仍凸｜ max{f₁, f₂} 仍凸</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 52;
+    tl.fromTo("#glowcx", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glowcxb", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",       text: "凸集与凸函数：定义怎么验、Hessian 怎么用、两者什么关系" },
+      { t: 6.45,  label: "2 / 5 · 凸集验证",   text: "S = {x₂ ≥ |x₁|}：两步放缩，关键是三角不等式" },
+      { t: 17.45, label: "3 / 5 · 凸函数判别", text: "H = [[2,−2],[−2,2]] 特征值 0、4 ⇒ 凸但非严格凸" },
+      { t: 29.45, label: "4 / 5 · 两者关系",   text: "上镜图凸 ⟺ f 凸（充要）；水平集凸仅必要" },
+      { t: 40.45, label: "5 / 5 · 凸规划",     text: "凸规划 ⇒ KKT 点即全局最优；三句话收尾" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-labelcx", { textContent: s.label }, s.t);
+      tl.set("#captioncx", { innerHTML: s.text }, s.t);
+      tl.fromTo("#captioncx", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#progcx", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#s1cx .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1cx h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1cx .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1cx .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1cx .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function pushC(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    pushC("#s1cx", "#s2cx", 6); pushC("#s2cx", "#s3cx", 17); pushC("#s3cx", "#s4cx", 29); pushC("#s4cx", "#s5cx", 40);
+
+    tl.from("#s2cx .leftcx .panelcx", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#s2cx .mathboxcx", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 6.9);
+    tl.fromTo("#s2cx .verdictcx", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 12.4);
+    tl.from("#s2cx .rightcx .panelcx", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#s2cx svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#cxa", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 8.6);
+    tl.from("#cxb", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 9.0);
+    tl.from("#cxchord", { opacity: 0, duration: 0.5 }, 9.6);
+    tl.from("#cxal", { opacity: 0, duration: 0.4 }, 9.9);
+    tl.from("#cxbl", { opacity: 0, duration: 0.4 }, 10.2);
+    tl.from("#s2cx .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 11.0);
+
+    tl.from("#s3cx .leftcx .panelcx", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.5);
+    tl.from("#s3cx .mathboxcx", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 17.9);
+    tl.from("#s3cx .stepcx", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 22.6);
+    tl.fromTo("#s3cx .verdictcx", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 24.6);
+    tl.from("#s3cx .rightcx .panelcx", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 18.4);
+    tl.from("#s3cx svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 18.7);
+    tl.from("#cxcurve", { opacity: 0, duration: 0.5 }, 19.6);
+    tl.from("#cxtan", { opacity: 0, duration: 0.5 }, 20.4);
+    tl.from("#cxp", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 20.8);
+    tl.from("#s3cx .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 22.0);
+
+    tl.from("#s4cx .leftcx .panelcx", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 29.5);
+    tl.from("#s4cx .mathboxcx", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 29.9);
+    tl.from("#s4cx .stepcx", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 34.0);
+    tl.fromTo("#s4cx .verdictcx", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 36.0);
+    tl.from("#s4cx .rightcx .panelcx", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 30.4);
+    tl.from("#s4cx svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 30.7);
+    tl.from("#cxepi", { opacity: 0, duration: 0.5 }, 32.0);
+    tl.from("#s4cx .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 33.4);
+
+    tl.from("#s5cx .leftcx .panelcx", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 40.5);
+    tl.from("#s5cx .mathboxcx", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 40.9);
+    tl.from("#s5cx .stepcx", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 42.6);
+    tl.fromTo("#s5cx .verdictcx", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 46.0);
+    tl.from("#s5cx .rightcx .panelcx", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 41.4);
+    tl.from("#s5cx .formcardcx", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.14 }, 41.8);
+    tl.to('[data-composition-id="convex"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 51.2);
+    window.__timelines["convex"] = tl;
+  </script>
+</template>

@@ -1,0 +1,301 @@
+<template id="rosen-template">
+  <div data-composition-id="rosen" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                              [data-composition-id="ro"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="ro"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bgro { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bgro .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glowro { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glowrob { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-topro { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-labelro { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badgero { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottomro { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-rowro { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-labelro { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #captionro { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-footro { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-trackro { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #progro { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scenero { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #s2ro { z-index: 2; opacity: 0; }
+      #s3ro { z-index: 3; opacity: 0; }
+      #s4ro { z-index: 4; opacity: 0; }
+      #s5ro { z-index: 5; opacity: 0; }
+      #s1ro .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #s1ro .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #s1ro h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #s1ro h1 .hl { color: #ffc53d; }
+      #s1ro .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1ro .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1ro .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #s1ro .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #s1ro .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panelro { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-titlero { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .gridro { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .leftro { width: 1090px; }
+      .rightro { width: 666px; }
+      .mathboxro { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathboxro .lbl { color: #8fa3c8; }
+      .mathboxro .hi { color: #ffc53d; }
+      .stepro { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .stepro .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .stepro .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .stepro .st b { color: #ffc53d; font-weight: 400; }
+      .stepro .st .mono { color: #3ecf8e; }
+      .verdictro { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdictro.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdictro.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcardro { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcardro .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcardro .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcardro .fl .mono { color: #3ecf8e; }
+      .ans-bigro { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-bigro .lbl { font-size: 28px; color: #8fa3c8; }
+      .ans-cardro { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 28px 32px; }
+      .ans-warnro { margin-top: 20px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 16px; line-height: 1.6; }
+    </style>
+    <div id="bgro"><div class="grid"></div><div id="glowro"></div><div id="glowrob"></div></div>
+    <div id="chrome-topro">
+      <div id="series-labelro" class="mono">最优化方法与应用 · 知识点动画 11</div>
+      <div id="topic-badgero">CH12.2 · Rosen 梯度投影法</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scenero" id="s1ro">
+      <div class="wrap">
+        <div class="kicker mono">CH12.2 · 梯度投影 · 老师口径：考到"求方向"为止</div>
+        <h1>Rosen <span class="hl">梯度投影法</span></h1>
+        <div class="sub">把梯度投影到"不破坏起作用约束"的子空间，再取反</div>
+        <div class="badges">
+          <span class="badge">投影矩阵</span>
+          <span class="badge">线性约束</span>
+          <span class="badge hot">课堂例题</span>
+        </div>
+        <div class="formula mono">P_N(M) = I − Mᵀ(MMᵀ)⁻¹M ｜ d = −P_N(M)∇f ≠ 0 即下降可行方向</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scenero" id="s2ro">
+      <div class="gridro">
+        <div class="leftro">
+          <div class="panelro">
+            <div class="panel-titlero mono">例题（(12).pdf p52 练习题）</div>
+            <div class="mathboxro">
+              <div><span class="lbl">min</span> f = x1² + x2² + 2x2 + 5</div>
+              <div><span class="lbl">s.t.</span> g1 = x1 − 2x2 ≥ 0</div>
+              <div>　　　 x1 ≥ 0，x2 ≥ 0</div>
+              <div><span class="lbl">初点</span> x⁽¹⁾ = (2, 0)ᵀ　<span class="lbl">∇f =</span> (2x1, 2x2+2)ᵀ</div>
+            </div>
+            <div class="panel-titlero mono">投影矩阵是什么</div>
+            <div class="mathboxro"><span class="lbl">M = 起作用约束的梯度矩阵</span><br/>P_N(M) = I − Mᵀ(MMᵀ)⁻¹M<br/><span class="lbl">作用：把向量投到 M 的零空间——即"不破坏这些约束"的方向子空间</span></div>
+          </div>
+        </div>
+        <div class="rightro">
+          <div class="panelro">
+            <div class="panel-titlero mono">几何：可行域是个"喇叭口"</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="20" y1="310" x2="750" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="616" x2="380" y2="10" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="750" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="24" fill="#8fa3c8" font-size="22">x2</text>
+              <path d="M 380 310 L 750 310 L 740 130 Z" fill="rgba(62,207,142,0.13)" stroke="#3ecf8e" stroke-width="2.5"/>
+              <line x1="380" y1="310" x2="740" y2="130" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="8 7"/>
+              <text x="660" y="140" fill="#5aa9ff" font-size="21">g1 = 0</text>
+              <circle id="rox0" cx="560" cy="310" r="9" fill="#ffc53d"/>
+              <text x="574" y="336" fill="#ffc53d" font-size="22">x⁽¹⁾ = (2, 0)</text>
+              <circle id="roxstar" cx="380" cy="310" r="8" fill="#3ecf8e" opacity="0"/>
+              <text id="roxstarl" x="392" y="336" fill="#3ecf8e" font-size="21" opacity="0">x* = (0, 0)</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scenero" id="s3ro">
+      <div class="gridro">
+        <div class="leftro">
+          <div class="panelro">
+            <div class="panel-titlero mono">第一步：定 M（哪些约束在 x⁽¹⁾ = (2,0) 处起作用）</div>
+            <div class="mathboxro">
+              <div><span class="lbl">g1 = 2 − 0 =</span> 2 &gt; 0　<span class="lbl">⇒ 不起作用</span></div>
+              <div><span class="lbl">x1 =</span> 2 &gt; 0　<span class="lbl">⇒ 不起作用</span></div>
+              <div><span class="lbl">x2 =</span> 0　<span class="lbl">⇒ 起作用！</span></div>
+            </div>
+            <div class="mathboxro">
+              <div><span class="lbl">M = ∇(x2) =</span> (0, 1)ᵀ　<span class="lbl">（1×2 矩阵）</span></div>
+            </div>
+            <div class="panel-titlero mono">第二步：算投影矩阵</div>
+            <div class="mathboxro">
+              <div>MMᵀ = 1（标量）</div>
+              <div>Mᵀ(MMᵀ)⁻¹M = M Mᵀ = [[0, 0], [0, 1]]</div>
+              <div>P_N(M) = I − [[0,0],[0,1]] = <span class="hi">[[1, 0], [0, 0]]</span></div>
+            </div>
+            <div class="verdictro ok">P_N(M) 把任何向量"拍扁"到只剩 x₁ 分量——这正是"不许往 x₂ 负方向动"的数学表达。</div>
+          </div>
+        </div>
+        <div class="rightro">
+          <div class="panelro">
+            <div class="panel-titlero mono">几何：投影拍掉了什么</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="20" y1="310" x2="750" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="616" x2="380" y2="10" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path d="M 380 310 L 750 310 L 740 130 Z" fill="rgba(62,207,142,0.10)" stroke="#3ecf8e" stroke-width="2"/>
+              <line id="romgrad" x1="560" y1="310" x2="650" y2="252" stroke="#5aa9ff" stroke-width="3.5"/>
+              <polygon points="650,252 622,258 630,278" fill="#5aa9ff"/>
+              <text x="660" y="240" fill="#5aa9ff" font-size="21">∇f = (4, 2)ᵀ</text>
+              <line id="romproj" x1="560" y1="310" x2="650" y2="310" stroke="#ffc53d" stroke-width="3.5"/>
+              <polygon points="650,310 624,302 624,318" fill="#ffc53d"/>
+              <text x="600" y="290" fill="#ffc53d" font-size="21">P_N(M)∇f = (4, 0)ᵀ</text>
+              <line id="romkill" x1="650" y1="252" x2="650" y2="310" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 5"/>
+              <text x="660" y="284" fill="#ff6b6b" font-size="20">x2 分量被拍掉</text>
+              <circle cx="560" cy="310" r="9" fill="#e9eef8"/>
+              <text x="574" y="336" fill="#e9eef8" font-size="21">x⁽¹⁾</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">蓝色 = 原梯度；黄色 = 投影后（只剩水平分量）；红色虚线 = 被拍掉的垂直分量。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scenero" id="s4ro">
+      <div class="gridro">
+        <div class="leftro">
+          <div class="panelro">
+            <div class="panel-titlero mono">第三步：求方向并验证</div>
+            <div class="mathboxro">
+              <div><span class="lbl">d = −P_N(M)∇f = −[[1,0],[0,0]]·(4, 2)ᵀ =</span> <span class="hi">(−4, 0)ᵀ</span></div>
+            </div>
+            <div class="stepro"><span class="sn">✓</span><div class="st"><b>下降</b>：<span class="mono">∇fᵀd = (4, 2)·(−4, 0) = −16 &lt; 0</span></div></div>
+            <div class="stepro"><span class="sn">✓</span><div class="st"><b>可行</b>：沿 x 轴负方向走，x₂ 保持 0（不起约束）；g₁ = 2 − 4λ ≥ 0 在 λ ≤ 1/2 时成立</div></div>
+            <div class="stepro"><span class="sn">·</span><div class="st"><b>Th12.2.1</b>：若 <span class="mono">P_N(M)∇f ≠ 0</span>，则 d = −P_N(M)∇f 就是下降可行方向</div></div>
+            <div class="verdictro ok">本题一维搜索：φ(λ) = (2−4λ)² + 5，λ₁ = 1/2 ⇒ <b>x⁽²⁾ = (0, 0)ᵀ = x*</b>，f* = 5，一步到位。</div>
+          </div>
+        </div>
+        <div class="rightro">
+          <div class="panelro">
+            <div class="panel-titlero mono">几何：沿边界滑到最优点</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="20" y1="310" x2="750" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="616" x2="380" y2="10" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path d="M 380 310 L 750 310 L 740 130 Z" fill="rgba(62,207,142,0.10)" stroke="#3ecf8e" stroke-width="2"/>
+              <line id="rond" x1="560" y1="310" x2="200" y2="310" stroke="#ffc53d" stroke-width="4.5"/>
+              <polygon points="200,310 232,300 232,320" fill="#ffc53d"/>
+              <text x="240" y="284" fill="#ffc53d" font-size="24">d = (−4, 0)ᵀ</text>
+              <line x1="560" y1="310" x2="560" y2="380" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 5"/>
+              <polygon points="560,380 552,352 568,352" fill="#ff6b6b"/>
+              <text x="574" y="380" fill="#ff6b6b" font-size="20">−∇f 出域</text>
+              <circle cx="560" cy="310" r="9" fill="#ffc53d"/>
+              <text x="574" y="336" fill="#ffc53d" font-size="21">x⁽¹⁾ = (2, 0)</text>
+              <circle cx="380" cy="310" r="10" fill="#3ecf8e"/>
+              <text x="392" y="336" fill="#3ecf8e" font-size="21">x* = (0, 0)</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">−∇f 会冲出可行域（红）；投影方向沿边界横走（黄），一步到 (0,0)。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scenero" id="s5ro">
+      <div class="gridro">
+        <div class="leftro">
+          <div class="panelro">
+            <div class="panel-titlero mono">怎么判断"到顶了"（Th12.2.2 口径）</div>
+            <div class="mathboxro">
+              <div><span class="lbl">算 u = (MMᵀ)⁻¹M∇f：</span></div>
+              <div>u = 1 × (0, 1)·(4, 2)ᵀ = <span class="hi">2 ≥ 0</span></div>
+            </div>
+            <div class="stepro"><span class="sn">1</span><div class="st"><b>先看 P_N(M)∇f 是否为 0</b>：本例 = (4, 0) ≠ 0 ⇒ 走 <b>Th12.2.1</b> 得方向</div></div>
+            <div class="stepro"><span class="sn">2</span><div class="st">若 P_N(M)∇f = 0，再用 <b>Th12.2.2</b>：<span class="mono">u ≥ 0 ⟺ KKT 点</span>；u 有负分量 ⇒ 删对应行得 M̂ 再投影</div></div>
+            <div class="verdictro warn">⚠️ 常见错误：不看定理前提就直接用 Th12.2.2。前提是 <b>P_N(M)∇f = 0</b>；本题投影非零，只能走 Th12.2.1。</div>
+          </div>
+        </div>
+        <div class="rightro">
+          <div class="panelro">
+            <div class="panel-titlero mono">五步速记</div>
+            <div class="formcardro"><div class="fh">1</div><div class="fl">定活动集，写 <b>M</b>（起作用约束的梯度，按行排）</div></div>
+            <div class="formcardro"><div class="fh">2</div><div class="fl">算 <span class="mono">P_N(M) = I − Mᵀ(MMᵀ)⁻¹M</span></div></div>
+            <div class="formcardro"><div class="fh">3</div><div class="fl">d = −P_N(M)∇f，验 <span class="mono">∇fᵀd &lt; 0</span> 且可行</div></div>
+            <div class="formcardro"><div class="fh">4</div><div class="fl">答句："非 KKT 点，可行下降方向 d = …"</div></div>
+            <div class="formcardro"><div class="fh">5</div><div class="fl">u 有负分量 ⇒ 删行得 M̂ 再投影（u ≥ 0 ⟺ KKT）</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 48;
+    tl.fromTo("#glowro", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glowrob", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",       text: "Rosen：把梯度投影到不破坏起作用约束的子空间，再取反" },
+      { t: 6.45,  label: "2 / 5 · 题意与投影", text: "P_N(M) = I − Mᵀ(MMᵀ)⁻¹M；可行域是 x₂=0 与 g₁=0 夹的喇叭口" },
+      { t: 15.45, label: "3 / 5 · 算投影",     text: "起作用的只有 x2=0 ⇒ M=(0,1)ᵀ，P_N = diag(1,0)" },
+      { t: 26.45, label: "4 / 5 · 求方向",     text: "d = −P_N(M)∇f = (−4, 0)ᵀ；∇fᵀd = −16 < 0 且沿边界可行" },
+      { t: 38.45, label: "5 / 5 · KKT 口径",   text: "先看 P_N(M)∇f 是否为 0；u ≥ 0 ⟺ KKT；五步速记" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-labelro", { textContent: s.label }, s.t);
+      tl.set("#captionro", { innerHTML: s.text }, s.t);
+      tl.fromTo("#captionro", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#progro", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#s1ro .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1ro h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1ro .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1ro .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1ro .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function pushR(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurXR(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    pushR("#s1ro", "#s2ro", 6); pushR("#s2ro", "#s3ro", 15); pushR("#s3ro", "#s4ro", 26); pushR("#s4ro", "#s5ro", 38);
+
+    tl.from("#s2ro .leftro .panelro", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#s2ro .mathboxro", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 6.9);
+    tl.from("#s2ro .rightro .panelro", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#s2ro svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#rox0", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 8.2);
+    tl.to("#roxstar", { opacity: 1, scale: 1.3, duration: 0.5, ease: "back.out(2)", transformOrigin: "center" }, 9.0);
+    tl.to("#roxstarl", { opacity: 1, duration: 0.4 }, 9.3);
+
+    tl.from("#s3ro .leftro .panelro", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 15.5);
+    tl.from("#s3ro .mathboxro", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 15.9);
+    tl.fromTo("#s3ro .verdictro", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 21.6);
+    tl.from("#s3ro .rightro .panelro", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 16.4);
+    tl.from("#s3ro svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 16.7);
+    tl.from("#romgrad", { opacity: 0, duration: 0.5 }, 17.8);
+    tl.from("#romproj", { opacity: 0, duration: 0.5 }, 18.6);
+    tl.from("#romkill", { opacity: 0, duration: 0.4 }, 19.2);
+    tl.from("#s3ro .rightro .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 20.4);
+
+    tl.from("#s4ro .leftro .panelro", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 26.5);
+    tl.from("#s4ro .mathboxro", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 26.9);
+    tl.from("#s4ro .stepro", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 28.4);
+    tl.fromTo("#s4ro .verdictro", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 31.6);
+    tl.from("#s4ro .rightro .panelro", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 27.4);
+    tl.from("#s4ro svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 27.7);
+    tl.from("#rond", { opacity: 0, duration: 0.5 }, 28.8);
+    tl.from("#s4ro .rightro .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 32.6);
+
+    tl.from("#s5ro .leftro .panelro", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 38.5);
+    tl.from("#s5ro .mathboxro", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 38.9);
+    tl.from("#s5ro .stepro", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 40.6);
+    tl.fromTo("#s5ro .verdictro", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 43.0);
+    tl.from("#s5ro .rightro .panelro", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 39.4);
+    tl.from("#s5ro .formcardro", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.13 }, 39.8);
+    tl.to('[data-composition-id="rosen"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 47.2);
+    window.__timelines["rosen"] = tl;
+  </script>
+</template>

@@ -1,0 +1,380 @@
+<template id="fr-template">
+  <div data-composition-id="fr" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                                            [data-composition-id="fr"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="fr"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bg6 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bg6 .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow11 { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glow12 { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-top6 { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-label6 { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge6 { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottom6 { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-row6 { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-label6 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption6 { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot6 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track6 { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #prog6 { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scene6 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #r2 { z-index: 2; opacity: 0; } #r3 { z-index: 3; opacity: 0; } #r4 { z-index: 4; opacity: 0; }
+      #r5 { z-index: 5; opacity: 0; } #r6 { z-index: 6; opacity: 0; }
+      #r1 .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #r1 .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #r1 h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #r1 h1 .hl { color: #ffc53d; }
+      #r1 .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #r1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #r1 .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #r1 .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #r1 .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panel6 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-title6 { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .grid6 { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .left6 { width: 1090px; }
+      .right6 { width: 666px; }
+      .mathbox6 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathbox6 .lbl { color: #8fa3c8; }
+      .mathbox6 .hi { color: #ffc53d; }
+      .step6 { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .step6 .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .step6 .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .step6 .st b { color: #ffc53d; font-weight: 400; }
+      .step6 .st .mono { color: #3ecf8e; }
+      .verdict6 { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdict6.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdict6.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcard6 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcard6 .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcard6 .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcard6 .fl .mono { color: #3ecf8e; }
+      .ans-big6 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-big6 .lbl { font-size: 28px; color: #8fa3c8; }
+    </style>
+    <div id="bg6"><div class="grid"></div><div id="glow11"></div><div id="glow12"></div></div>
+    <div id="chrome-top6">
+      <div id="series-label6" class="mono">最优化方法与应用 · 知识点动画 06</div>
+      <div id="topic-badge6">CH10.3 · FR 共轭梯度 · 点名必考</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene6" id="r1">
+      <div class="wrap">
+        <div class="kicker mono">CH10.3 · FLETCHER-REEVES · 二次凸函数两步终止</div>
+        <h1>FR 共轭<span class="hl">梯度法</span></h1>
+        <div class="sub">每步不只是"最陡"，还要求和上一步的方向 A-共轭</div>
+        <div class="badges">
+          <span class="badge">共轭方向</span>
+          <span class="badge hot">老师点名必考</span>
+          <span class="badge">二次终止性</span>
+        </div>
+        <div class="formula mono">d⁽¹⁾ = −g⁽¹⁾ ｜ λₖ = −gᵏᵀdᵏ/(dᵏᵀAdᵏ) ｜ βₖ = ‖gₖ₊₁‖²/‖gₖ‖² ｜ d⁽ᵏ⁺¹⁾ = −gₖ₊₁ + βₖd⁽ᵏ⁾</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene6" id="r2">
+      <div class="grid6">
+        <div class="left6">
+          <div class="panel6">
+            <div class="panel-title6 mono">例题（讲义例10.3.2）</div>
+            <div class="mathbox6">
+              <div><span class="lbl">min</span> f = x1² + 2x2²　<span class="lbl">（A = diag(2, 4)，二次凸）</span></div>
+              <div><span class="lbl">初点</span> x⁽¹⁾ = (5, 5)ᵀ　<span class="lbl">梯度</span> g = ∇f = (2x1, 4x2)ᵀ</div>
+            </div>
+            <div class="panel-title6 mono">共轭方向是什么</div>
+            <div class="mathbox6"><span class="lbl">定义</span> d⁽ⁱ⁾ᵀA d⁽ʲ⁾ = 0（i ≠ j）<br/><span class="lbl">本例验证</span> d⁽¹⁾ᵀA d⁽²⁾ = 2(−10)(−400/81) + 4(−20)(100/81) = <span class="hi">0 ✓</span></div>
+            <div class="step6"><span class="sn">·</span><div class="st"><b>Th10.3.1</b>：共轭向量组线性无关 ⇒ 最多 n 个方向就能张成整个空间</div></div>
+            <div class="step6"><span class="sn">·</span><div class="st"><b>Th10.3.2 扩张子空间</b>：沿 k 个共轭方向一维搜索，得到的是线性流形上的唯一极小点；k = n 即<b>全局最优</b></div></div>
+          </div>
+        </div>
+        <div class="right6">
+          <div class="panel6">
+            <div class="panel-title6 mono">几何：椭圆等值线 + 两步到位</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="52" fill="#8fa3c8" font-size="22">x2</text>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.6" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="123" ry="87"/>
+                <ellipse cx="380" cy="310" rx="246" ry="174"/>
+                <ellipse cx="380" cy="310" rx="369" ry="261"/>
+              </g>
+              <text x="500" y="240" fill="#8fa3c8" font-size="20">f = 5</text>
+              <text x="600" y="180" fill="#8fa3c8" font-size="20">f = 20</text>
+              <text x="640" y="90" fill="#8fa3c8" font-size="20">f = 45</text>
+              <circle cx="380" cy="310" r="7" fill="#3ecf8e"/>
+              <text x="392" y="334" fill="#3ecf8e" font-size="22">最优点 (0,0)</text>
+              <circle id="frstart" cx="655" cy="35" r="9" fill="#ffc53d"/>
+              <text x="600" y="26" fill="#ffc53d" font-size="22">x⁽¹⁾=(5,5)</text>
+              <line id="seg1" x1="655" y1="35" x2="502" y2="341" stroke="#ffc53d" stroke-width="3.5"/>
+              <polygon id="ah1" points="502,341 528,306 512,290" fill="#ffc53d" opacity="0"/>
+              <line id="seg2" x1="502" y1="341" x2="380" y2="310" stroke="#ffc53d" stroke-width="3.5" opacity="0"/>
+              <polygon id="ah2" points="380,310 408,300 404,324" fill="#ffc53d" opacity="0"/>
+              <text id="d1lab" x="596" y="200" fill="#ffc53d" font-size="21">d⁽¹⁾ = −g⁽¹⁾</text>
+              <text id="d2lab" x="416" y="380" fill="#ffc53d" font-size="21" opacity="0">d⁽²⁾</text>
+              <circle id="midpt" cx="502" cy="341" r="7" fill="#ffc53d" opacity="0"/>
+              <text id="midlab" x="516" y="366" fill="#ffc53d" font-size="20" opacity="0">x⁽²⁾=(20/9, −5/9)</text>
+            </svg>
+            <div style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">黄色路径只走<b style="color:#ffc53d;font-weight:400">两步</b>就到心：第一步沿负梯度，第二步沿共轭方向。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scene6" id="r3">
+      <div class="grid6">
+        <div class="left6">
+          <div class="panel6">
+            <div class="panel-title6 mono">第一步：初始方向只能是负梯度</div>
+            <div class="mathbox6">
+              <div><span class="lbl">g⁽¹⁾ = (2·5, 4·5)ᵀ =</span> (10, 20)ᵀ</div>
+              <div><span class="lbl">d⁽¹⁾ = −g⁽¹⁾ =</span> (−10, −20)ᵀ</div>
+            </div>
+            <div class="mathbox6">
+              <div><span class="lbl">一维搜索求 λ₁</span>（φ′(λ) = 0）：</div>
+              <div>φ(λ) = (5−10λ)² + 2(5−20λ)²</div>
+              <div>φ′(λ) = 1800λ − 500 = 0 ⇒ <span class="hi">λ₁ = 5/18</span></div>
+            </div>
+            <div class="mathbox6">
+              <div><span class="lbl">x⁽²⁾ = x⁽¹⁾ + λ₁d⁽¹⁾ =</span> (20/9, −5/9)ᵀ</div>
+              <div><span class="lbl">g⁽²⁾ =</span> (40/9, −20/9)ᵀ　<span class="lbl">（还没到 0，继续）</span></div>
+            </div>
+            <div class="verdict6 warn">公式口径（讲义 10.3.17）：λₖ = −gᵏᵀdᵏ / (dᵏᵀAdᵏ)。分子分母都算错符号就全盘皆输。</div>
+          </div>
+        </div>
+        <div class="right6">
+          <div class="panel6">
+            <div class="panel-title6 mono">几何：沿 d⁽¹⁾ 切到等值线</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="123" ry="87"/><ellipse cx="380" cy="310" rx="246" ry="174"/>
+              </g>
+              <circle cx="380" cy="310" r="7" fill="#3ecf8e"/>
+              <circle cx="655" cy="35" r="9" fill="#ffc53d"/>
+              <line id="r3seg" x1="655" y1="35" x2="502" y2="341" stroke="#ffc53d" stroke-width="4"/>
+              <polygon points="502,341 530,304 512,288" fill="#ffc53d"/>
+              <circle cx="502" cy="341" r="8" fill="#ffc53d"/>
+              <text x="516" y="368" fill="#ffc53d" font-size="22">x⁽²⁾ = (20/9, −5/9)</text>
+              <text x="600" y="24" fill="#ffc53d" font-size="22">x⁽¹⁾ = (5, 5)</text>
+              <ellipse cx="502" cy="341" rx="60" ry="42" fill="none" stroke="#ffc53d" stroke-width="2.5"/>
+              <text x="450" y="404" fill="#ffc53d" font-size="20">f = 100/81</text>
+            </svg>
+            <div style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">一维搜索的几何意义：沿射线走到<b style="color:#ffc53d;font-weight:400">与某条等值线相切</b>的点，该点梯度与方向垂直。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scene6" id="r4">
+      <div class="grid6">
+        <div class="left6">
+          <div class="panel6">
+            <div class="panel-title6 mono">第二步方向：负梯度 + 上一步的修正</div>
+            <div class="mathbox6">
+              <div><span class="lbl">β₁ = ‖g⁽²⁾‖² / ‖g⁽¹⁾‖²</span></div>
+              <div>　= [(40/9)² + (20/9)²] / [10² + 20²]</div>
+              <div>　= (2000/81) / 500 = <span class="hi">4/81</span></div>
+            </div>
+            <div class="mathbox6">
+              <div><span class="lbl">d⁽²⁾ = −g⁽²⁾ + β₁d⁽¹⁾</span></div>
+              <div>　= (−40/9, 20/9) + (4/81)(−10, −20)</div>
+              <div>　= <span class="hi">(−400/81, 100/81)</span></div>
+            </div>
+            <div class="step6"><span class="sn">✓</span><div class="st">验证共轭：<span class="mono">d⁽¹ᵀAd⁽²⁾ = 2(−10)(−400/81) + 4(−20)(100/81) = 0</span></div></div>
+            <div class="verdict6 ok">β 的直觉：如果只看最陡（−g⁽²⁾），会走回老路；加上 β₁d⁽¹⁾ 这一项，把方向"拧"到与 d⁽¹⁾ 共轭，历史梯度信息就编码进来了。</div>
+          </div>
+        </div>
+        <div class="right6">
+          <div class="panel6">
+            <div class="panel-title6 mono">几何：d⁽²⁾ 与 d⁽¹⁾ A-共轭</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="123" ry="87"/><ellipse cx="380" cy="310" rx="246" ry="174"/>
+              </g>
+              <circle cx="380" cy="310" r="7" fill="#3ecf8e"/>
+              <circle cx="655" cy="35" r="8" fill="#8fa3c8"/>
+              <line x1="655" y1="35" x2="502" y2="341" stroke="#8fa3c8" stroke-width="3"/>
+              <circle cx="502" cy="341" r="8" fill="#ffc53d"/>
+              <line id="r4seg" x1="502" y1="341" x2="380" y2="310" stroke="#ffc53d" stroke-width="4" opacity="0"/>
+              <polygon id="r4ah" points="380,310 410,298 404,324" fill="#ffc53d" opacity="0"/>
+              <text x="516" y="368" fill="#ffc53d" font-size="22">x⁽²⁾</text>
+              <text id="r4d2" x="400" y="400" fill="#ffc53d" font-size="22" opacity="0">d⁽²⁾ = (−400/81, 100/81)</text>
+              <text x="560" y="200" fill="#8fa3c8" font-size="21">d⁽¹⁾ = (−10, −20)</text>
+            </svg>
+            <div style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">注意 d⁽²⁾ 并不是指向 (0,0) 的直线方向——它沿椭圆切线走，但一步就精确落到心上。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scene6" id="r5">
+      <div class="grid6">
+        <div class="left6">
+          <div class="panel6">
+            <div class="panel-title6 mono">第二步：一维搜索到最优点</div>
+            <div class="mathbox6">
+              <div><span class="lbl">λ₂ = −g⁽²ᵀd⁽²⁾ / (d⁽²ᵀAd⁽²⁾)</span></div>
+              <div>　= (2000/81) / (40000/729) = <span class="hi">9/20</span></div>
+            </div>
+            <div class="mathbox6">
+              <div><span class="lbl">x⁽³⁾ = x⁽²⁾ + λ₂d⁽²⁾</span></div>
+              <div>　= (20/9, −5/9) + (9/20)(−400/81, 100/81)</div>
+              <div>　= <span class="hi">(0, 0)ᵀ</span>　<span class="lbl">g⁽³⁾ = 0 ⇒ 终止</span></div>
+            </div>
+            <div class="verdict6 ok"><b>Th10.3.3 二次终止性</b>：对二次凸函数，FR 最多 n 步找到全局最优（本例 n = 2，两步到位）。</div>
+          </div>
+        </div>
+        <div class="right6">
+          <div class="panel6">
+            <div class="panel-title6 mono">几何：两步路径</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="123" ry="87"/><ellipse cx="380" cy="310" rx="246" ry="174"/>
+              </g>
+              <line x1="655" y1="35" x2="502" y2="341" stroke="#ffc53d" stroke-width="3.5"/>
+              <line x1="502" y1="341" x2="380" y2="310" stroke="#ffc53d" stroke-width="3.5"/>
+              <polygon points="380,310 410,298 404,324" fill="#ffc53d"/>
+              <circle cx="380" cy="310" r="10" fill="#3ecf8e"/>
+              <circle cx="502" cy="341" r="7" fill="#ffc53d"/>
+              <circle cx="655" cy="35" r="7" fill="#ffc53d"/>
+              <text x="392" y="334" fill="#3ecf8e" font-size="22">x* = (0, 0)</text>
+              <text x="516" y="368" fill="#ffc53d" font-size="21">x⁽²⁾</text>
+              <text x="600" y="24" fill="#ffc53d" font-size="21">x⁽¹⁾</text>
+            </svg>
+            <div class="mathbox6" style="margin-top:14px"><span class="lbl">对照：最速下降法从同一点出发要</span> <span class="hi">很多步</span><br/>(5,5) → (20/9,−5/9) → (10/27,10/27) → … 锯齿逼近</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 6 ============ -->
+    <div class="scene6" id="r6">
+      <div class="grid6">
+        <div class="left6">
+          <div class="panel6">
+            <div class="panel-title6 mono">答案与速记</div>
+            <div class="ans-big6"><span class="lbl">x* =</span> (0, 0)</div>
+            <div class="ans-big6"><span class="lbl">迭代次数</span> 2 步</div>
+            <div class="mathbox6" style="margin-top:16px">
+              <div><span class="lbl">λ₁ =</span> 5/18　<span class="lbl">β₁ =</span> 4/81　<span class="lbl">λ₂ =</span> 9/20</div>
+              <div><span class="lbl">d⁽¹⁾ =</span> (−10, −20)　<span class="lbl">d⁽²⁾ =</span> (−400/81, 100/81)</div>
+            </div>
+            <div class="verdict6 warn">易错：① 第一步方向必须是 −∇f（不是别的）；② λ、β 分子分母别写反；③ 终止判据看<b>梯度是否为 0</b>，不是看 f 的变化。</div>
+          </div>
+        </div>
+        <div class="right6">
+          <div class="formcard6">
+            <div class="fh">七步流程（背这个）</div>
+            <div class="fl">① g⁽¹⁾ = ∇f(x⁽¹⁾)，d⁽¹⁾ = −g⁽¹⁾ → ② φ′(λ)=0 求 λ → ③ x⁽ᵏ⁺¹⁾ = x⁽ᵏ⁾ + λd⁽ᵏ⁾ → ④ 算 g⁽ᵏ⁺¹⁾，g = 0 停 → ⑤ β = ‖gₖ₊₁‖²/‖gₖ‖² → ⑥ d⁽ᵏ⁺¹⁾ = −gₖ₊₁ + βd⁽ᵏ⁾ → ⑦ 回到②</div>
+          </div>
+          <div class="formcard6">
+            <div class="fh">优缺点（简答用）</div>
+            <div class="fl"><b>优点</b>：二次凸函数有限步终止；只用一阶信息，存储量小；共轭性自动克服锯齿。<br/><b>缺点</b>：对非二次函数要重启（restart）；β 公式选择敏感（FR/PRP）。</div>
+          </div>
+          <div class="formcard6">
+            <div class="fh">和别的方法的关系</div>
+            <div class="fl">共轭梯度 = 最速下降 + 共轭性修正；拟牛顿（DFP）也用共轭性（Th10.4.2），但走的是"逼近 Hessian"的路线。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 58;
+    tl.fromTo("#glow11", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow12", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 6 · 导入",       text: "FR 共轭梯度：每步不只最陡，还要与上一步 A-共轭" },
+      { t: 6.45,  label: "2 / 6 · 共轭方向",   text: "d⁽ⁱᵀAd⁽ʲ⁾ = 0；Th10.3.2 扩张子空间 ⇒ n 步到位" },
+      { t: 16.45, label: "3 / 6 · 第一步",     text: "d⁽¹⁾ = −g⁽¹⁾ = (−10,−20)；λ₁ = 5/18 ⇒ x⁽²⁾ = (20/9, −5/9)" },
+      { t: 27.45, label: "4 / 6 · 第二步方向", text: "β₁ = ‖g⁽²⁾‖²/‖g⁽¹⁾‖² = 4/81；d⁽²⁾ = −g⁽²⁾ + β₁d⁽¹⁾" },
+      { t: 37.45, label: "5 / 6 · 第二步",     text: "λ₂ = 9/20 ⇒ x⁽³⁾ = (0,0)，g = 0 终止（二次终止性）" },
+      { t: 47.45, label: "6 / 6 · 答案速记",   text: "x* = (0,0)，两步；七步流程 + 优缺点" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label6", { textContent: s.label }, s.t);
+      tl.set("#caption6", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption6", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog6", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#r1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#r1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#r1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#r1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#r1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function push6(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurX6(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push6("#r1", "#r2", 6); push6("#r2", "#r3", 16); blurX6("#r3", "#r4", 27); push6("#r4", "#r5", 37); push6("#r5", "#r6", 47);
+
+    /* scene 2 */
+    tl.from("#r2 .left6 .panel6", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#r2 .mathbox6", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 6.9);
+    tl.from("#r2 .step6", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 8.2);
+    tl.from("#r2 .right6 .panel6", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#r2 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#frstart", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 8.2);
+    tl.from("#seg1", { opacity: 0, duration: 0.5 }, 8.6);
+    tl.from("#d1lab", { opacity: 0, x: -14, duration: 0.4 }, 8.9);
+    tl.to("#ah1", { opacity: 1, duration: 0.3 }, 9.2);
+    tl.to("#midpt", { opacity: 1, scale: 1.3, duration: 0.4, ease: "back.out(2)", transformOrigin: "center" }, 9.6);
+    tl.to("#midlab", { opacity: 1, duration: 0.4 }, 9.9);
+    tl.to("#seg2", { opacity: 1, duration: 0.5 }, 10.4);
+    tl.to("#ah2", { opacity: 1, duration: 0.3 }, 10.8);
+    tl.to("#d2lab", { opacity: 1, duration: 0.4 }, 11.2);
+
+    /* scene 3 */
+    tl.from("#r3 .left6 .panel6", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 16.5);
+    tl.from("#r3 .mathbox6", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 16.9);
+    tl.fromTo("#r3 .verdict6", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 20.6);
+    tl.from("#r3 .right6 .panel6", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.4);
+    tl.from("#r3 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 17.7);
+    tl.from("#r3seg", { opacity: 0, duration: 0.5 }, 18.6);
+
+    /* scene 4 */
+    tl.from("#r4 .left6 .panel6", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 27.5);
+    tl.from("#r4 .mathbox6", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 27.9);
+    tl.from("#r4 .step6", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 31.0);
+    tl.fromTo("#r4 .verdict6", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 32.0);
+    tl.from("#r4 .right6 .panel6", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 28.4);
+    tl.from("#r4 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 28.7);
+    tl.to("#r4seg", { opacity: 1, duration: 0.6 }, 29.8);
+    tl.to("#r4ah", { opacity: 1, duration: 0.3 }, 30.3);
+    tl.to("#r4d2", { opacity: 1, duration: 0.4 }, 30.7);
+
+    /* scene 5 */
+    tl.from("#r5 .left6 .panel6", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 37.5);
+    tl.from("#r5 .left6 .mathbox6", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 37.9);
+    tl.fromTo("#r5 .verdict6", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 40.4);
+    tl.from("#r5 .right6 .panel6", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 38.4);
+    tl.from("#r5 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 38.7);
+    tl.from("#r5 .right6 .mathbox6", { y: 20, opacity: 0, duration: 0.5 }, 42.0);
+
+    /* scene 6 */
+    tl.from("#r6 .left6 .panel6", { x: -44, opacity: 0, duration: 0.55, ease: "power3.out" }, 47.5);
+    tl.from("#r6 .ans-big6", { y: 22, opacity: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.16 }, 47.9);
+    tl.from("#r6 .left6 .mathbox6", { y: 20, opacity: 0, duration: 0.5 }, 48.7);
+    tl.fromTo("#r6 .verdict6", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 49.4);
+    tl.from("#r6 .right6 .formcard6", { x: 44, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 48.2);
+    tl.to('[data-composition-id="fr"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 57.2);
+    window.__timelines["fr"] = tl;
+  </script>
+</template>

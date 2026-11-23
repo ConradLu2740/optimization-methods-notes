@@ -1,0 +1,310 @@
+<template id="penin-template">
+  <div data-composition-id="penin" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                  [data-composition-id="pi"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="pi"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bgpi { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bgpi .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glowpi { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glowpib { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-toppi { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-labelpi { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badgepi { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottompi { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-rowpi { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-labelpi { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #captionpi { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-footpi { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-trackpi { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #progpi { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scenepi { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #s2pi { z-index: 2; opacity: 0; }
+      #s3pi { z-index: 3; opacity: 0; }
+      #s4pi { z-index: 4; opacity: 0; }
+      #s5pi { z-index: 5; opacity: 0; }
+      #s1pi .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #s1pi .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #s1pi h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #s1pi h1 .hl { color: #ffc53d; }
+      #s1pi .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1pi .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1pi .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #s1pi .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #s1pi .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panelpi { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-titlepi { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .gridpi { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .leftpi { width: 1090px; }
+      .rightpi { width: 666px; }
+      .mathboxpi { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathboxpi .lbl { color: #8fa3c8; }
+      .mathboxpi .hi { color: #ffc53d; }
+      .steppi { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .steppi .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .steppi .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .steppi .st b { color: #ffc53d; font-weight: 400; }
+      .steppi .st .mono { color: #3ecf8e; }
+      .verdictpi { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdictpi.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdictpi.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcardpi { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcardpi .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcardpi .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcardpi .fl .mono { color: #3ecf8e; }
+      .ans-bigpi { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-bigpi .lbl { font-size: 28px; color: #8fa3c8; }
+      .ans-cardpi { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 28px 32px; }
+      .ans-warnpi { margin-top: 20px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 16px; line-height: 1.6; }
+    </style>
+    <div id="bgpi"><div class="grid"></div><div id="glowpi"></div><div id="glowpib"></div></div>
+    <div id="chrome-toppi">
+      <div id="series-labelpi" class="mono">最优化方法与应用 · 知识点动画 13</div>
+      <div id="topic-badgepi">CH13.2 · 内点罚函数法（障碍函数法）</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scenepi" id="s1pi">
+      <div class="wrap">
+        <div class="kicker mono">CH13.2 · 惩罚函数法 · 从可行域里面筑墙</div>
+        <h1>内点罚<span class="hl">函数法</span></h1>
+        <div class="sub">在边界上筑一道无限高的墙，让解永远留在里面</div>
+        <div class="badges">
+          <span class="badge">只解不等式约束</span>
+          <span class="badge">罚因子 μ ↓ 0</span>
+          <span class="badge hot">四问标准题型</span>
+        </div>
+        <div class="formula mono">F = f + μB(x) ｜ B = Σ1/gᵢ 或 −Σln gᵢ ｜ 判据 μB(x⁽ᵏ⁾) < ε</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scenepi" id="s2pi">
+      <div class="gridpi">
+        <div class="leftpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">思想：墙而不是罚款</div>
+            <div class="mathboxpi">
+              <div><span class="lbl">辅助问题</span>　min F(x, μ) = f(x) + μ·B(x)</div>
+              <div><span class="lbl">B(x) → ∞ 当 x → 边界</span>（gᵢ → 0 时）</div>
+            </div>
+            <div class="mathboxpi">
+              <div><span class="lbl">形式一（倒数和）：</span>B = Σ 1/gᵢ(x)</div>
+              <div><span class="lbl">形式二（负对数和）：</span>B = −Σ ln gᵢ(x)</div>
+            </div>
+            <div class="steppi"><span class="sn">1</span><div class="st">只适用于<b>不等式约束</b>；等式约束用外点法</div></div>
+            <div class="steppi"><span class="sn">2</span><div class="st">初点必须在<b>严格可行域 S₀</b> 内部（否则墙在无穷远，没法起步）</div></div>
+            <div class="steppi"><span class="sn">3</span><div class="st">μ 取递减数列 <span class="mono">μₖ₊₁ = βμₖ，β ∈ (0,1)</span>，μ → 0：墙越来越远，解序列从<b>内侧</b>贴向边界</div></div>
+            <div class="verdictpi ok">和外点法的镜像关系：外点罚"违反才罚、越违越狠"，内点"靠近就涨、到边界爆炸"。</div>
+          </div>
+        </div>
+        <div class="rightpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">一维示意：墙随 μ 变小而后退</div>
+            <svg width="600" height="500" viewBox="0 0 760 520">
+              <line x1="80" y1="460" x2="720" y2="460" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="80" y1="460" x2="80" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="490" fill="#8fa3c8" font-size="22" text-anchor="end">x</text>
+              <text x="52" y="56" fill="#8fa3c8" font-size="22">F</text>
+              <line id="pibound" x1="480" y1="460" x2="480" y2="60" stroke="#ff6b6b" stroke-width="3"/>
+              <text x="492" y="80" fill="#ff6b6b" font-size="21">边界 g = 0</text>
+              <path id="piw1" d="M 80 300 Q 420 300 470 440" fill="none" stroke="#5aa9ff" stroke-width="3"/>
+              <path id="piw2" d="M 80 300 Q 420 300 462 440" fill="none" stroke="#ffc53d" stroke-width="3"/>
+              <path id="piw3" d="M 80 300 Q 420 300 456 440" fill="none" stroke="#3ecf8e" stroke-width="3"/>
+              <circle id="pim1" cx="420" cy="300" r="8" fill="#5aa9ff"/>
+              <circle id="pim2" cx="432" cy="300" r="8" fill="#ffc53d"/>
+              <circle id="pim3" cx="442" cy="300" r="8" fill="#3ecf8e"/>
+              <text id="pim1l" x="330" y="270" fill="#5aa9ff" font-size="20">μ 大：谷离边界远</text>
+              <text id="pim3l" x="330" y="370" fill="#3ecf8e" font-size="20">μ 小：谷贴近边界</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">μ ↓ 0 时墙往边界退，辅助函数的极小点一路右移，极限就落在边界上的原最优解。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scenepi" id="s3pi">
+      <div class="gridpi">
+        <div class="leftpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">例题（11-20 练题，负对数障碍）</div>
+            <div class="mathboxpi">
+              <div><span class="lbl">min</span> f = x1² + 2x2²　<span class="lbl">s.t.</span> x1 + x2 ≥ 2</div>
+              <div><span class="lbl">严格可行域</span> S₀ = {x1 + x2 &gt; 2}　<span class="lbl">取 g = x1+x2−2</span></div>
+            </div>
+            <div class="mathboxpi">
+              <div><span class="lbl">F =</span> x1² + 2x2² − μ·ln(x1 + x2 − 2)</div>
+              <div><span class="lbl">∂F/∂x1 = 2x1 − μ/(x1+x2−2) = 0</span></div>
+              <div><span class="lbl">∂F/∂x2 = 4x2 − μ/(x1+x2−2) = 0</span></div>
+              <div><span class="lbl">⇒ 2x1 = 4x2 ⇒ x1 = 2x2，设 x2 = t：</span></div>
+              <div>4t(3t − 2) = μ ⇒ 12t² − 8t − μ = 0</div>
+              <div>t = <span class="hi">(2 + √(4+3μ))/6</span>，x1 = <span class="hi">(2 + √(4+3μ))/3</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="rightpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">几何：路径贴在可行域边界内侧</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="52" fill="#8fa3c8" font-size="22">x2</text>
+              <line x1="140" y1="520" x2="680" y2="80" stroke="#3ecf8e" stroke-width="3"/>
+              <text x="600" y="100" fill="#3ecf8e" font-size="21">g = 0</text>
+              <path d="M 140 520 L 720 520 L 720 40 L 380 40 Z" fill="rgba(62,207,142,0.10)"/>
+              <line x1="140" y1="520" x2="680" y2="80" stroke="#3ecf8e" stroke-width="3"/>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="87" ry="61"/>
+                <ellipse cx="380" cy="310" rx="174" ry="123"/>
+              </g>
+              <path id="pipath" d="M 512 195 L 483 216 L 469 234 L 462 244 L 459 249" fill="none" stroke="#ffc53d" stroke-width="3.5"/>
+              <circle id="pistar" cx="457" cy="251" r="9" fill="#ffc53d"/>
+              <text id="pistarl" x="470" y="272" fill="#ffc53d" font-size="22">x* = (4/3, 2/3)</text>
+              <circle cx="512" cy="195" r="7" fill="#8fa3c8"/>
+              <text x="522" y="188" fill="#8fa3c8" font-size="20">μ = 1</text>
+              <circle cx="459" cy="249" r="7" fill="#8fa3c8" opacity="0"/>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">μ 从 1 降到 0.01，解从 (1.55, 0.77) 沿直线 x₁=2x₂ 滑到 (4/3, 2/3)——始终在可行域内。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scenepi" id="s4pi">
+      <div class="gridpi">
+        <div class="leftpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">参数表（脚本复算）</div>
+            <table class="tblpi">
+              <tr><th>μ</th><th>x1 = (2+√(4+3μ))/3</th><th>x2 = (2+√(4+3μ))/6</th><th>x1+x2</th><th>f(x)</th></tr>
+              <tr><td class="k">1</td><td>1.549</td><td>0.774</td><td>2.323</td><td>3.593</td></tr>
+              <tr><td class="k">0.3</td><td>1.405</td><td>0.702</td><td>2.107</td><td>2.941</td></tr>
+              <tr><td class="k">0.1</td><td>1.358</td><td>0.679</td><td>2.037</td><td>2.770</td></tr>
+              <tr><td class="k">0.03</td><td>1.341</td><td>0.670</td><td>2.011</td><td>2.694</td></tr>
+              <tr><td class="k">0.01</td><td>1.336</td><td>0.668</td><td>2.004</td><td>2.670</td></tr>
+              <tr><td class="k">→ 0</td><td class="reuse">4/3</td><td class="reuse">2/3</td><td class="reuse">2</td><td class="reuse">8/3</td></tr>
+            </table>
+            <div class="verdictpi ok" style="margin-top:16px">μ ↓ 0：x₁+x₂ → 2⁺（始终严格可行）、f ↓ 8/3，两列同时收敛——这就是内点法的"贴边逼近"。</div>
+          </div>
+        </div>
+        <div class="rightpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">对 x* 验 KKT（第四问）</div>
+            <div class="mathboxpi">
+              <div><span class="lbl">∇f =</span> (2x1, 4x2)ᵀ = (8/3, 8/3)ᵀ</div>
+              <div><span class="lbl">∇g =</span> (1, 1)ᵀ</div>
+              <div><span class="lbl">∇f = u·∇g ⇒</span> u* = <span class="hi">8/3 ≥ 0 ✓</span></div>
+              <div><span class="lbl">互补松弛：</span>u*·g(x*) = (8/3)·0 = 0 ✓</div>
+            </div>
+            <div class="mathboxpi"><span class="lbl">f* =</span> (4/3)² + 2(2/3)² = 16/9 + 8/9 = <span class="hi">8/3</span></div>
+            <div class="verdictpi warn">易错：① 别先把 μ = 0 代入驻点方程（ln 无定义，会冒出假根 x₂ = 0）；② 负根代回不可行要舍去；③ 极限点必须验 KKT，别只写"极限即最优"。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scenepi" id="s5pi">
+      <div class="gridpi">
+        <div class="leftpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">算法三歩（内点法）</div>
+            <div class="steppi"><span class="sn">1</span><div class="st">找严格可行内点 x⁽⁰⁾，取 μ₁ &gt; 0，β ∈ (0,1)</div></div>
+            <div class="steppi"><span class="sn">2</span><div class="st">在 S₀ 内最小化 F(x, μₖ)，得 x⁽ᵏ⁾；令 <span class="mono">μₖ₊₁ = βμₖ</span></div></div>
+            <div class="steppi"><span class="sn">3</span><div class="st"><b>判据</b>：<span class="mono">μₖ·B(x⁽ᵏ⁾) < ε</span> 停（Th13.2.1：μₖ → 0 时聚点为最优解）</div></div>
+            <div class="verdictpi ok">四问套路：构造 F（注意障碍符号是 <b>+μB</b>，B = −Σln g）→ 解驻点得闭式 x(μ) → 取极限（μ → 0）→ 对 x* 验 KKT。</div>
+          </div>
+        </div>
+        <div class="rightpi">
+          <div class="panelpi">
+            <div class="panel-titlepi mono">对照表：外点 vs 内点</div>
+            <table class="tblpi">
+              <tr><th>维度</th><th>外点法</th><th>内点法</th></tr>
+              <tr><td class="k">约束类型</td><td>等式 + 不等式</td><td>仅不等式</td></tr>
+              <tr><td class="k">初点</td><td>任意</td><td>严格可行</td></tr>
+              <tr><td class="k">逼近方向</td><td>域外侧</td><td>域内侧</td></tr>
+              <tr><td class="k">罚因子</td><td class="reuse">μ ↑ ∞</td><td class="reuse">μ ↓ 0</td></tr>
+              <tr><td class="k">罚项</td><td>Σ(max{0,−g})² / Σh²</td><td>Σ1/g 或 −Σln g</td></tr>
+              <tr><td class="k">判据</td><td>μP &lt; ε</td><td>μB &lt; ε</td></tr>
+            </table>
+            <div class="verdictpi warn" style="margin-top:14px">数字锚点：内点例13.2.1 <span class="mono">x = (1+2√μₖ, μₖ) → (1, 0)</span>；本题 <span class="mono">x(μ) → (4/3, 2/3)，u* = 8/3，f* = 8/3</span>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 52;
+    tl.fromTo("#glowpi", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glowpib", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",       text: "内点罚函数：在边界筑无限高的墙，解永远留在可行域内" },
+      { t: 6.45,  label: "2 / 5 · 思想",       text: "只解不等式；初点须严格可行；μ ↓ 0 让墙后退" },
+      { t: 17.45, label: "3 / 5 · 例题",       text: "负对数障碍：x1 = 2x2，12t² − 8t − μ = 0 ⇒ 闭式解" },
+      { t: 30.45, label: "4 / 5 · 参数与 KKT", text: "μ↓0 时 x → (4/3, 2/3)，u* = 8/3，f* = 8/3" },
+      { t: 41.45, label: "5 / 5 · 算法与对照", text: "判据 μB < ε；外点 vs 内点六维对照表" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-labelpi", { textContent: s.label }, s.t);
+      tl.set("#captionpi", { innerHTML: s.text }, s.t);
+      tl.fromTo("#captionpi", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#progpi", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#s1pi .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1pi h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1pi .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1pi .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1pi .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function pushI(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    pushI("#s1pi", "#s2pi", 6); pushI("#s2pi", "#s3pi", 17); pushI("#s3pi", "#s4pi", 30); pushI("#s4pi", "#s5pi", 41);
+
+    tl.from("#s2pi .leftpi .panelpi", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#s2pi .mathboxpi", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 6.9);
+    tl.from("#s2pi .steppi", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 8.4);
+    tl.fromTo("#s2pi .verdictpi", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 11.6);
+    tl.from("#s2pi .rightpi .panelpi", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#s2pi svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#pibound", { opacity: 0, duration: 0.5 }, 8.0);
+    tl.from("#piw1", { opacity: 0, duration: 0.5 }, 8.6);
+    tl.from("#piw2", { opacity: 0, duration: 0.5 }, 9.0);
+    tl.from("#piw3", { opacity: 0, duration: 0.5 }, 9.4);
+    tl.from("#pim1", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 9.8);
+    tl.from("#pim2", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 10.1);
+    tl.from("#pim3", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 10.4);
+    tl.from("#pim1l", { opacity: 0, duration: 0.4 }, 10.8);
+    tl.from("#pim3l", { opacity: 0, duration: 0.4 }, 11.2);
+    tl.from("#s2pi .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 12.2);
+
+    tl.from("#s3pi .leftpi .panelpi", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.5);
+    tl.from("#s3pi .mathboxpi", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 17.9);
+    tl.from("#s3pi .rightpi .panelpi", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 18.4);
+    tl.from("#s3pi svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 18.7);
+    tl.from("#pipath", { opacity: 0, duration: 0.5 }, 20.0);
+    tl.from("#pistar", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 20.8);
+    tl.from("#pistarl", { opacity: 0, duration: 0.4 }, 21.2);
+    tl.from("#s3pi .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 22.2);
+
+    tl.from("#s4pi .leftpi .panelpi", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 30.5);
+    tl.from("#s4pi .tblpi tr", { opacity: 0, x: -20, duration: 0.4, ease: "power2.out", stagger: 0.13 }, 30.9);
+    tl.fromTo("#s4pi .leftpi .verdictpi", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 36.0);
+    tl.from("#s4pi .rightpi .panelpi", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 31.4);
+    tl.from("#s4pi .mathboxpi", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 31.8);
+    tl.fromTo("#s4pi .rightpi .verdictpi", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 35.4);
+
+    tl.from("#s5pi .leftpi .panelpi", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 41.5);
+    tl.from("#s5pi .steppi", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 41.9);
+    tl.fromTo("#s5pi .leftpi .verdictpi", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 45.0);
+    tl.from("#s5pi .rightpi .panelpi", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 42.4);
+    tl.from("#s5pi .tblpi tr", { opacity: 0, x: 20, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 42.8);
+    tl.fromTo("#s5pi .rightpi .verdictpi", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 47.0);
+    tl.to('[data-composition-id="penin"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 51.2);
+    window.__timelines["penin"] = tl;
+  </script>
+</template>

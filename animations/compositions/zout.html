@@ -1,0 +1,315 @@
+<template id="zout-template">
+  <div data-composition-id="zout" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                    [data-composition-id="zout"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="zout"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bg10 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bg10 .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow19 { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glow20 { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-top10 { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-label10 { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge10 { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottom10 { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-row10 { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-label10 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption10 { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot10 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track10 { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #prog10 { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scene10 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #z2 { z-index: 2; opacity: 0; } #z3 { z-index: 3; opacity: 0; } #z4 { z-index: 4; opacity: 0; } #z5 { z-index: 5; opacity: 0; }
+      #z1 .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #z1 .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #z1 h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #z1 h1 .hl { color: #ffc53d; }
+      #z1 .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #z1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #z1 .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #z1 .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #z1 .formula { font-size: 30px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panel10 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-title10 { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .grid10 { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .left10 { width: 1090px; }
+      .right10 { width: 666px; }
+      .mathbox10 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathbox10 .lbl { color: #8fa3c8; }
+      .mathbox10 .hi { color: #ffc53d; }
+      .step10 { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .step10 .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .step10 .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .step10 .st b { color: #ffc53d; font-weight: 400; }
+      .step10 .st .mono { color: #3ecf8e; }
+      .verdict10 { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdict10.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdict10.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcard10 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcard10 .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcard10 .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcard10 .fl .mono { color: #3ecf8e; }
+    </style>
+    <div id="bg10"><div class="grid"></div><div id="glow19"></div><div id="glow20"></div></div>
+    <div id="chrome-top10">
+      <div id="series-label10" class="mono">最优化方法与应用 · 知识点动画 10</div>
+      <div id="topic-badge10">CH12.1 · Zoutendijk 可行方向法</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene10" id="z1">
+      <div class="wrap">
+        <div class="kicker mono">CH12.1 · 可行方向法 · 老师口径：考到"求方向"为止</div>
+        <h1>Zoutendijk <span class="hl">可行方向法</span></h1>
+        <div class="sub">每一步先问：往哪走既下降、又不马上跑出可行域？</div>
+        <div class="badges">
+          <span class="badge">线性约束</span>
+          <span class="badge">方向 LP</span>
+          <span class="badge hot">课堂例题必考</span>
+        </div>
+        <div class="formula mono">min ∇fᵀd　s.t.　A₁d ≥ 0，Ed = 0，−1 ≤ dⱼ ≤ 1 ｜ 最优值 &lt; 0 得方向；= 0 ⇒ KKT</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene10" id="z2">
+      <div class="grid10">
+        <div class="left10">
+          <div class="panel10">
+            <div class="panel-title10 mono">例题（(12).pdf p21–24 课堂例题）</div>
+            <div class="mathbox10">
+              <div><span class="lbl">min</span> f = x1² + x2² − 2x1 − 4x2 + 6</div>
+              <div><span class="lbl">s.t.</span> g1 = −2x1 + x2 + 1 ≥ 0</div>
+              <div>　　　 g2 = −x1 − x2 + 2 ≥ 0</div>
+              <div>　　　 x1, x2 ≥ 0</div>
+              <div><span class="lbl">初点</span> x⁽¹⁾ = (0, 0)ᵀ　<span class="lbl">∇f =</span> (2x1−2, 2x2−4)ᵀ</div>
+            </div>
+            <div class="panel-title10 mono">几何：可行域是个四边形</div>
+            <div class="mathbox10">
+              <div><span class="lbl">顶点：</span>(0,0) → (2,0) → (1,1) → (0,2)</div>
+              <div><span class="lbl">g1 边界</span> x2 = 2x1 − 1　<span class="lbl">g2 边界</span> x1 + x2 = 2</div>
+            </div>
+          </div>
+        </div>
+        <div class="right10">
+          <div class="panel10">
+            <div class="panel-title10 mono">可行域与初点</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="52" fill="#8fa3c8" font-size="22">x2</text>
+              <polygon id="feas" points="380,310 620,310 500,190 380,70" fill="rgba(62,207,142,0.13)" stroke="#3ecf8e" stroke-width="2.5"/>
+              <line x1="440" y1="310" x2="530" y2="130" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="8 7"/>
+              <line x1="620" y1="310" x2="380" y2="70" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="8 7"/>
+              <text x="536" y="150" fill="#5aa9ff" font-size="20">g1 = 0</text>
+              <text x="470" y="90" fill="#5aa9ff" font-size="20">g2 = 0</text>
+              <circle id="x0" cx="380" cy="310" r="9" fill="#ffc53d"/>
+              <text x="392" y="336" fill="#ffc53d" font-size="22">x⁽¹⁾ = (0, 0)</text>
+              <line id="grad" x1="380" y1="310" x2="260" y2="430" stroke="#ff6b6b" stroke-width="3.5" opacity="0"/>
+              <polygon id="gradah" points="260,430 288,412 276,392" fill="#ff6b6b" opacity="0"/>
+              <text id="gradl" x="200" y="452" fill="#ff6b6b" font-size="21" opacity="0">∇f = (−2, −4)</text>
+              <circle id="xopt" cx="440" cy="125" r="7" fill="#3ecf8e" opacity="0"/>
+              <text id="xoptl" x="452" y="120" fill="#3ecf8e" font-size="21" opacity="0">x* = (1/2, 3/2)</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scene10" id="z3">
+      <div class="grid10">
+        <div class="left10">
+          <div class="panel10">
+            <div class="panel-title10 mono">第一步：定活动集（哪些约束"正贴着"当前点）</div>
+            <div class="mathbox10">
+              <div><span class="lbl">在 x⁽¹⁾ = (0,0) 处：</span></div>
+              <div>g1 = 1 &gt; 0　<span class="lbl">⇒ 不起作用</span></div>
+              <div>g2 = 2 &gt; 0　<span class="lbl">⇒ 不起作用</span></div>
+              <div>x1 = 0，x2 = 0　<span class="lbl">⇒ 起作用（非负约束贴着）</span></div>
+            </div>
+            <div class="step10"><span class="sn">1</span><div class="st">起作用约束的梯度组成 <b>A₁</b>；等号约束组成 <b>E</b></div></div>
+            <div class="step10"><span class="sn">2</span><div class="st">本例 <span class="mono">A₁ = [[1, 0], [0, 1]]</span>（就是 x₁≥0、x₂≥0 两条），<span class="mono">E</span> 为空</div></div>
+            <div class="step10"><span class="sn">3</span><div class="st"><b>Th12.1.1</b>：d 是可行方向 ⟺ <span class="mono">A₁d ≥ 0 且 Ed = 0</span>——两个不等式一摆，方向被限制在一个锥里</div></div>
+            <div class="verdict10 warn">易错：<b>先判起不起作用，再写 A₁</b>。把不起作用的 g1、g2 也塞进 A₁，方向就被无谓地限死了。</div>
+          </div>
+        </div>
+        <div class="right10">
+          <div class="panel10">
+            <div class="panel-title10 mono">几何：可行方向锥</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <polygon points="380,310 620,310 500,190 380,70" fill="rgba(62,207,142,0.10)" stroke="#3ecf8e" stroke-width="2"/>
+              <path id="cone" d="M 380 310 L 620 130 L 620 490 Z" fill="rgba(255,197,61,0.12)" opacity="0"/>
+              <circle cx="380" cy="310" r="9" fill="#ffc53d"/>
+              <line id="z3d" x1="380" y1="310" x2="560" y2="160" stroke="#ffc53d" stroke-width="4" opacity="0"/>
+              <polygon id="z3ah" points="560,160 528,180 542,198" fill="#ffc53d" opacity="0"/>
+              <text id="z3dl" x="570" y="150" fill="#ffc53d" font-size="24" opacity="0">d = (1, 1)ᵀ</text>
+              <text id="conel" x="600" y="420" fill="#ffc53d" font-size="21" opacity="0">可行方向锥<br/>A₁d ≥ 0</text>
+              <line x1="380" y1="310" x2="380" y2="580" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="8 7"/>
+              <line x1="380" y1="310" x2="720" y2="310" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="8 7"/>
+              <text x="700" y="290" fill="#ff6b6b" font-size="20">x1 = 0</text>
+              <text x="392" y="560" fill="#ff6b6b" font-size="20">x2 = 0</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">两条红色虚线是起作用的约束边界；可行方向必须在它们张成的黄色锥里（第一象限）。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scene10" id="z4">
+      <div class="grid10">
+        <div class="left10">
+          <div class="panel10">
+            <div class="panel-title10 mono">第二步：解方向 LP（把"最该往哪走"变成线性规划）</div>
+            <div class="mathbox10">
+              <div><span class="lbl">min</span> ∇fᵀd = −2d1 − 4d2</div>
+              <div><span class="lbl">s.t.</span> A₁d ≥ 0　⇒　d1 ≥ 0，d2 ≥ 0</div>
+              <div>　　　Ed = 0　<span class="lbl">（本例无）</span></div>
+              <div>　　　−1 ≤ dⱼ ≤ 1　<span class="lbl">（防止方向无界）</span></div>
+            </div>
+            <div class="mathbox10">
+              <div><span class="lbl">要最小化 −2d1 − 4d2，就把 d1、d2 都推到上界 1：</span></div>
+              <div>d* = <span class="hi">(1, 1)ᵀ</span>　<span class="lbl">最优值 =</span> −6</div>
+            </div>
+            <div class="step10"><span class="sn">✓</span><div class="st">检验下降：<span class="mono">∇f(x⁽¹⁾)ᵀd = (−2, −4)·(1, 1) = −6 &lt; 0 ✓</span> 是下降方向</div></div>
+            <div class="step10"><span class="sn">✓</span><div class="st">检验可行：沿 d 走一小步仍在可行域内（A₁d = (1,1) ≥ 0）</div></div>
+            <div class="verdict10 ok"><b>Th12.1.2</b>：这个 LP 的最优值为 0 ⟺ 当前点是 KKT 点（证明用 <b>Farkas 定理</b>）。最优值 &lt; 0 ⇒ 还得走。</div>
+          </div>
+        </div>
+        <div class="right10">
+          <div class="panel10">
+            <div class="panel-title10 mono">几何：方向 (1,1) 与 −∇f 的区别</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <polygon points="380,310 620,310 500,190 380,70" fill="rgba(62,207,142,0.10)" stroke="#3ecf8e" stroke-width="2"/>
+              <line x1="380" y1="310" x2="260" y2="430" stroke="#ff6b6b" stroke-width="3" stroke-dasharray="9 7"/>
+              <polygon points="260,430 288,412 276,392" fill="#ff6b6b"/>
+              <text x="196" y="456" fill="#ff6b6b" font-size="21">−∇f = (2, 4)</text>
+              <line x1="380" y1="310" x2="560" y2="160" stroke="#ffc53d" stroke-width="4.5"/>
+              <polygon points="560,160 526,180 542,200" fill="#ffc53d"/>
+              <text x="566" y="150" fill="#ffc53d" font-size="24">d = (1, 1)ᵀ</text>
+              <circle cx="380" cy="310" r="9" fill="#e9eef8"/>
+              <text x="392" y="336" fill="#e9eef8" font-size="21">x⁽¹⁾</text>
+              <text x="430" y="240" fill="#8fa3c8" font-size="20">−∇f 指向域外，不能用</text>
+              <text x="430" y="266" fill="#8fa3c8" font-size="20">d 是它在可行锥里的投影</text>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">直接走 −∇f 会立刻出域（红虚线）；方向 LP 自动把方向"掰"回可行锥里。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scene10" id="z5">
+      <div class="grid10">
+        <div class="left10">
+          <div class="panel10">
+            <div class="panel-title10 mono">第三步：步长与后续（背景，超出考试深度）</div>
+            <div class="mathbox10">
+              <div><span class="lbl">步长上限</span> λmax = sup{λ : gᵢ(x+λd) ≥ 0}</div>
+              <div><span class="lbl">本例</span> g2(x+λd) = 2 − 2λ ≥ 0 ⇒ <span class="hi">λmax = 1</span></div>
+              <div><span class="lbl">一维搜索得 λ₁ = 1 ⇒</span> x⁽²⁾ = (0,0) + 1·(1,1) = <span class="hi">(1, 1)ᵀ</span></div>
+            </div>
+            <div class="step10"><span class="sn">·</span><div class="st">再迭代一次到 <span class="mono">x* = (1/2, 3/2)ᵀ</span>，f* = 3/2（g2 起作用）</div></div>
+            <div class="step10"><span class="sn">·</span><div class="st">老师口径：<b>考到"求可行下降方向"为止</b>，λmax / 完整迭代 / Rosen 的 d=0 分支均不考</div></div>
+            <div class="verdict10 warn">易错：① 别跳过方向 LP 直接取 −∇f；② −1 ≤ dⱼ ≤ 1 这一栏别漏；③ 先判活动集再写 A₁。</div>
+          </div>
+        </div>
+        <div class="right10">
+          <div class="panel10">
+            <div class="panel-title10 mono">五步速记</div>
+            <div class="formcard10"><div class="fh">1</div><div class="fl">给定可行点 x，判<b>哪些约束起作用</b>，写 A₁（起作用）和 E（等号）</div></div>
+            <div class="formcard10"><div class="fh">2</div><div class="fl">列方向 LP：<span class="mono">min ∇fᵀd s.t. A₁d ≥ 0，Ed = 0，−1 ≤ dⱼ ≤ 1</span></div></div>
+            <div class="formcard10"><div class="fh">3</div><div class="fl">解出 d，验 <span class="mono">∇fᵀd &lt; 0</span>（下降）且方向可行</div></div>
+            <div class="formcard10"><div class="fh">4</div><div class="fl">LP 最优值 = 0 ⇒ <b>当前点即 KKT</b>，停（证用 Farkas）</div></div>
+            <div class="formcard10"><div class="fh">5</div><div class="fl">答句格式："非 KKT 点，可行下降方向 d = …"</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 50;
+    tl.fromTo("#glow19", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow20", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",        text: "Zoutendijk：每一步先求一个既下降又可行的方向" },
+      { t: 6.45,  label: "2 / 5 · 题意与几何",  text: "可行域四边形；初点 (0,0) 在原点，−∇f 指向域外" },
+      { t: 15.45, label: "3 / 5 · 定活动集",    text: "g1、g2 都不起作用；起作用的是 x1=0、x2=0 ⇒ A₁ = I" },
+      { t: 25.45, label: "4 / 5 · 方向 LP",     text: "min −2d1−4d2 s.t. d≥0, |d|≤1 ⇒ d = (1,1)，最优值 −6 < 0" },
+      { t: 39.45, label: "5 / 5 · 步长与速记",  text: "λmax = 1，x⁽²⁾ = (1,1)；考到求方向为止；五步速记" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label10", { textContent: s.label }, s.t);
+      tl.set("#caption10", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption10", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog10", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#z1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#z1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#z1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#z1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#z1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function push10(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurX10(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push10("#z1", "#z2", 6); push10("#z2", "#z3", 15); push10("#z3", "#z4", 25); push10("#z4", "#z5", 39);
+
+    /* scene 2 */
+    tl.from("#z2 .left10 .panel10", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#z2 .mathbox10", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 6.9);
+    tl.from("#z2 .right10 .panel10", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#z2 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#feas", { opacity: 0, scale: 0.9, duration: 0.6, ease: "power3.out", transformOrigin: "380px 310px" }, 8.0);
+    tl.from("#x0", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 8.6);
+    tl.to("#grad", { opacity: 1, duration: 0.5 }, 9.2);
+    tl.to("#gradah", { opacity: 1, duration: 0.3 }, 9.4);
+    tl.to("#gradl", { opacity: 1, duration: 0.4 }, 9.7);
+    tl.to("#xopt", { opacity: 1, scale: 1.3, duration: 0.5, ease: "back.out(2)", transformOrigin: "center" }, 10.4);
+    tl.to("#xoptl", { opacity: 1, duration: 0.4 }, 10.7);
+
+    /* scene 3 */
+    tl.from("#z3 .left10 .panel10", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 15.5);
+    tl.from("#z3 .mathbox10", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 15.9);
+    tl.from("#z3 .step10", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 17.6);
+    tl.fromTo("#z3 .verdict10", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 20.4);
+    tl.from("#z3 .right10 .panel10", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 16.4);
+    tl.from("#z3 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 16.7);
+    tl.to("#cone", { opacity: 1, duration: 0.6 }, 17.8);
+    tl.to("#conel", { opacity: 1, duration: 0.4 }, 18.3);
+    tl.to("#z3d", { opacity: 1, duration: 0.5 }, 18.9);
+    tl.to("#z3ah", { opacity: 1, duration: 0.3 }, 19.2);
+    tl.to("#z3dl", { opacity: 1, duration: 0.4 }, 19.6);
+    tl.from("#z3 .right10 .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 21.0);
+
+    /* scene 4 */
+    tl.from("#z4 .left10 .panel10", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 25.5);
+    tl.from("#z4 .mathbox10", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 25.9);
+    tl.from("#z4 .step10", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 30.0);
+    tl.fromTo("#z4 .verdict10", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 32.0);
+    tl.from("#z4 .right10 .panel10", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 26.4);
+    tl.from("#z4 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 26.7);
+    tl.from("#z4 .right10 .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 33.0);
+
+    /* scene 5 */
+    tl.from("#z5 .left10 .panel10", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 39.5);
+    tl.from("#z5 .mathbox10", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 39.9);
+    tl.from("#z5 .step10", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 42.0);
+    tl.fromTo("#z5 .verdict10", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 44.2);
+    tl.from("#z5 .right10 .panel10", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 40.4);
+    tl.from("#z5 .formcard10", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.13 }, 40.8);
+    tl.to('[data-composition-id="zout"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 49.2);
+    window.__timelines["zout"] = tl;
+  </script>
+</template>

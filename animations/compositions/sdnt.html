@@ -1,0 +1,339 @@
+<template id="sdnt-template">
+  <div data-composition-id="sdnt" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                                [data-composition-id="sdnt"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="sdnt"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bg8 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bg8 .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow15 { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glow16 { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-top8 { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-label8 { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge8 { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottom8 { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-row8 { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-label8 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption8 { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot8 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track8 { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #prog8 { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scene8 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #n2 { z-index: 2; opacity: 0; } #n3 { z-index: 3; opacity: 0; } #n4 { z-index: 4; opacity: 0; }
+      #n5 { z-index: 5; opacity: 0; } #n6 { z-index: 6; opacity: 0; }
+      #n1 .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #n1 .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #n1 h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #n1 h1 .hl { color: #ffc53d; }
+      #n1 .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #n1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #n1 .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #n1 .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #n1 .formula { font-size: 30px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panel8 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-title8 { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .grid8 { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .left8 { width: 1090px; }
+      .right8 { width: 666px; }
+      .mathbox8 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathbox8 .lbl { color: #8fa3c8; }
+      .mathbox8 .hi { color: #ffc53d; }
+      .step8 { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .step8 .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .step8 .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .step8 .st b { color: #ffc53d; font-weight: 400; }
+      .step8 .st .mono { color: #3ecf8e; }
+      .verdict8 { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdict8.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdict8.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcard8 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcard8 .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcard8 .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcard8 .fl .mono { color: #3ecf8e; }
+      .cmp8 { width: 100%; border-collapse: collapse; font-size: 24px; }
+      .cmp8 th, .cmp8 td { padding: 14px 12px; text-align: left; border-bottom: 1px solid rgba(143,163,200,0.22); line-height: 1.45; vertical-align: top; }
+      .cmp8 th { color: #8fa3c8; font-weight: 400; font-size: 23px; }
+      .cmp8 td.k { color: #ffc53d; white-space: nowrap; }
+      .cmp8 td .mono { color: #3ecf8e; }
+    </style>
+    <div id="bg8"><div class="grid"></div><div id="glow15"></div><div id="glow16"></div></div>
+    <div id="chrome-top8">
+      <div id="series-label8" class="mono">最优化方法与应用 · 知识点动画 08</div>
+      <div id="topic-badge8">CH10.1 / 10.2 · 最速下降 与 牛顿方向</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene8" id="n1">
+      <div class="wrap">
+        <div class="kicker mono">CH10.1 / 10.2 · 一阶信息 vs 二阶信息</div>
+        <h1>最速下降 <span class="hl">vs</span> 牛顿方向</h1>
+        <div class="sub">一个沿负梯度慢慢挪，一个用 Hessian 一步到位</div>
+        <div class="badges">
+          <span class="badge">锯齿现象</span>
+          <span class="badge">二阶收敛</span>
+          <span class="badge hot">优缺点简答必考</span>
+        </div>
+        <div class="formula mono">最速下降 d = −∇f/‖∇f‖ ｜ 牛顿 d = −∇²f⁻¹∇f ｜ 阻尼 = 牛顿方向 + 一维搜索</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene8" id="n2">
+      <div class="grid8">
+        <div class="left8">
+          <div class="panel8">
+            <div class="panel-title8 mono">例题：病态二次函数（等值线是扁椭圆）</div>
+            <div class="mathbox8">
+              <div><span class="lbl">min</span> f = x1² + 10x2²　<span class="lbl">A = diag(2, 20)</span></div>
+              <div><span class="lbl">初点</span> x⁽¹⁾ = (2, 1)ᵀ　<span class="lbl">最优点</span> (0, 0)ᵀ，f* = 0</div>
+            </div>
+            <div class="panel-title8 mono">最速下降法（Cauchy 1847）</div>
+            <div class="mathbox8"><span class="lbl">d = −∇f(x)/‖∇f(x)‖</span>（单位负梯度）<br/><span class="lbl">步长</span> λₖ = ‖gₖ‖² / (gₖᵀAgₖ)（一维搜索）</div>
+            <div class="step8"><span class="sn">·</span><div class="st"><b>锯齿现象</b>：负梯度与等值线不垂直的方向反复横跳，每步都在"纠正"上一步</div></div>
+            <div class="step8"><span class="sn">·</span><div class="st"><b>收敛比</b>：((A−a)/(A+a))² = ((20−2)/(20+2))² ≈ <span class="mono">0.67</span>——条件数越大越慢，<b>线性收敛</b></div></div>
+            <div class="step8"><span class="sn">·</span><div class="st"><b>优点</b>：只需一阶信息，计算省、存储小；<b>缺点</b>：锯齿、线性收敛</div></div>
+          </div>
+        </div>
+        <div class="right8">
+          <div class="panel8">
+            <div class="panel-title8 mono">前 6 步的坐标（脚本复算）</div>
+            <div class="mathbox8">
+              <div><span class="lbl">x⁽⁰⁾ =</span> (2.000, 1.000)　<span class="lbl">f =</span> 14.000</div>
+              <div><span class="lbl">x⁽¹⁾ =</span> (1.793, −0.036)　<span class="lbl">λ₁ =</span> 13/251</div>
+              <div><span class="lbl">x⁽²⁾ =</span> (0.461, 0.231)　<span class="lbl">λ₂ =</span> 13/35</div>
+              <div><span class="lbl">x⁽³⁾ =</span> (0.413, −0.008)　<span class="lbl">λ₃ =</span> 13/251</div>
+              <div><span class="lbl">x⁽⁴⁾ =</span> (0.106, 0.053)　<span class="lbl">λ₄ =</span> 13/35</div>
+              <div><span class="lbl">x⁽⁵⁾ =</span> (0.095, −0.002)　<span class="lbl">λ₅ =</span> 13/251</div>
+            </div>
+            <div class="verdict8 warn">λ 在 13/251 和 13/35 之间来回跳——步子一大一小，x₂ 在 0 上下振荡，这就是锯齿。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scene8" id="n3">
+      <div class="grid8">
+        <div class="left8">
+          <div class="panel8">
+            <div class="panel-title8 mono">几何：锯齿路径（黄色）vs 牛顿一步（绿色）</div>
+            <svg width="1020" height="700" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="338" fill="#8fa3c8" font-size="22" text-anchor="end">x1</text>
+              <text x="352" y="52" fill="#8fa3c8" font-size="22">x2</text>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="105" ry="33"/>
+                <ellipse cx="380" cy="310" rx="235" ry="74"/>
+                <ellipse cx="380" cy="310" rx="393" ry="124"/>
+              </g>
+              <text x="492" y="290" fill="#8fa3c8" font-size="20">f = 1</text>
+              <text x="600" y="252" fill="#8fa3c8" font-size="20">f = 5</text>
+              <text x="660" y="200" fill="#8fa3c8" font-size="20">f = 14</text>
+              <path id="zz" d="M 590 205 L 568 314 L 428 286 L 423 311 L 391 294 L 390 312 L 383 307"
+                fill="none" stroke="#ffc53d" stroke-width="3.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+              <line id="nt" x1="590" y1="205" x2="380" y2="310" stroke="#3ecf8e" stroke-width="3.5" opacity="0"/>
+              <circle id="z0" cx="590" cy="205" r="8" fill="#ffc53d"/>
+              <text x="600" y="196" fill="#ffc53d" font-size="21">x⁽⁰⁾ = (2, 1)</text>
+              <circle id="zend" cx="380" cy="310" r="9" fill="#3ecf8e" opacity="0"/>
+              <text id="zendl" x="392" y="336" fill="#3ecf8e" font-size="22" opacity="0">x* = (0, 0)</text>
+              <text id="zzl" x="470" y="420" fill="#ffc53d" font-size="21">锯齿：6 步还没到</text>
+              <text id="ntl" x="440" y="240" fill="#3ecf8e" font-size="21" opacity="0">牛顿：1 步</text>
+            </svg>
+          </div>
+        </div>
+        <div class="right8">
+          <div class="panel8">
+            <div class="panel-title8 mono">图里读什么</div>
+            <div class="step8"><span class="sn">·</span><div class="st">等值线是<b>扁椭圆</b>（x₂ 方向陡、x₁ 方向平），负梯度几乎垂直指向 x₂ 轴</div></div>
+            <div class="step8"><span class="sn">·</span><div class="st">于是每步都"冲过"最优点，下一步再"冲回来"——路径呈锯齿</div></div>
+            <div class="step8"><span class="sn">·</span><div class="st">6 步后 f 才从 14 降到 <span class="mono">0.002</span>；同样的问题牛顿方向<b>一步</b>到 (0,0)</div></div>
+            <div class="verdict8 warn" style="margin-top:16px">条件数 r = A/a = 20/2 = 10 已经算温和；真实问题里 r 到 10⁶ 时最速下降几乎走不动。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scene8" id="n4">
+      <div class="grid8">
+        <div class="left8">
+          <div class="panel8">
+            <div class="panel-title8 mono">牛顿方向：把曲率也用上</div>
+            <div class="mathbox8">
+              <div><span class="lbl">d = −∇²f(x)⁻¹ ∇f(x)</span>　<span class="lbl">（Hessian 逆 × 梯度）</span></div>
+            </div>
+            <div class="panel-title8 mono">同一道题，牛顿方向走一步</div>
+            <div class="mathbox8">
+              <div><span class="lbl">x⁽¹⁾ =</span> (2, 1)ᵀ　<span class="lbl">g =</span> (4, 20)ᵀ</div>
+              <div><span class="lbl">∇²f = A =</span> diag(2, 20)　<span class="lbl">A⁻¹ =</span> diag(1/2, 1/20)</div>
+              <div><span class="lbl">d = −A⁻¹g =</span> (−2, −1)ᵀ</div>
+              <div><span class="lbl">x⁽¹⁾ + λd，取 λ = 1：</span> (2, 1) + (−2, −1) = <span class="hi">(0, 0)ᵀ = x*</span></div>
+            </div>
+            <div class="verdict8 ok"><b>严格二次凸函数上，牛顿方向一步到位</b>（λ = 1 时 x + d 就是精确极小点）。<b>二阶收敛</b>速度：误差按平方缩。</div>
+            <div class="step8" style="margin-top:16px"><span class="sn">✗</span><div class="st">代价：每步要算 Hessian（n² 个二阶偏导）+ 解一个 n 阶线性方程组（O(n³)）</div></div>
+            <div class="step8"><span class="sn">✗</span><div class="st">娇气：Hessian 可能<b>不正定</b>（d 不是下降方向）；只保证<b>局部</b>收敛，初点远了可能跑到别去</div></div>
+          </div>
+        </div>
+        <div class="right8">
+          <div class="panel8">
+            <div class="panel-title8 mono">几何：一步跨到心上</div>
+            <svg width="600" height="520" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <g fill="none" stroke="#8fa3c8" stroke-width="1.5" stroke-dasharray="8 7">
+                <ellipse cx="380" cy="310" rx="105" ry="33"/><ellipse cx="380" cy="310" rx="235" ry="74"/>
+              </g>
+              <path d="M 590 205 L 568 314 L 428 286 L 423 311" fill="none" stroke="#8fa3c8" stroke-width="2.5"/>
+              <line id="n4nt" x1="590" y1="205" x2="380" y2="310" stroke="#3ecf8e" stroke-width="4.5"/>
+              <polygon points="380,310 412,296 404,324" fill="#3ecf8e"/>
+              <circle cx="380" cy="310" r="9" fill="#3ecf8e"/>
+              <circle cx="590" cy="205" r="8" fill="#ffc53d"/>
+              <text x="392" y="336" fill="#3ecf8e" font-size="22">x* = (0, 0)</text>
+              <text x="600" y="196" fill="#ffc53d" font-size="21">x⁽¹⁾ = (2, 1)</text>
+              <text x="452" y="240" fill="#3ecf8e" font-size="22">d = (−2, −1)</text>
+              <text x="470" y="330" fill="#8fa3c8" font-size="20">灰色 = 最速下降的锯齿</text>
+            </svg>
+            <div class="mathbox8" style="margin-top:14px"><span class="lbl">对比同一点出发：</span><br/>最速下降：<span class="hi">很多步</span>（线性收敛）<br/>牛顿方向：<span class="hi">1 步</span>（严格二次凸）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scene8" id="n5">
+      <div class="grid8">
+        <div class="left8">
+          <div class="panel8">
+            <div class="panel-title8 mono">两帖药：让牛顿方向既能跑又安全</div>
+            <div class="formcard8">
+              <div class="fh">药方一：阻尼牛顿法（全局化）</div>
+              <div class="fl">d 仍是牛顿方向，但步长不用 1，改用<b>一维搜索</b>：<span class="mono">xₖ₊₁ = xₖ + λₖdᵏ</span>，λₖ 沿该方向找最小。<br/>⇒ 保住二阶收敛的速度，又获得全局下降保证。</div>
+            </div>
+            <div class="formcard8">
+              <div class="fh">药方二：修正牛顿法（保方向）</div>
+              <div class="fl">Hessian 非正定时，把它修成正定：<span class="mono">Gₖ = ∇²f(xₖ) + εₖI</span>（εₖ 足够大）<br/>⇒ 保证 d = −Gₖ⁻¹∇f 一定是下降方向。</div>
+            </div>
+            <div class="verdict8 ok">这两招就是后面拟牛顿 / 共轭梯度的思想源头：<b>保留二阶信息的好处，避开二阶信息的代价</b>。</div>
+          </div>
+        </div>
+        <div class="right8">
+          <div class="panel8">
+            <div class="panel-title8 mono">什么时候用什么（选型）</div>
+            <div class="step8"><span class="sn">·</span><div class="st">n 小、Hessian 好算、初值靠近解 ⇒ <b>牛顿 / 阻尼牛顿</b></div></div>
+            <div class="step8"><span class="sn">·</span><div class="st">n 大、只有函数值 / 梯度 ⇒ <b>最速下降</b>（或共轭梯度、拟牛顿）</div></div>
+            <div class="step8"><span class="sn">·</span><div class="st">Hessian 不定 / 非凸 ⇒ <b>修正牛顿</b> 或换全局化策略</div></div>
+            <div class="verdict8 warn" style="margin-top:16px">一句话：<b>最速下降赢在便宜，牛顿赢在对路</b>。工程上几乎总是"阻尼/修正过的牛顿"或它的近似版。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 6 ============ -->
+    <div class="scene8" id="n6">
+      <div class="grid8">
+        <div class="left8">
+          <div class="panel8">
+            <div class="panel-title8 mono">优缺点对比（简答直接抄）</div>
+            <table class="cmp8">
+              <tr><th>维度</th><th>最速下降法</th><th>牛顿方向</th></tr>
+              <tr><td class="k">用的信息</td><td>一阶（梯度）</td><td>二阶（梯度 + Hessian）</td></tr>
+              <tr><td class="k">每步代价</td><td><span class="mono">O(n)</span>，省</td><td><span class="mono">O(n²)</span> 存 + <span class="mono">O(n³)</span> 解方程，贵</td></tr>
+              <tr><td class="k">收敛速度</td><td>线性，收敛比 <span class="mono">((A−a)/(A+a))²</span></td><td><b>二阶</b>；严格二次凸一步到位</td></tr>
+              <tr><td class="k">典型毛病</td><td>锯齿、病态时极慢</td><td>Hessian 可能不正定、只局部收敛、娇气</td></tr>
+              <tr><td class="k">药方</td><td>共轭梯度 / 拟牛顿</td><td>阻尼（加一维搜索）/ 修正（G = ∇²f + εI）</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="right8">
+          <div class="panel8">
+            <div class="panel-title8 mono">三句话速记</div>
+            <div class="formcard8"><div class="fh">1</div><div class="fl">最速下降 = 负梯度单位向量 + 一维搜索，<b>简单省存储但锯齿、线性收敛</b></div></div>
+            <div class="formcard8"><div class="fh">2</div><div class="fl">牛顿 = −∇²f⁻¹∇f，<b>二阶收敛、严格二次凸一步到位，但贵且娇气</b></div></div>
+            <div class="formcard8"><div class="fh">3</div><div class="fl">阻尼保全局、修正保方向；<b>后面的拟牛顿 / 共轭梯度都是"省掉二阶代价"的路</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 56;
+    tl.fromTo("#glow15", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow16", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 6 · 导入",        text: "最速下降用一阶信息慢慢挪，牛顿用二阶信息一步到位" },
+      { t: 6.45,  label: "2 / 6 · 最速下降",    text: "d = −∇f/‖∇f‖；λ 一大一小来回跳 ⇒ 锯齿；收敛比 ≈ 0.67" },
+      { t: 17.45, label: "3 / 6 · 锯齿几何",    text: "扁椭圆上负梯度反复冲过最优点；6 步 f 才降到 0.002" },
+      { t: 28.45, label: "4 / 6 · 牛顿方向",    text: "d = −A⁻¹g = (−2,−1)，同一点出发 1 步到 (0,0)" },
+      { t: 39.45, label: "5 / 6 · 两帖药",      text: "阻尼牛顿 = 牛顿方向 + 一维搜索；修正牛顿 G = ∇²f + εI" },
+      { t: 48.45, label: "6 / 6 · 对比速记",    text: "最速降赢在便宜，牛顿赢在对路；优缺点表直接抄" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label8", { textContent: s.label }, s.t);
+      tl.set("#caption8", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption8", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog8", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#n1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#n1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#n1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#n1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#n1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function push8(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurX8(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push8("#n1", "#n2", 6); push8("#n2", "#n3", 17); push8("#n3", "#n4", 28); push8("#n4", "#n5", 39); push8("#n5", "#n6", 48);
+
+    /* scene 2 */
+    tl.from("#n2 .left8 .panel8", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#n2 .mathbox8", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 6.9);
+    tl.from("#n2 .step8", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 8.6);
+    tl.from("#n2 .right8 .panel8", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.fromTo("#n2 .verdict8", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 12.6);
+
+    /* scene 3 */
+    tl.from("#n3 .left8 .panel8", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.5);
+    tl.from("#n3 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 17.8);
+    tl.from("#n3 .right8 .panel8", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 18.3);
+    tl.from("#n3 .step8", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 18.7);
+    tl.from("#z0", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 19.2);
+    tl.fromTo("#zz", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 3.2, ease: "power1.inOut" }, 19.8);
+    tl.from("#zzl", { opacity: 0, y: 14, duration: 0.5 }, 23.4);
+    tl.to("#nt", { opacity: 1, duration: 0.5 }, 24.2);
+    tl.to("#zend", { opacity: 1, scale: 1.3, duration: 0.5, ease: "back.out(2)", transformOrigin: "center" }, 24.6);
+    tl.to("#zendl", { opacity: 1, duration: 0.4 }, 24.9);
+    tl.to("#ntl", { opacity: 1, duration: 0.4 }, 25.3);
+    tl.fromTo("#n3 .verdict8", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 25.8);
+
+    /* scene 4 */
+    tl.from("#n4 .left8 .panel8", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 28.5);
+    tl.from("#n4 .left8 .mathbox8", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 28.9);
+    tl.fromTo("#n4 .verdict8", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 32.2);
+    tl.from("#n4 .step8", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 33.0);
+    tl.from("#n4 .right8 .panel8", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 29.4);
+    tl.from("#n4 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 29.7);
+    tl.from("#n4nt", { opacity: 0, duration: 0.5 }, 30.6);
+    tl.from("#n4 .right8 .mathbox8", { y: 20, opacity: 0, duration: 0.5 }, 33.8);
+
+    /* scene 5 */
+    tl.from("#n5 .left8 .panel8", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 39.5);
+    tl.from("#n5 .formcard8", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 39.9);
+    tl.fromTo("#n5 .verdict8", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 43.4);
+    tl.from("#n5 .right8 .panel8", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 40.4);
+    tl.from("#n5 .step8", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 40.8);
+    tl.fromTo("#n5 .right8 .verdict8", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 44.2);
+
+    /* scene 6 */
+    tl.from("#n6 .left8 .panel8", { x: -44, opacity: 0, duration: 0.55, ease: "power3.out" }, 48.5);
+    tl.from("#n6 .cmp8 tr", { opacity: 0, x: -20, duration: 0.45, ease: "power2.out", stagger: 0.12 }, 48.9);
+    tl.from("#n6 .right8 .panel8", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 49.2);
+    tl.from("#n6 .formcard8", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 49.6);
+    tl.to('[data-composition-id="sdnt"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 55.2);
+    window.__timelines["sdnt"] = tl;
+  </script>
+</template>

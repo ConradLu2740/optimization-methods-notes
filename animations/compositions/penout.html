@@ -1,0 +1,303 @@
+<template id="penout-template">
+  <div data-composition-id="penout" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                        [data-composition-id="pe"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="pe"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bgpe { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bgpe .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glowpe { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glowpeb { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-toppe { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-labelpe { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badgepe { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottompe { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-rowpe { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-labelpe { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #captionpe { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-footpe { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-trackpe { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #progpe { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scenepe { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #s2pe { z-index: 2; opacity: 0; }
+      #s3pe { z-index: 3; opacity: 0; }
+      #s4pe { z-index: 4; opacity: 0; }
+      #s5pe { z-index: 5; opacity: 0; }
+      #s1pe .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #s1pe .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #s1pe h1 { font-size: 140px; font-weight: 400; line-height: 1.06; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #s1pe h1 .hl { color: #ffc53d; }
+      #s1pe .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #s1pe .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #s1pe .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #s1pe .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #s1pe .formula { font-size: 29px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panelpe { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-titlepe { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .gridpe { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .leftpe { width: 1090px; }
+      .rightpe { width: 666px; }
+      .mathboxpe { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 27px; line-height: 1.9; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathboxpe .lbl { color: #8fa3c8; }
+      .mathboxpe .hi { color: #ffc53d; }
+      .steppe { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .steppe .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .steppe .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .steppe .st b { color: #ffc53d; font-weight: 400; }
+      .steppe .st .mono { color: #3ecf8e; }
+      .verdictpe { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdictpe.ok { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdictpe.warn { background: rgba(255,197,61,0.10); border: 1.5px solid rgba(255,197,61,0.5); color: #ffc53d; }
+      .formcardpe { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcardpe .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcardpe .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcardpe .fl .mono { color: #3ecf8e; }
+      .ans-bigpe { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 50px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-bigpe .lbl { font-size: 28px; color: #8fa3c8; }
+      .ans-cardpe { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 28px 32px; }
+      .ans-warnpe { margin-top: 20px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 16px; line-height: 1.6; }
+    </style>
+    <div id="bgpe"><div class="grid"></div><div id="glowpe"></div><div id="glowpeb"></div></div>
+    <div id="chrome-toppe">
+      <div id="series-labelpe" class="mono">最优化方法与应用 · 知识点动画 12</div>
+      <div id="topic-badgepe">CH13.1 · 外点罚函数法</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scenepe" id="s1pe">
+      <div class="wrap">
+        <div class="kicker mono">CH13.1 · 惩罚函数法 · 从可行域外面逼近</div>
+        <h1>外点罚<span class="hl">函数法</span></h1>
+        <div class="sub">把约束变成一笔"罚款"加进目标，罚到没人敢违反</div>
+        <div class="badges">
+          <span class="badge">等式 + 不等式都行</span>
+          <span class="badge">罚因子 μ ↑ ∞</span>
+          <span class="badge hot">四问标准题型</span>
+        </div>
+        <div class="formula mono">F(x, μ) = f(x) + μP(x) ｜ 等式罚 Σhⱼ² ｜ 不等式罚 Σ(max{0, −gᵢ})² ｜ 判据 μP(x⁽ᵏ⁾) < ε</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scenepe" id="s2pe">
+      <div class="gridpe">
+        <div class="leftpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">思想：化约束为无约束</div>
+            <div class="mathboxpe">
+              <div><span class="lbl">原问题</span>　min f(x)　s.t.　g(x) ≥ 0, h(x) = 0</div>
+              <div><span class="lbl">辅助问题</span>　min F(x, μ) = f(x) + μ·P(x)</div>
+            </div>
+            <div class="mathboxpe">
+              <div><span class="lbl">等式罚：</span>P₁ = Σ hⱼ(x)²</div>
+              <div><span class="lbl">不等式罚：</span>P₂ = Σ (max{0, −gᵢ(x)})²</div>
+            </div>
+            <div class="panel-titlepe mono">经济解释（讲义原话）</div>
+            <div class="steppe"><span class="sn">·</span><div class="st">总代价 = <b>价格 + 罚款</b>：f 是你要付的"价格"，违反约束就按 μ 的比例交罚款</div></div>
+            <div class="steppe"><span class="sn">·</span><div class="st">可行点上 P = 0，只付价格；<b>越不可行罚得越狠</b>（平方增长）</div></div>
+            <div class="verdictpe ok">μ 取递增正数列 {μₖ}，μₖ → ∞：辅助问题的最优解序列从<b>外侧</b>一步步逼向原问题最优解。</div>
+          </div>
+        </div>
+        <div class="rightpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">一维例子：罚款怎么把解"推"过去</div>
+            <svg width="600" height="500" viewBox="0 0 760 520">
+              <line x1="80" y1="460" x2="720" y2="460" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="80" y1="460" x2="80" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <text x="716" y="490" fill="#8fa3c8" font-size="22" text-anchor="end">t（沿 x1=x2=t）</text>
+              <text x="52" y="56" fill="#8fa3c8" font-size="22">F</text>
+              <line id="pefeas" x1="480" y1="460" x2="480" y2="60" stroke="#3ecf8e" stroke-width="2.5" stroke-dasharray="9 7"/>
+              <text x="492" y="80" fill="#3ecf8e" font-size="21">t = 1（可行）</text>
+              <path id="pec1" d="M 80 360 Q 280 400 480 360 T 680 210" fill="none" stroke="#5aa9ff" stroke-width="3"/>
+              <path id="pec2" d="M 80 60 Q 400 380 480 360 T 680 135" fill="none" stroke="#ffc53d" stroke-width="3"/>
+              <path id="pec3" d="M 80 20 Q 456 370 480 360 T 680 60" fill="none" stroke="#ff6b6b" stroke-width="3"/>
+              <circle id="pem1" cx="280" cy="410" r="8" fill="#5aa9ff"/>
+              <circle id="pem2" cx="400" cy="380" r="8" fill="#ffc53d"/>
+              <circle id="pem3" cx="456" cy="370" r="8" fill="#ff6b6b"/>
+              <text id="pem1l" x="230" y="440" fill="#5aa9ff" font-size="20">μ=0.5 → t=0.5</text>
+              <text id="pem2l" x="330" y="352" fill="#ffc53d" font-size="20">μ=2 → t=0.8</text>
+              <text id="pem3l" x="470" y="344" fill="#ff6b6b" font-size="20">μ=8 → t=0.94</text>
+              <circle cx="480" cy="360" r="7" fill="#3ecf8e"/>
+            </svg>
+            <div class="notebelow" style="font-size:25px;line-height:1.6;color:#e9eef8;margin-top:12px">三条曲线是同一个 F 在不同 μ 下的形状：μ 越大，谷越靠近可行点 t=1。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 ============ -->
+    <div class="scenepe" id="s3pe">
+      <div class="gridpe">
+        <div class="leftpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">例1（等式约束）：min x₁² + x₂²　s.t.　x₁ + x₂ − 2 = 0</div>
+            <div class="mathboxpe">
+              <div><span class="lbl">F =</span> x1² + x2² + μ(x1 + x2 − 2)²</div>
+              <div><span class="lbl">∂F/∂x₁ = 2x1 + 2μ(x1+x2−2) = 0</span></div>
+              <div><span class="lbl">∂F/∂x₂ = 2x2 + 2μ(x1+x2−2) = 0</span></div>
+              <div><span class="lbl">两式相减 ⇒ x1 = x2 = t，代回：</span></div>
+              <div>t(1 + 2μ) = 2μ ⇒ <span class="hi">t(μ) = 2μ/(2μ+1)</span></div>
+            </div>
+            <div class="mathboxpe">
+              <div><span class="lbl">μ →</span> 1 → 10 → 100 ⇒ t = 2/3 → 20/21 → 200/201</div>
+              <div><span class="lbl">极限</span> t → 1 ⇒ <span class="hi">x* = (1, 1)ᵀ</span>，f* = 2</div>
+            </div>
+            <div class="verdictpe ok">对称性让两式相减就得 x₁ = x₂——等式罚题的常见捷径，比硬解二元方程组快得多。</div>
+          </div>
+        </div>
+        <div class="rightpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">例2（不等式约束）：min x²　s.t.　−x − 1 ≥ 0</div>
+            <div class="mathboxpe">
+              <div><span class="lbl">F =</span> x² + μ·(max{0, x+1})²</div>
+              <div><span class="lbl">x &lt; −1 时</span> F = x²（谷在 x = −1 的左侧边界）</div>
+              <div><span class="lbl">x ≥ −1 时</span> F = x² + μ(x+1)²</div>
+              <div>F′ = 2x + 2μ(x+1) = 0 ⇒ <span class="hi">x(μ) = −μ/(1+μ)</span></div>
+            </div>
+            <div class="mathboxpe">
+              <div><span class="lbl">μ →</span> 1 → 10 → 100 ⇒ x = −1/2 → −10/11 → −100/101</div>
+              <div><span class="lbl">极限</span> x → −1 ⇒ <span class="hi">x* = −1</span>（g = 0 取等）</div>
+            </div>
+            <div class="verdictpe warn">注意 max{0, −g} 的用法：g = −x−1，违反时 −g = x+1 > 0，所以罚项是 (max{0, x+1})²——<b>先把不等式方向看清楚再写罚项</b>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 ============ -->
+    <div class="scenepe" id="s4pe">
+      <div class="gridpe">
+        <div class="leftpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">算法三歩（SUMT 外点法）</div>
+            <div class="steppe"><span class="sn">1</span><div class="st">取 μ₁ &gt; 0，增长因子 c &gt; 1（如 10），令 <span class="mono">μₖ₊₁ = c·μₖ</span></div></div>
+            <div class="steppe"><span class="sn">2</span><div class="st">从某个 x⁽ᵏ⁾ 出发，<b>无约束地</b>最小化 F(x, μₖ)，得 x⁽ᵏ⁾</div></div>
+            <div class="steppe"><span class="sn">3</span><div class="st"><b>判据</b>：若 <span class="mono">μₖ·P(x⁽ᵏ⁾) < ε</span> 停；否则 k ← k+1 回第 2 步</div></div>
+            <div class="panel-titlepe mono" style="margin-top:20px">收敛性（Th13.1.3）</div>
+            <div class="mathboxpe"><span class="lbl">水平集 S 紧 + μₖ → ∞ ⇒ 辅助问题最优解的任一聚点都是原问题最优解</span></div>
+            <div class="verdictpe ok">引理13.1.1/13.1.2：F 与 f 随 μ 非减、P 非增；f(x*) ≥ F(x⁽ᵏ⁾, μₖ) ≥ f(x⁽ᵏ⁾)——这就是"从外侧逼近"的严格表述。</div>
+          </div>
+        </div>
+        <div class="rightpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">外点 vs 内点（对照记）</div>
+            <div class="formcardpe">
+              <div class="fh">外点法</div>
+              <div class="fl">等式 + 不等式<b>都能用</b>；解序列在可行域<b>外</b>侧；罚因子 <b>μ ↑ ∞</b>；判据 μP &lt; ε</div>
+            </div>
+            <div class="formcardpe">
+              <div class="fh">内点法</div>
+              <div class="fl"><b>只解不等式</b>；初点必须严格可行；解序列在<b>内</b>侧；罚因子 <b>μ ↓ 0</b>；判据 μB &lt; ε</div>
+            </div>
+            <div class="verdictpe warn" style="margin-top:16px">易错：① 罚项是 <b>max{0, −g}</b> 不是 g；② μ 的方向别记反（外↑内↓）；③ 最后必须对 x* <b>验 KKT</b>，别只写"极限即最优"。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 ============ -->
+    <div class="scenepe" id="s5pe">
+      <div class="gridpe">
+        <div class="leftpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">四问标准题型（考场套路）</div>
+            <div class="steppe"><span class="sn">1</span><div class="st"><b>构造 F</b>：f + μP，P 按等式/不等式分别写</div></div>
+            <div class="steppe"><span class="sn">2</span><div class="st"><b>解驻点方程</b> ∂F/∂x = 0，得闭式 x(μ)；负根/不可行根<b>舍去</b></div></div>
+            <div class="steppe"><span class="sn">3</span><div class="st"><b>取极限</b>（外 μ→∞）报 x*、f*</div></div>
+            <div class="steppe"><span class="sn">4</span><div class="st"><b>对 x* 验 KKT</b>（乘子 u* = lim μ·…），确认是最优而非仅仅"极限点"</div></div>
+            <div class="verdictpe ok">一句话：外点罚函数 = <b>把约束变成罚款，用 μ↑ 把解从外面压回可行域</b>。</div>
+          </div>
+        </div>
+        <div class="rightpe">
+          <div class="panelpe">
+            <div class="panel-titlepe mono">数字锚点（背这三组）</div>
+            <div class="mathboxpe">
+              <div><span class="lbl">等式题</span> x1+x2=2：t(μ) = 2μ/(2μ+1) → (1, 1)</div>
+              <div><span class="lbl">不等式题</span> −x−1≥0：x(μ) = −μ/(1+μ) → −1</div>
+              <div><span class="lbl">罚函数综合题</span> (0,1) 是 KKT 点（u=2）且全局最优</div>
+            </div>
+            <div class="formcardpe">
+              <div class="fh">和 KKT 的联系</div>
+              <div class="fl">外点法的 KKT 乘子满足 <span class="mono">uᵢ* = lim μ·(−gᵢ(x(μ)))/gᵢ(x(μ))</span> 型关系；所以做完罚函数题<b>顺手验 KKT</b> 既是检验也是给分点。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 52;
+    tl.fromTo("#glowpe", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glowpeb", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",       text: "外点罚函数：把约束变成罚款加进目标，μ↑ 把解从外侧压回来" },
+      { t: 6.45,  label: "2 / 5 · 思想",       text: "等式罚 Σh²、不等式罚 Σ(max{0,−g})²；经济解释 = 价格 + 罚款" },
+      { t: 17.45, label: "3 / 5 · 两个例题",   text: "等式题 t = 2μ/(2μ+1) → (1,1)；不等式题 x = −μ/(1+μ) → −1" },
+      { t: 30.45, label: "4 / 5 · 算法与收敛", text: "μₖ₊₁ = c·μₖ；判据 μP < ε；Th13.1.3 聚点为最优解" },
+      { t: 41.45, label: "5 / 5 · 四问套路",   text: "构造 F → 解驻点 → 取极限 → 验 KKT；三组数字锚点" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-labelpe", { textContent: s.label }, s.t);
+      tl.set("#captionpe", { innerHTML: s.text }, s.t);
+      tl.fromTo("#captionpe", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#progpe", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#s1pe .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#s1pe h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#s1pe .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#s1pe .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#s1pe .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function pushP(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurXP(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    pushP("#s1pe", "#s2pe", 6); pushP("#s2pe", "#s3pe", 17); pushP("#s3pe", "#s4pe", 30); pushP("#s4pe", "#s5pe", 41);
+
+    tl.from("#s2pe .leftpe .panelpe", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#s2pe .mathboxpe", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 6.9);
+    tl.from("#s2pe .steppe", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 8.4);
+    tl.fromTo("#s2pe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 10.6);
+    tl.from("#s2pe .rightpe .panelpe", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 7.2);
+    tl.from("#s2pe svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 7.5);
+    tl.from("#pec1", { opacity: 0, duration: 0.5 }, 8.4);
+    tl.from("#pec2", { opacity: 0, duration: 0.5 }, 8.8);
+    tl.from("#pec3", { opacity: 0, duration: 0.5 }, 9.2);
+    tl.from("#pefeas", { opacity: 0, duration: 0.5 }, 7.9);
+    tl.from("#pem1", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 9.6);
+    tl.from("#pem2", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 9.9);
+    tl.from("#pem3", { scale: 0, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 10.2);
+    tl.from("#pem1l", { opacity: 0, duration: 0.4 }, 10.4);
+    tl.from("#pem2l", { opacity: 0, duration: 0.4 }, 10.6);
+    tl.from("#pem3l", { opacity: 0, duration: 0.4 }, 10.8);
+    tl.from("#s2pe .notebelow", { y: 18, opacity: 0, duration: 0.5 }, 12.0);
+
+    tl.from("#s3pe .leftpe .panelpe", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 17.5);
+    tl.from("#s3pe .leftpe .mathboxpe", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.2 }, 17.9);
+    tl.fromTo("#s3pe .leftpe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 23.4);
+    tl.from("#s3pe .rightpe .panelpe", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 18.4);
+    tl.from("#s3pe .rightpe .mathboxpe", { y: 22, opacity: 0, duration: 0.5, stagger: 0.18 }, 18.8);
+    tl.fromTo("#s3pe .rightpe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 26.0);
+
+    tl.from("#s4pe .leftpe .panelpe", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 30.5);
+    tl.from("#s4pe .steppe", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.16 }, 30.9);
+    tl.from("#s4pe .mathboxpe", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 34.6);
+    tl.fromTo("#s4pe .leftpe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 36.0);
+    tl.from("#s4pe .rightpe .panelpe", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 31.4);
+    tl.from("#s4pe .formcardpe", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 31.8);
+    tl.fromTo("#s4pe .rightpe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 35.0);
+
+    tl.from("#s5pe .leftpe .panelpe", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 41.5);
+    tl.from("#s5pe .steppe", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 41.9);
+    tl.fromTo("#s5pe .leftpe .verdictpe", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 45.0);
+    tl.from("#s5pe .rightpe .panelpe", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 42.4);
+    tl.from("#s5pe .mathboxpe", { y: 22, opacity: 0, duration: 0.5 }, 42.8);
+    tl.from("#s5pe .formcardpe", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out" }, 44.6);
+    tl.to('[data-composition-id="penout"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 51.2);
+    window.__timelines["penout"] = tl;
+  </script>
+</template>

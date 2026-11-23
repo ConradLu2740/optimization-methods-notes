@@ -1,0 +1,314 @@
+<template id="farkas-template">
+  <div data-composition-id="farkas" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                                                  [data-composition-id="farkas"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="farkas"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bg5 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bg5 .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow9 { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glow10 { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-top5 { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-label5 { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge5 { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottom5 { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-row5 { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-label5 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption5 { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot5 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track5 { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #prog5 { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scene5 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #f2 { z-index: 2; opacity: 0; } #f3 { z-index: 3; opacity: 0; } #f4 { z-index: 4; opacity: 0; } #f5 { z-index: 5; opacity: 0; }
+      #f1 .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #f1 .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #f1 h1 { font-size: 160px; font-weight: 400; line-height: 1.04; letter-spacing: 0.01em; margin: 0 0 30px 0; }
+      #f1 h1 .hl { color: #ffc53d; }
+      #f1 .sub { font-size: 33px; color: #8fa3c8; margin-bottom: 44px; }
+      #f1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #f1 .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #f1 .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #f1 .formula { font-size: 30px; color: #3ecf8e; letter-spacing: 0.02em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panel5 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 26px 30px; }
+      .panel-title5 { font-size: 24px; color: #8fa3c8; margin-bottom: 18px; letter-spacing: 0.03em; }
+      .grid5 { position: absolute; left: 64px; top: 112px; width: 1800px; display: flex; gap: 44px; align-items: flex-start; }
+      .left5 { width: 1090px; }
+      .right5 { width: 666px; }
+      .mathbox5 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 26px; line-height: 1.85; color: #e9eef8; background: rgba(90,169,255,0.07); border: 1px solid rgba(90,169,255,0.25); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+      .mathbox5 .lbl { color: #8fa3c8; }
+      .formcard { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+      .formcard .fh { font-size: 28px; color: #ffc53d; margin-bottom: 10px; }
+      .formcard .fl { font-size: 25px; line-height: 1.6; color: #e9eef8; }
+      .formcard .fl .mono { color: #3ecf8e; }
+      .formcard.pick { border-color: rgba(255,197,61,0.55); background: rgba(255,197,61,0.06); }
+      .step5 { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+      .step5 .sn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 25px; color: #0e1526; background: #5aa9ff; border-radius: 8px; min-width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .step5 .st { font-size: 26px; line-height: 1.5; padding-top: 5px; }
+      .step5 .st b { color: #ffc53d; font-weight: 400; }
+      .verdict5 { margin-top: 18px; border-radius: 12px; padding: 20px 24px; font-size: 27px; line-height: 1.5; }
+      .verdict5.in { background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); color: #3ecf8e; }
+      .verdict5.out { background: rgba(255,107,107,0.10); border: 1.5px solid rgba(255,107,107,0.5); color: #ff9b9b; }
+    </style>
+    <div id="bg5"><div class="grid"></div><div id="glow9"></div><div id="glow10"></div></div>
+    <div id="chrome-top5">
+      <div id="series-label5" class="mono">最优化方法与应用 · 知识点动画 05</div>
+      <div id="topic-badge5">凸分析 · Farkas 定理 · 必考第 1 条</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene5" id="f1">
+      <div class="wrap">
+        <div class="kicker mono">TH 2.11 · 择一定理 · 图是得分主体</div>
+        <h1>Farkas 定理<span class="hl">画图</span></h1>
+        <div class="sub">一个向量要么落在锥里，要么就被一条过原点的直线分开</div>
+        <div class="badges">
+          <span class="badge">凸分析</span>
+          <span class="badge hot">必考第 1 条</span>
+          <span class="badge">老师原话：画图</span>
+        </div>
+        <div class="formula mono">S = cone A = {Aᵀy : y ≥ 0} ｜ c ∈ S 与 c ∉ S 二择一</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene5" id="f2">
+      <div class="grid5">
+        <div class="left5">
+          <div class="formcard pick">
+            <div class="fh">形式 A（PPT 定理 2.11 原版，首选写这个）</div>
+            <div class="fl">设 A 为 m×n 矩阵，c 为 n 维向量，则<br/><span class="mono">Ax ≤ 0，cᵀx &gt; 0 有解 ⟺ Aᵀy = c，y ≥ 0 无解</span></div>
+          </div>
+          <div class="formcard">
+            <div class="fh">形式 B（二择一，LP 经典版）</div>
+            <div class="fl">以下两个论断<b>有且只有一个</b>成立：<br/>① ∃x：Ax = b，x ≥ 0；② ∃y：Aᵀy ≥ 0，bᵀy &lt; 0</div>
+          </div>
+          <div class="formcard">
+            <div class="fh">形式 C（置换定理，画图最好用）</div>
+            <div class="fl"><span class="mono">c 是 A 的行向量的凸锥组合（c ∈ cone A）⟺ 对任意 Ax ≤ 0 的 x，都有 cᵀx ≤ 0</span></div>
+          </div>
+        </div>
+        <div class="right5">
+          <div class="panel5">
+            <div class="panel-title5 mono">考场写法建议</div>
+            <div class="step5"><span class="sn">1</span><div class="st">先写<b>形式 A</b>（PPT 原版），紧接一句"等价地（置换定理）c ∈ cone A 当且仅当……"</div></div>
+            <div class="step5"><span class="sn">2</span><div class="st">然后<b>画图</b>：凸锥 + 分离超平面（下面两幕）</div></div>
+            <div class="step5"><span class="sn">3</span><div class="st">最后写一句<b>意义</b>：线性系统"有解 / 无解"可以用几何分离来判定</div></div>
+            <div class="verdict5 in" style="margin-top:20px">三种形式是同一个定理的换写：B 把 ≤ 写成 =、非负约束挪到 x 上；C 是"锥"语言，最适合画图。</div>
+          </div>
+          <div class="panel5" style="margin-top:22px">
+            <div class="panel-title5 mono">图里有什么</div>
+            <div style="font-size:26px;line-height:1.65;color:#e9eef8">记 <b style="color:#ffc53d;font-weight:400">S = cone A</b> = A 的行向量 a₁,…,a_m 经<b style="color:#ffc53d;font-weight:400">非负组合</b>张成的凸锥。二维平面里就是两条射线夹成的角形，顶点在原点。<br/>c 与 S 的关系<b style="color:#ffc53d;font-weight:400">二择一</b>：要么 c 在锥内，要么 c 在锥外。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 : c inside the cone ============ -->
+    <div class="scene5" id="f3">
+      <div class="grid5">
+        <div class="left5">
+          <div class="panel5">
+            <div class="panel-title5 mono">情形一：c ∈ S（c 是行向量的非负组合）</div>
+            <svg width="1020" height="700" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path id="wedge" d="M 677 230 L 380 310 L 498 56 Z" fill="rgba(255,197,61,0.13)" stroke="none"/>
+              <line id="ray1" x1="380" y1="310" x2="677" y2="230" stroke="#5aa9ff" stroke-width="3.5"/>
+              <line id="ray2" x1="380" y1="310" x2="498" y2="56" stroke="#5aa9ff" stroke-width="3.5"/>
+              <text x="686" y="240" fill="#5aa9ff" font-size="24">a1</text>
+              <text x="504" y="60" fill="#5aa9ff" font-size="24">a2</text>
+              <line id="d1" x1="486" y1="282" x2="533" y2="182" stroke="#3ecf8e" stroke-width="2.5" stroke-dasharray="7 6"/>
+              <line id="d2" x1="426" y1="210" x2="533" y2="182" stroke="#3ecf8e" stroke-width="2.5" stroke-dasharray="7 6"/>
+              <line id="cv1" x1="380" y1="310" x2="486" y2="282" stroke="#8fa3c8" stroke-width="2.5"/>
+              <line id="cv2" x1="380" y1="310" x2="426" y2="210" stroke="#8fa3c8" stroke-width="2.5"/>
+              <line id="cvec" x1="380" y1="310" x2="533" y2="182" stroke="#ffc53d" stroke-width="4.5"/>
+              <polygon points="533,182 512,190 520,206" fill="#ffc53d"/>
+              <circle cx="380" cy="310" r="6" fill="#e9eef8"/>
+              <text x="386" y="336" fill="#e9eef8" font-size="22">O</text>
+              <text id="clab" x="546" y="176" fill="#ffc53d" font-size="26">c</text>
+              <text id="y1lab" x="446" y="288" fill="#3ecf8e" font-size="21">y1 = 1</text>
+              <text id="y2lab" x="392" y="228" fill="#3ecf8e" font-size="21">y2 = 1</text>
+              <text x="470" y="150" fill="#8fa3c8" font-size="21">c = y1·a1 + y2·a2，y1, y2 ≥ 0</text>
+            </svg>
+          </div>
+        </div>
+        <div class="right5">
+          <div class="panel5">
+            <div class="panel-title5 mono">代数结论</div>
+            <div class="step5"><span class="sn">·</span><div class="st"><span class="mono">c = Aᵀy</span>（∃y ≥ 0）⇒ 系统 II <b>有解</b></div></div>
+            <div class="step5"><span class="sn">·</span><div class="st">任何满足 <span class="mono">Ax ≤ 0</span> 的方向 x 都与 c 成<b>钝角或直角</b>（<span class="mono">cᵀx ≤ 0</span>）</div></div>
+            <div class="step5"><span class="sn">·</span><div class="st">所以<b>不存在</b> <span class="mono">cᵀx &gt; 0</span> 的方向 ⇒ 系统 I 无解</div></div>
+            <div class="verdict5 in" style="margin-top:20px">图里看到：c 落在黄色锥内，由两条射线的非负组合（本例 y₁ = y₂ = 1）拼成。</div>
+          </div>
+          <div class="panel5" style="margin-top:22px">
+            <div class="panel-title5 mono">考场画法（左图）</div>
+            <div style="font-size:25px;line-height:1.7;color:#e9eef8">1. 画两条从 O 出发的射线 a₁、a₂，夹角涂阴影<br/>2. 把 c 画在锥内，用虚线画出"a₁ + a₂"的平行四边形<br/>3. 标 y₁, y₂ ≥ 0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 : c outside the cone ============ -->
+    <div class="scene5" id="f4">
+      <div class="grid5">
+        <div class="left5">
+          <div class="panel5">
+            <div class="panel-title5 mono">情形二：c ∉ S（存在过原点的分离超平面）</div>
+            <svg width="1020" height="700" viewBox="0 0 760 620">
+              <line x1="40" y1="310" x2="720" y2="310" stroke="#8fa3c8" stroke-width="1.5"/>
+              <line x1="380" y1="580" x2="380" y2="40" stroke="#8fa3c8" stroke-width="1.5"/>
+              <path d="M 677 230 L 380 310 L 498 56 Z" fill="rgba(255,197,61,0.13)"/>
+              <line x1="380" y1="310" x2="677" y2="230" stroke="#5aa9ff" stroke-width="3.5"/>
+              <line x1="380" y1="310" x2="498" y2="56" stroke="#5aa9ff" stroke-width="3.5"/>
+              <text x="686" y="240" fill="#5aa9ff" font-size="24">a1</text>
+              <text x="504" y="60" fill="#5aa9ff" font-size="24">a2</text>
+              <line id="hline" x1="380" y1="40" x2="380" y2="580" stroke="#ff6b6b" stroke-width="3" stroke-dasharray="10 8"/>
+              <text id="hlab" x="392" y="70" fill="#ff6b6b" font-size="24">H（过原点 O）</text>
+              <line id="xvec" x1="380" y1="310" x2="193" y2="310" stroke="#ffc53d" stroke-width="4"/>
+              <polygon points="193,310 216,302 216,318" fill="#ffc53d"/>
+              <text id="xlab" x="150" y="292" fill="#ffc53d" font-size="26">x</text>
+              <line id="cout" x1="380" y1="310" x2="285" y2="145" stroke="#ff6b6b" stroke-width="4.5"/>
+              <polygon points="285,145 296,168 313,159" fill="#ff6b6b"/>
+              <text id="coutlab" x="240" y="128" fill="#ff6b6b" font-size="26">c</text>
+              <circle cx="380" cy="310" r="6" fill="#e9eef8"/>
+              <text x="386" y="336" fill="#e9eef8" font-size="22">O</text>
+              <text id="a1x" x="600" y="290" fill="#8fa3c8" font-size="21">a1ᵀx &lt; 0</text>
+              <text id="a2x" x="470" y="120" fill="#8fa3c8" font-size="21">a2ᵀx &lt; 0</text>
+              <text id="cx" x="210" y="180" fill="#3ecf8e" font-size="21">cᵀx &gt; 0</text>
+            </svg>
+          </div>
+        </div>
+        <div class="right5">
+          <div class="panel5">
+            <div class="panel-title5 mono">代数结论</div>
+            <div class="step5"><span class="sn">·</span><div class="st"><span class="mono">Aᵀy = c，y ≥ 0</span> <b>无解</b>（c 不在锥里）</div></div>
+            <div class="step5"><span class="sn">·</span><div class="st">存在过原点的分离超平面 <span class="mono">H: xᵀz = 0</span>，法向量 x 满足<br/><span class="mono">aᵢᵀx ≤ 0（即 Ax ≤ 0）且 cᵀx &gt; 0</span></div></div>
+            <div class="step5"><span class="sn">·</span><div class="st">于是 <span class="mono">Ax ≤ 0，cᵀx &gt; 0</span> 有解 ⇒ 系统 I 成立</div></div>
+            <div class="verdict5 out" style="margin-top:20px">图里看到：c 在锥外，红色虚线 H 把它和锥分开；x 是 H 的法向量，与两条射线都成钝角、与 c 成锐角。</div>
+          </div>
+          <div class="panel5" style="margin-top:22px">
+            <div class="panel-title5 mono">为什么 H 一定过原点（会被追问）</div>
+            <div style="font-size:25px;line-height:1.65;color:#e9eef8">凸锥对非负数乘封闭：z ∈ S ⇒ tz ∈ S（∀t ≥ 0），锥沿每条母线无限延伸。任何不经过原点的直线都会被某个足够大的 tz 穿过去，分不开。<br/>所以分离超平面<b style="color:#ffc53d;font-weight:400">必须过 O</b>，图里 H 一定要画成穿过 O 的直线。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 : 30s drawing + meaning ============ -->
+    <div class="scene5" id="f5">
+      <div class="grid5">
+        <div class="left5">
+          <div class="panel5">
+            <div class="panel-title5 mono">考场 30 秒画法（四步）</div>
+            <div class="step5"><span class="sn">1</span><div class="st">画两条从 <b>O</b> 出发的射线 a₁、a₂，夹角区域涂阴影表示凸锥 S，标上行向量名</div></div>
+            <div class="step5"><span class="sn">2</span><div class="st">画<b>左右两个小图</b>：左图 c 在锥内；右图 c 在锥外</div></div>
+            <div class="step5"><span class="sn">3</span><div class="st">右图补一条<b>过 O 的虚线 H</b>（分离超平面）+ 法向量箭头 x，标上 <span class="mono">a₁ᵀx ≤ 0、a₂ᵀx ≤ 0、cᵀx &gt; 0</span></div></div>
+            <div class="step5"><span class="sn">4</span><div class="st">每个小图旁边<b>写一句结论</b>（照抄：锥内 ⇒ Aᵀy=c,y≥0 有解；锥外 ⇒ Ax≤0,cᵀx&gt;0 有解）</div></div>
+            <div class="verdict5 in" style="margin-top:20px">一句话意义：线性系统"有解 / 无解"可以用<b>几何分离</b>来判定——这就是择一定理的名字来源。</div>
+          </div>
+        </div>
+        <div class="right5">
+          <div class="panel5">
+            <div class="panel-title5 mono">二择一速记</div>
+            <div class="formcard">
+              <div class="fh">c ∈ S</div>
+              <div class="fl">⇒ Aᵀy = c, y ≥ 0 有解 ⇒ 对一切 Ax ≤ 0 的 x 有 cᵀx ≤ 0 ⇒ 不存在改进方向</div>
+            </div>
+            <div class="formcard">
+              <div class="fh">c ∉ S</div>
+              <div class="fl">⇒ 存在 x 使 Ax ≤ 0 且 cᵀx &gt; 0 ⇒ 系统 I 有解 ⇒ 有下降方向</div>
+            </div>
+            <div class="formcard pick">
+              <div class="fh">和其他考点的联系</div>
+              <div class="fl">Zoutendijk 的"方向 LP 最优值为 0 ⟺ KKT"（Th12.1.2）证明用的就是 <b>Farkas 定理</b>；凸集严格分离定理（Th2.7）是它的几何底子。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 50;
+    tl.fromTo("#glow9", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow10", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 5 · 导入",     text: "Farkas 定理：锥内 / 锥外二择一，图是得分主体" },
+      { t: 6.45,  label: "2 / 5 · 三种形式", text: "写形式 A，补一句置换定理，然后画图" },
+      { t: 15.45, label: "3 / 5 · 锥内",     text: "c ∈ S：c = y₁a₁ + y₂a₂（y ≥ 0）⇒ Aᵀy = c 有解" },
+      { t: 32.45, label: "4 / 5 · 锥外",     text: "c ∉ S：过原点的分离超平面 H，aᵢᵀx ≤ 0 且 cᵀx > 0" },
+      { t: 41.45, label: "5 / 5 · 画法与意义", text: "30 秒四步画法 + 一句话意义" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label5", { textContent: s.label }, s.t);
+      tl.set("#caption5", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption5", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog5", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#f1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#f1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#f1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#f1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#f1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function push5(o, n, T) { tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T); tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T); }
+    function blurX5(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push5("#f1", "#f2", 6); push5("#f2", "#f3", 15); push5("#f3", "#f4", 32); push5("#f4", "#f5", 41);
+
+    /* scene 2 */
+    tl.from("#f2 .left5 .formcard", { y: 28, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 6.6);
+    tl.fromTo("#f2 .right5 .panel5", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.16 }, 7.2);
+    tl.from("#f2 .step5", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.12 }, 7.7);
+    tl.fromTo("#f2 .verdict5", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 9.0);
+
+    /* scene 3 : c inside */
+    tl.from("#f3 .left5 .panel5", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 15.5);
+    tl.from("#f3 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 15.8);
+    tl.from("#f3 .right5 .panel5", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.16 }, 16.3);
+    tl.from("#f3 .step5", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.12 }, 16.8);
+    tl.from("#ray1", { opacity: 0, duration: 0.5, ease: "power2.out" }, 17.0);
+    tl.from("#ray2", { opacity: 0, duration: 0.5, ease: "power2.out" }, 17.3);
+    tl.from("#wedge", { opacity: 0, duration: 0.6 }, 17.6);
+    tl.from("#cv1", { opacity: 0, duration: 0.45 }, 18.4);
+    tl.from("#cv2", { opacity: 0, duration: 0.45 }, 18.7);
+    tl.from("#d1", { opacity: 0, duration: 0.45 }, 19.3);
+    tl.from("#d2", { opacity: 0, duration: 0.45 }, 19.6);
+    tl.from("#cvec", { opacity: 0, duration: 0.5 }, 20.2);
+    tl.from("#clab", { opacity: 0, scale: 0.5, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 20.5);
+    tl.from("#y1lab", { opacity: 0, x: -12, duration: 0.4 }, 21.0);
+    tl.from("#y2lab", { opacity: 0, x: -12, duration: 0.4 }, 21.3);
+    tl.fromTo("#f3 .verdict5", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 22.0);
+    tl.fromTo("#f3 .right5 .panel5:nth-of-type(2)", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 22.6);
+
+    /* scene 4 : c outside */
+    tl.from("#f4 .left5 .panel5", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 32.5);
+    tl.from("#f4 svg", { opacity: 0, scale: 0.97, duration: 0.6, ease: "power3.out", transformOrigin: "center" }, 32.8);
+    tl.from("#f4 .right5 .panel5", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.16 }, 33.3);
+    tl.from("#f4 .step5", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.12 }, 33.8);
+    tl.from("#hline", { opacity: 0, duration: 0.6 }, 34.6);
+    tl.from("#hlab", { opacity: 0, x: -14, duration: 0.4 }, 34.9);
+    tl.from("#cout", { opacity: 0, duration: 0.5 }, 35.6);
+    tl.from("#coutlab", { opacity: 0, scale: 0.5, duration: 0.45, ease: "back.out(2)", transformOrigin: "center" }, 35.9);
+    tl.from("#xvec", { opacity: 0, duration: 0.5 }, 36.6);
+    tl.from("#xlab", { opacity: 0, x: 14, duration: 0.4 }, 36.9);
+    tl.from("#a1x", { opacity: 0, duration: 0.4 }, 37.5);
+    tl.from("#a2x", { opacity: 0, duration: 0.4 }, 37.8);
+    tl.from("#cx", { opacity: 0, duration: 0.4 }, 38.2);
+    tl.fromTo("#f4 .verdict5", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 38.6);
+    tl.fromTo("#f4 .right5 .panel5:nth-of-type(2)", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 39.2);
+
+    /* scene 5 */
+    tl.from("#f5 .left5 .panel5", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 41.5);
+    tl.from("#f5 .step5", { x: 30, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 41.9);
+    tl.fromTo("#f5 .verdict5", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 44.0);
+    tl.from("#f5 .right5 .panel5", { x: 44, opacity: 0, duration: 0.55, ease: "power3.out" }, 42.4);
+    tl.from("#f5 .formcard", { y: 26, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.16 }, 42.8);
+    tl.to('[data-composition-id="farkas"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 49.2);
+    window.__timelines["farkas"] = tl;
+  </script>
+</template>

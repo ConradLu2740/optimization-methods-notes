@@ -1,0 +1,655 @@
+<template id="bigm-template">
+  <div data-composition-id="bigm" data-width="1920" data-height="1080">
+    <style>
+      /*FONT-FACES-BEGIN*/
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 400; src: url("../assets/fonts/notoserifsc-400.woff2") format("woff2"); font-display: block; }
+      @font-face { font-family: "Noto Serif SC"; font-style: normal; font-weight: 700; src: url("../assets/fonts/notoserifsc-700.woff2") format("woff2"); font-display: block; }
+      /*FONT-FACES-END*/
+                                                                              [data-composition-id="bigm"] { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: "Noto Serif SC", serif; color: #e9eef8; }
+      [data-composition-id="bigm"] .mono { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      #bg3 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background-color: #0e1526; z-index: 0; }
+      #bg3 .grid { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+        background-image: linear-gradient(rgba(143,163,200,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(143,163,200,0.055) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      #glow5 { position: absolute; left: 320px; top: -280px; width: 1280px; height: 1280px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,197,61,0.10) 0%, rgba(255,197,61,0.035) 38%, rgba(255,197,61,0) 70%); }
+      #glow6 { position: absolute; left: -340px; bottom: -440px; width: 1080px; height: 1080px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(90,169,255,0.09) 0%, rgba(90,169,255,0.03) 40%, rgba(90,169,255,0) 70%); }
+      #chrome-top3 { position: absolute; top: 36px; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 20; }
+      #series-label3 { font-size: 21px; color: #8fa3c8; letter-spacing: 0.06em; }
+      #topic-badge3 { font-size: 22px; color: #ffc53d; border: 1.5px solid rgba(255,197,61,0.55); border-radius: 999px; padding: 8px 22px; letter-spacing: 0.04em; }
+      #chrome-bottom3 { position: absolute; left: 64px; right: 64px; top: 972px; z-index: 20; }
+      #cap-row3 { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; }
+      #step-label3 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #caption3 { font-size: 27px; color: #e9eef8; flex: 1; text-align: center; }
+      #topic-foot3 { font-size: 21px; color: #8fa3c8; white-space: nowrap; }
+      #prog-track3 { margin-top: 14px; height: 3px; width: 100%; background: rgba(143,163,200,0.18); border-radius: 2px; overflow: hidden; }
+      #prog3 { height: 100%; width: 100%; background: #ffc53d; transform-origin: left center; transform: scaleX(0); }
+      .scene3 { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; z-index: 1; }
+      #m2 { z-index: 2; opacity: 0; } #m3 { z-index: 3; opacity: 0; } #m4 { z-index: 4; opacity: 0; }
+      #m5 { z-index: 5; opacity: 0; } #m6 { z-index: 6; opacity: 0; } #m7 { z-index: 7; opacity: 0; }
+      #m1 .wrap { position: absolute; left: 150px; top: 250px; width: 1620px; }
+      #m1 .kicker { font-size: 26px; color: #ffc53d; letter-spacing: 0.22em; margin-bottom: 26px; }
+      #m1 h1 { font-size: 172px; font-weight: 400; line-height: 1.02; letter-spacing: 0.02em; margin: 0 0 30px 0; }
+      #m1 h1 .hl { color: #ffc53d; }
+      #m1 .sub { font-size: 34px; color: #8fa3c8; margin-bottom: 44px; }
+      #m1 .badges { display: flex; gap: 18px; margin-bottom: 52px; }
+      #m1 .badge { font-size: 24px; color: #e9eef8; border: 1.5px solid rgba(143,163,200,0.45); border-radius: 999px; padding: 10px 26px; }
+      #m1 .badge.hot { color: #0e1526; background: #ffc53d; border-color: #ffc53d; font-weight: 500; }
+      #m1 .formula { font-size: 30px; color: #3ecf8e; letter-spacing: 0.03em; border-left: 4px solid #3ecf8e; padding-left: 22px; }
+      .panel3 { background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 14px; padding: 24px 28px; }
+      .panel-title3 { font-size: 24px; color: #8fa3c8; margin-bottom: 16px; letter-spacing: 0.03em; }
+      .tbl3 { display: flex; flex-direction: column; }
+      .trow3 { display: flex; }
+      .cell3 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 26px; line-height: 1; height: 54px; min-width: 66px; display: flex; align-items: center; justify-content: center; color: #e9eef8; background: transparent; border-radius: 6px; }
+      .thead3 .cell3 { font-size: 23px; color: #8fa3c8; height: 44px; border-bottom: 1.5px solid rgba(143,163,200,0.35); }
+      .c-base3 { min-width: 92px; color: #ffc53d; justify-content: flex-start; }
+      .c-note3 { min-width: 176px; justify-content: flex-start; font-family: "Noto Serif SC", serif; font-size: 21px; color: #8fa3c8; padding-left: 14px; }
+      .c-b3 { min-width: 80px; }
+      .sigrow3 { margin-top: 9px; border-top: 2px solid rgba(255,197,61,0.5); padding-top: 7px; }
+      .sigrow3 .c-base3 { color: #ffc53d; }
+      .objread3 { margin-top: 18px; font-size: 33px; color: #ffc53d; font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; }
+      .iter-grid3 { position: absolute; left: 64px; top: 108px; width: 1800px; display: flex; gap: 42px; align-items: flex-start; }
+      .iter-left3 { width: 1090px; }
+      .iter-right3 { width: 668px; }
+      .std-banner3 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 24px; line-height: 1.7; color: #e9eef8; margin-bottom: 20px; }
+      .std-banner3 .lbl { color: #8fa3c8; }
+      .note-line3 { margin-top: 20px; font-size: 27px; color: #ffc53d; min-height: 42px; }
+      .note-line3 .k { color: #3ecf8e; }
+      .flow3 { display: flex; flex-direction: column; gap: 14px; }
+      .fnode3 { display: flex; gap: 16px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; border-left: 3px solid transparent; }
+      .fnode3 .fn { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 24px; min-width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .fnode3 .ft { font-size: 24px; line-height: 1.45; padding-top: 4px; }
+      .fnode3.done { background: rgba(62,207,142,0.07); }
+      .fnode3.done .fn { background: #3ecf8e; color: #0e1526; }
+      .fnode3.done .ft { color: #8fa3c8; }
+      .fnode3.active { background: rgba(255,197,61,0.10); border-left-color: #ffc53d; }
+      .fnode3.active .fn { background: #ffc53d; color: #0e1526; }
+      .fnode3.active .ft { color: #ffc53d; }
+      .fnode3.todo .fn { background: rgba(143,163,200,0.18); color: #8fa3c8; }
+      .fnode3.todo .ft { color: #5d6f8f; }
+      .typecard { display: flex; gap: 18px; margin-top: 16px; }
+      .tcard { flex: 1; background: #17233f; border: 1px solid rgba(143,163,200,0.22); border-radius: 12px; padding: 20px 22px; }
+      .tcard .sym { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 34px; color: #5aa9ff; margin-bottom: 10px; }
+      .tcard .tt { font-size: 24px; line-height: 1.5; color: #e9eef8; }
+      .tcard .tt b { color: #ffc53d; font-weight: 400; }
+      .ans-card3 { background: #17233f; border: 1.5px solid rgba(255,197,61,0.45); border-radius: 16px; padding: 30px 34px; }
+      .ans-q3 { font-size: 23px; color: #8fa3c8; line-height: 1.6; margin-bottom: 22px; }
+      .ans-big3 { font-family: "IBM Plex Mono", Consolas, monospace; font-variant-numeric: tabular-nums; font-size: 52px; color: #ffc53d; margin-bottom: 6px; }
+      .ans-big3 .lbl { font-size: 29px; color: #8fa3c8; }
+      .ans-sub3 { font-size: 25px; color: #e9eef8; line-height: 1.65; margin-top: 16px; }
+      .ans-sub3 .mono { color: #3ecf8e; }
+      .ans-warn3 { margin-top: 22px; font-size: 23px; color: #ff9b9b; border-top: 1px solid rgba(143,163,200,0.25); padding-top: 18px; line-height: 1.6; }
+      .recap3 { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+      .rn3 { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 29px; color: #0e1526; background: #ffc53d; border-radius: 10px; min-width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .rt3 { font-size: 27px; line-height: 1.5; color: #e9eef8; padding-top: 3px; }
+      .rt3 .mono { color: #3ecf8e; }
+      .rt3 b { color: #ffc53d; font-weight: 400; }
+      .judge-card3 { margin-top: 20px; background: rgba(62,207,142,0.10); border: 1.5px solid rgba(62,207,142,0.5); border-radius: 12px; padding: 20px 24px; font-size: 27px; color: #3ecf8e; line-height: 1.5; }
+    </style>
+    <div id="bg3"><div class="grid"></div><div id="glow5"></div><div id="glow6"></div></div>
+    <div id="chrome-top3">
+      <div id="series-label3" class="mono">最优化方法与应用 · 知识点动画 03</div>
+      <div id="topic-badge3">CH3 · 大M法 · 20 分必考</div>
+    </div>
+    <!-- ============ SCENE 1 ============ -->
+    <div class="scene3" id="m1">
+      <div class="wrap">
+        <div class="kicker mono">CH3 · BIG-M METHOD · 一张表做到底</div>
+        <h1>大 M<span class="hl">法</span></h1>
+        <div class="sub">人工变量费用设 +M：用一张表同时管"可行性"和"最优性"</div>
+        <div class="badges">
+          <span class="badge">罚金思想</span>
+          <span class="badge hot">20 分 · 必考</span>
+          <span class="badge">老师原话：多写点会捞</span>
+        </div>
+        <div class="formula mono">≤ 加松弛 ｜ ≥ 减剩余再加人工 ｜ = 直接加人工 ｜ 检验数先比 M 系数</div>
+      </div>
+    </div>
+    <!-- ============ SCENE 2 ============ -->
+    <div class="scene3" id="m2">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="panel3">
+            <div class="panel-title3 mono">题目（11-19 练题，≤ / ≥ / = 三型约束齐备）</div>
+            <div class="std-banner3">
+              <div><span class="lbl">min</span> z = -x1 - 3x2 - 4x3</div>
+              <div><span class="lbl">s.t.</span> x1 + 2x2 + x3 ≤ 7 ；x1 + 4x2 + x3 ≥ 10 ；x1 + x2 + 4x3 = 7 ；x ≥ 0</div>
+            </div>
+            <div class="typecard">
+              <div class="tcard"><div class="sym">≤</div><div class="tt">加<b>松弛变量</b><br/>系数 +1，费用 0，可留在终表基里</div></div>
+              <div class="tcard"><div class="sym">≥</div><div class="tt">减<b>剩余变量</b>（系数 −1）<br/><b>再加人工变量</b>补单位列</div></div>
+              <div class="tcard"><div class="sym">=</div><div class="tt">直接<b>加人工变量</b><br/>没有单位列可借</div></div>
+            </div>
+            <div class="std-banner3" style="margin-top:18px">
+              <div><span class="lbl">经济解释</span>：总代价 = 原目标 + M·(a1+a2)。M 充分大 ⇒ 人工变量只要不为 0，目标就爆炸，逼它离基。</div>
+            </div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="panel3">
+            <div class="panel-title3 mono">大M法五步（本动画路线）</div>
+            <div class="flow3">
+              <div class="fnode3 active"><span class="fn">1</span><div class="ft">标准化：≤ 松弛、≥ 减剩余、= 直接加人工</div></div>
+              <div class="fnode3 todo"><span class="fn">2</span><div class="ft">目标加 <span class="mono">M·Σaᵢ</span>，建初始表</div></div>
+              <div class="fnode3 todo"><span class="fn">3</span><div class="ft">迭代：检验数<b>先比 M 系数、再比常数项</b></div></div>
+              <div class="fnode3 todo"><span class="fn">4</span><div class="ft">人工变量全离基 且 σ 全 ≥ 0 ⇒ 最优</div></div>
+              <div class="fnode3 todo"><span class="fn">5</span><div class="ft">报出 <span class="mono">x*</span> 和 <span class="mono">z*</span></div></div>
+            </div>
+          </div>
+          <div class="panel3" style="margin-top:22px">
+            <div class="panel-title3 mono">和两阶段法什么关系</div>
+            <div style="font-size:25px;line-height:1.65;color:#e9eef8">不分阶段，<b style="color:#ffc53d;font-weight:400">一张表做到底</b>：M 就是"罚"，逼人工变量离基。<br/>两阶段法是大M的<b style="color:#ffc53d;font-weight:400">数值安全版</b>（避开 M 的舍入灾难），卷面二选一出题。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 3 : initial table ============ -->
+    <div class="scene3" id="m3">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="std-banner3"><span class="lbl">标准形</span>：x1+2x2+x3 +x4 = 7 ；x1+4x2+x3 −x5 +a1 = 10 ；x1+x2+4x3 +a2 = 7 ；<span class="lbl">目标</span> min z + M(a1+a2)</div>
+          <div class="panel3">
+            <div class="panel-title3 mono">初始表 ｜ σ = c<sub>j</sub> − c<sub>B</sub>B<sup>-1</sup>A<sub>j</sub>，c<sub>B</sub> = (0, M, M)</div>
+            <div class="tbl3">
+              <div class="trow3 thead3">
+                <span class="cell3 c-base3">基变量</span>
+                <span class="cell3 cx1">x1</span><span class="cell3 cx2">x2</span><span class="cell3 cx3">x3</span>
+                <span class="cell3 cx4">x4</span><span class="cell3 cx5">x5</span>
+                <span class="cell3 ca1">a1</span><span class="cell3 ca2">a2</span>
+                <span class="cell3 c-b3">b</span><span class="cell3 c-note3">选基说明</span>
+              </div>
+              <div class="trow3 row1">
+                <span class="cell3 c-base3 b1">x4</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">2</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">1</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">0</span>
+                <span class="cell3 num c8">7</span><span class="cell3 c-note3 n1">θ = 7/1 = 7</span>
+              </div>
+              <div class="trow3 row2">
+                <span class="cell3 c-base3 b2">a1</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">4</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">-1</span>
+                <span class="cell3 num c6">1</span><span class="cell3 num c7">0</span>
+                <span class="cell3 num c8">10</span><span class="cell3 c-note3 n2">θ = 10/1 = 10</span>
+              </div>
+              <div class="trow3 row3">
+                <span class="cell3 c-base3 b3">a2</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">1</span><span class="cell3 num c3">4</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">1</span>
+                <span class="cell3 num c8">7</span><span class="cell3 c-note3 n3">θ = 7/4 = 1.75 ✓ 最小</span>
+              </div>
+              <div class="trow3 sigrow3">
+                <span class="cell3 c-base3">σ</span>
+                <span class="cell3 num s1">-2M-1</span><span class="cell3 num s2">-5M-3</span><span class="cell3 num s3">-5M-4</span>
+                <span class="cell3 num s4">0</span><span class="cell3 num s5">M</span>
+                <span class="cell3 num s6">0</span><span class="cell3 num s7">0</span>
+                <span class="cell3 num s8">-17M</span><span class="cell3 c-note3">末列 = -z</span>
+              </div>
+            </div>
+            <div class="objread3" id="z3">z = 17M</div>
+            <div class="note-line3" id="note3m">σ<sub>3</sub> = -5M-4 最负 ⇒ x3 入基</div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="panel3">
+            <div class="panel-title3 mono">大M法五步</div>
+            <div class="flow3">
+              <div class="fnode3 done"><span class="fn">1</span><div class="ft">标准化：≤ 松弛、≥ 减剩余、= 加人工</div></div>
+              <div class="fnode3 active"><span class="fn">2</span><div class="ft">目标加 <span class="mono">M·Σaᵢ</span>，建初始表</div></div>
+              <div class="fnode3 todo"><span class="fn">3</span><div class="ft">迭代：检验数<b>先比 M 系数、再比常数项</b></div></div>
+              <div class="fnode3 todo"><span class="fn">4</span><div class="ft">人工变量全离基 且 σ 全 ≥ 0 ⇒ 最优</div></div>
+              <div class="fnode3 todo"><span class="fn">5</span><div class="ft">报出 <span class="mono">x*</span> 和 <span class="mono">z*</span></div></div>
+            </div>
+          </div>
+          <div class="panel3" style="margin-top:22px">
+            <div class="panel-title3 mono">检验数怎么比大小</div>
+            <div style="font-size:25px;line-height:1.65">
+              <b style="color:#ffc53d;font-weight:400">先比 M 的系数</b>：-5M 比 -2M 更负<br/>
+              系数相同再<b style="color:#ffc53d;font-weight:400">比常数项</b>：-4 &lt; -3<br/>
+              所以 x2、x3 的 M 系数并列 -5M 时，<b style="color:#ffc53d;font-weight:400">x3 入基</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 4 : iteration 1 ============ -->
+    <div class="scene3" id="m4">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="std-banner3"><span class="lbl">迭代 ①</span>：主行 ÷ 4 → 其余行消去 x3 列 → σ 重算</div>
+          <div class="panel3">
+            <div class="panel-title3 mono">表 1 → 表 2 ｜ 基 (x4,a1,a2) → (x4,a1,x3)</div>
+            <div class="tbl3">
+              <div class="trow3 thead3">
+                <span class="cell3 c-base3">基变量</span>
+                <span class="cell3 cx1">x1</span><span class="cell3 cx2">x2</span><span class="cell3 cx3">x3</span>
+                <span class="cell3 cx4">x4</span><span class="cell3 cx5">x5</span>
+                <span class="cell3 ca1">a1</span><span class="cell3 ca2">a2</span>
+                <span class="cell3 c-b3">b</span><span class="cell3 c-note3">选基说明</span>
+              </div>
+              <div class="trow3 row1">
+                <span class="cell3 c-base3 b1">x4</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">2</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">1</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">0</span>
+                <span class="cell3 num c8">7</span><span class="cell3 c-note3 n1">本行 − 1×新主行</span>
+              </div>
+              <div class="trow3 row2">
+                <span class="cell3 c-base3 b2">a1</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">4</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">-1</span>
+                <span class="cell3 num c6">1</span><span class="cell3 num c7">0</span>
+                <span class="cell3 num c8">10</span><span class="cell3 c-note3 n2">本行 − 1×新主行</span>
+              </div>
+              <div class="trow3 row3">
+                <span class="cell3 c-base3 b3">a2</span>
+                <span class="cell3 num c1">1</span><span class="cell3 num c2">1</span><span class="cell3 num c3">4</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">1</span>
+                <span class="cell3 num c8">7</span><span class="cell3 c-note3 n3">主元行 ÷ 4</span>
+              </div>
+              <div class="trow3 sigrow3">
+                <span class="cell3 c-base3">σ</span>
+                <span class="cell3 num s1">-2M-1</span><span class="cell3 num s2">-5M-3</span><span class="cell3 num s3">-5M-4</span>
+                <span class="cell3 num s4">0</span><span class="cell3 num s5">M</span>
+                <span class="cell3 num s6">0</span><span class="cell3 num s7">0</span>
+                <span class="cell3 num s8">-17M</span><span class="cell3 c-note3">末列 = -z</span>
+              </div>
+            </div>
+            <div class="objread3" id="z4m">z = 17M</div>
+            <div class="note-line3" id="note4m"></div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="panel3">
+            <div class="panel-title3 mono">大M法五步</div>
+            <div class="flow3">
+              <div class="fnode3 done"><span class="fn">1</span><div class="ft">标准化：≤ 松弛、≥ 减剩余、= 加人工</div></div>
+              <div class="fnode3 done"><span class="fn">2</span><div class="ft">目标加 <span class="mono">M·Σaᵢ</span>，建初始表</div></div>
+              <div class="fnode3 active"><span class="fn">3</span><div class="ft">迭代中：把 a1、a2 赶出基</div></div>
+              <div class="fnode3 todo"><span class="fn">4</span><div class="ft">人工变量全离基 且 σ 全 ≥ 0 ⇒ 最优</div></div>
+              <div class="fnode3 todo"><span class="fn">5</span><div class="ft">报出 <span class="mono">x*</span> 和 <span class="mono">z*</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 5 : iteration 2 ============ -->
+    <div class="scene3" id="m5">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="std-banner3"><span class="lbl">迭代 ②</span>：主行 × 4/15 → 其余行消去 x2 列 → σ 重算</div>
+          <div class="panel3">
+            <div class="panel-title3 mono">表 2 → 表 3 ｜ 基 (x4,a1,x3) → (x4,x2,x3)</div>
+            <div class="tbl3">
+              <div class="trow3 thead3">
+                <span class="cell3 c-base3">基变量</span>
+                <span class="cell3 cx1">x1</span><span class="cell3 cx2">x2</span><span class="cell3 cx3">x3</span>
+                <span class="cell3 cx4">x4</span><span class="cell3 cx5">x5</span>
+                <span class="cell3 ca1">a1</span><span class="cell3 ca2">a2</span>
+                <span class="cell3 c-b3">b</span><span class="cell3 c-note3">选基说明</span>
+              </div>
+              <div class="trow3 row1">
+                <span class="cell3 c-base3 b1">x4</span>
+                <span class="cell3 num c1">3/4</span><span class="cell3 num c2">7/4</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">1</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">-1/4</span>
+                <span class="cell3 num c8">21/4</span><span class="cell3 c-note3 n1">−(7/4)×新主行</span>
+              </div>
+              <div class="trow3 row2">
+                <span class="cell3 c-base3 b2">a1</span>
+                <span class="cell3 num c1">3/4</span><span class="cell3 num c2">15/4</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">-1</span>
+                <span class="cell3 num c6">1</span><span class="cell3 num c7">-1/4</span>
+                <span class="cell3 num c8">33/4</span><span class="cell3 c-note3 n2">主元行 × 4/15</span>
+              </div>
+              <div class="trow3 row3">
+                <span class="cell3 c-base3 b3">x3</span>
+                <span class="cell3 num c1">1/4</span><span class="cell3 num c2">1/4</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">1/4</span>
+                <span class="cell3 num c8">7/4</span><span class="cell3 c-note3 n3">−(1/4)×新主行</span>
+              </div>
+              <div class="trow3 sigrow3">
+                <span class="cell3 c-base3">σ</span>
+                <span class="cell3 num s1">-3M/4-1</span><span class="cell3 num s2">-15M/4-2</span><span class="cell3 num s3">0</span>
+                <span class="cell3 num s4">0</span><span class="cell3 num s5">M</span>
+                <span class="cell3 num s6">0</span><span class="cell3 num s7">5M/4+1</span>
+                <span class="cell3 num s8">7-33M/4</span><span class="cell3 c-note3">末列 = -z</span>
+              </div>
+            </div>
+            <div class="objread3" id="z5m">z = 33M/4 - 7</div>
+            <div class="note-line3" id="note5m"></div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="panel3">
+            <div class="panel-title3 mono">大M法五步</div>
+            <div class="flow3">
+              <div class="fnode3 done"><span class="fn">1</span><div class="ft">标准化：≤ 松弛、≥ 减剩余、= 加人工</div></div>
+              <div class="fnode3 done"><span class="fn">2</span><div class="ft">目标加 <span class="mono">M·Σaᵢ</span>，建初始表</div></div>
+              <div class="fnode3 active"><span class="fn">3</span><div class="ft">迭代中：a2 已出基，a1 还在基里</div></div>
+              <div class="fnode3 todo"><span class="fn">4</span><div class="ft">人工变量全离基 且 σ 全 ≥ 0 ⇒ 最优</div></div>
+              <div class="fnode3 todo"><span class="fn">5</span><div class="ft">报出 <span class="mono">x*</span> 和 <span class="mono">z*</span></div></div>
+            </div>
+          </div>
+          <div class="panel3" style="margin-top:22px">
+            <div class="panel-title3 mono">本迭代选基</div>
+            <div style="font-size:25px;line-height:1.65">
+              σ<sub>2</sub> = -15M/4 - 2，M 系数 -15M/4 最负 ⇒ <b style="color:#ffc53d;font-weight:400">x2 入基</b><br/>
+              比值 min{ (21/4)/(7/4)=3, (33/4)/(15/4)=11/5, (7/4)/(1/4)=7 } = 11/5 ⇒ <b style="color:#ffc53d;font-weight:400">a1 出基</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 6 : iteration 3 + optimal ============ -->
+    <div class="scene3" id="m6">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="std-banner3"><span class="lbl">迭代 ③</span>：主行 × 15/7 → 其余行消去 x5 列 → σ 重算</div>
+          <div class="panel3">
+            <div class="panel-title3 mono">表 3 → 表 4（最优表）｜ 基 (x4,x2,x3) → (x5,x2,x3)</div>
+            <div class="tbl3">
+              <div class="trow3 thead3">
+                <span class="cell3 c-base3">基变量</span>
+                <span class="cell3 cx1">x1</span><span class="cell3 cx2">x2</span><span class="cell3 cx3">x3</span>
+                <span class="cell3 cx4">x4</span><span class="cell3 cx5">x5</span>
+                <span class="cell3 ca1">a1</span><span class="cell3 ca2">a2</span>
+                <span class="cell3 c-b3">b</span><span class="cell3 c-note3">选基说明</span>
+              </div>
+              <div class="trow3 row1">
+                <span class="cell3 c-base3 b1">x4</span>
+                <span class="cell3 num c1">2/5</span><span class="cell3 num c2">0</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">1</span><span class="cell3 num c5">7/15</span>
+                <span class="cell3 num c6">-7/15</span><span class="cell3 num c7">-2/15</span>
+                <span class="cell3 num c8">7/5</span><span class="cell3 c-note3 n1">θ = (7/5)/(7/15) = 3 ✓ 最小</span>
+              </div>
+              <div class="trow3 row2">
+                <span class="cell3 c-base3 b2">x2</span>
+                <span class="cell3 num c1">1/5</span><span class="cell3 num c2">1</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">-4/15</span>
+                <span class="cell3 num c6">4/15</span><span class="cell3 num c7">-1/15</span>
+                <span class="cell3 num c8">11/5</span><span class="cell3 c-note3 n2">系数为负，不参与比值</span>
+              </div>
+              <div class="trow3 row3">
+                <span class="cell3 c-base3 b3">x3</span>
+                <span class="cell3 num c1">1/5</span><span class="cell3 num c2">0</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">0</span><span class="cell3 num c5">1/15</span>
+                <span class="cell3 num c6">-1/15</span><span class="cell3 num c7">4/15</span>
+                <span class="cell3 num c8">6/5</span><span class="cell3 c-note3 n3">θ = (6/5)/(1/15) = 18</span>
+              </div>
+              <div class="trow3 sigrow3">
+                <span class="cell3 c-base3">σ</span>
+                <span class="cell3 num s1">2/5</span><span class="cell3 num s2">0</span><span class="cell3 num s3">0</span>
+                <span class="cell3 num s4">0</span><span class="cell3 num s5">-8/15</span>
+                <span class="cell3 num s6">M+8/15</span><span class="cell3 num s7">M+13/15</span>
+                <span class="cell3 num s8">57/5</span><span class="cell3 c-note3">末列 = -z</span>
+              </div>
+            </div>
+            <div class="objread3" id="z6m">z = -57/5</div>
+            <div class="note-line3" id="note6m"></div>
+            <div class="judge-card3" id="judge6m">✓ 人工变量 a1、a2 已全部离基（σ 列 M 系数为正，不许回基）；唯一负检验数 σ<sub>5</sub> = -8/15 ⇒ <span class="mono">x5 入基</span></div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="panel3">
+            <div class="panel-title3 mono">大M法五步</div>
+            <div class="flow3">
+              <div class="fnode3 done"><span class="fn">1</span><div class="ft">标准化：≤ 松弛、≥ 减剩余、= 加人工</div></div>
+              <div class="fnode3 done"><span class="fn">2</span><div class="ft">目标加 <span class="mono">M·Σaᵢ</span>，建初始表</div></div>
+              <div class="fnode3 done"><span class="fn">3</span><div class="ft">迭代：检验数先比 M 系数、再比常数项</div></div>
+              <div class="fnode3 active"><span class="fn">4</span><div class="ft">最后一迭代：剩余变量 x5 入基</div></div>
+              <div class="fnode3 todo"><span class="fn">5</span><div class="ft">报出 <span class="mono">x*</span> 和 <span class="mono">z*</span></div></div>
+            </div>
+          </div>
+          <div class="panel3" style="margin-top:22px">
+            <div class="panel-title3 mono">易错点</div>
+            <div style="font-size:25px;line-height:1.65;color:#e9eef8">① <b style="color:#ff6b6b;font-weight:400">人工变量出基后禁止再入基</b>（白捡的分）<br/>② <b style="color:#ffc53d;font-weight:400">剩余变量不是人工变量，可以进基</b>——本题终表 x5 就进基了<br/>③ 比值检验只算入基列系数为正的行</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ SCENE 7 : answer & recap ============ -->
+    <div class="scene3" id="m7">
+      <div class="iter-grid3">
+        <div class="iter-left3">
+          <div class="panel3">
+            <div class="panel-title3 mono">最优表 ｜ σ 全部 ≥ 0（含 M 项）⇒ 最优性判别通过</div>
+            <div class="tbl3">
+              <div class="trow3 thead3">
+                <span class="cell3 c-base3">基变量</span>
+                <span class="cell3 cx1">x1</span><span class="cell3 cx2">x2</span><span class="cell3 cx3">x3</span>
+                <span class="cell3 cx4">x4</span><span class="cell3 cx5">x5</span>
+                <span class="cell3 ca1">a1</span><span class="cell3 ca2">a2</span>
+                <span class="cell3 c-b3">b</span><span class="cell3 c-note3">选基说明</span>
+              </div>
+              <div class="trow3 row1">
+                <span class="cell3 c-base3 b1">x5</span>
+                <span class="cell3 num c1">6/7</span><span class="cell3 num c2">0</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">15/7</span><span class="cell3 num c5">1</span>
+                <span class="cell3 num c6">-1</span><span class="cell3 num c7">-2/7</span>
+                <span class="cell3 num c8">3</span><span class="cell3 c-note3 n1"></span>
+              </div>
+              <div class="trow3 row2">
+                <span class="cell3 c-base3 b2">x2</span>
+                <span class="cell3 num c1">3/7</span><span class="cell3 num c2">1</span><span class="cell3 num c3">0</span>
+                <span class="cell3 num c4">4/7</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">-1/7</span>
+                <span class="cell3 num c8">3</span><span class="cell3 c-note3 n2"></span>
+              </div>
+              <div class="trow3 row3">
+                <span class="cell3 c-base3 b3">x3</span>
+                <span class="cell3 num c1">1/7</span><span class="cell3 num c2">0</span><span class="cell3 num c3">1</span>
+                <span class="cell3 num c4">-1/7</span><span class="cell3 num c5">0</span>
+                <span class="cell3 num c6">0</span><span class="cell3 num c7">2/7</span>
+                <span class="cell3 num c8">1</span><span class="cell3 c-note3 n3"></span>
+              </div>
+              <div class="trow3 sigrow3 ok3">
+                <span class="cell3 c-base3">σ</span>
+                <span class="cell3 num s1">6/7</span><span class="cell3 num s2">0</span><span class="cell3 num s3">0</span>
+                <span class="cell3 num s4">8/7</span><span class="cell3 num s5">0</span>
+                <span class="cell3 num s6">M</span><span class="cell3 num s7">M+5/7</span>
+                <span class="cell3 num s8">13</span><span class="cell3 c-note3">末列 = -z</span>
+              </div>
+            </div>
+            <div class="objread3">z = -13</div>
+            <div style="margin-top:16px;font-size:26px;color:#3ecf8e">✓ 两个角度确认：人工变量 a1、a2 全部离基（值为 0）；σ 全部 ≥ 0（M 系数均为正）</div>
+          </div>
+        </div>
+        <div class="iter-right3">
+          <div class="ans-card3">
+            <div class="ans-q3 mono">min z = -x1 - 3x2 - 4x3　s.t.　≤7 / ≥10 / =7 三型约束</div>
+            <div class="ans-big3"><span class="lbl">x* =</span> (0, 3, 1)</div>
+            <div class="ans-big3"><span class="lbl">z* =</span> -13</div>
+            <div class="ans-sub3">基变量：<span class="mono">x2 = 3，x3 = 1，x5 = 3</span>　非基变量取 0：<span class="mono">x1 = 0，x4 = 0</span></div>
+            <div class="ans-sub3">代回校验：x1+4x2+x3 = 0+12+1 = 13？——注意表里 a1 已出基，第二约束由 x5=3 补足：<span class="mono">13 − 3 = 10</span> ✓</div>
+            <div class="ans-warn3">易错：① 人工变量出基后禁止回基；② 剩余变量可以进基；③ 检验数先比 M 系数再比常数项；④ 别忘了报 z*</div>
+          </div>
+          <div class="panel3" style="margin-top:22px">
+            <div class="panel-title3 mono">五步速记</div>
+            <div class="recap3"><span class="rn3 mono">1</span><div class="rt3"><b>三型加法</b>：≤ 松弛、≥ 减剩余再加人工、= 加人工</div></div>
+            <div class="recap3"><span class="rn3 mono">2</span><div class="rt3">目标加 <span class="mono">M·Σaᵢ</span>，<b>先比 M 系数再比常数项</b></div></div>
+            <div class="recap3"><span class="rn3 mono">3</span><div class="rt3"><b>人工出基禁回基</b>；剩余变量可以进基</div></div>
+            <div class="recap3"><span class="rn3 mono">4</span><div class="rt3">收尾双确认：<b>人工全离基 + σ 全 ≥ 0</b>，报 x* 和 z*</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    const D = 63;
+    tl.fromTo("#glow5", { scale: 1, opacity: 0.55 }, { scale: 1.12, opacity: 0.9, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 6.4) - 1) }, 0);
+    tl.fromTo("#glow6", { scale: 1.08, opacity: 0.5 }, { scale: 1, opacity: 0.85, duration: 4.0, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(D / 8.0) - 1) }, 0);
+    const steps = [
+      { t: 0.15,  label: "1 / 7 · 导入",        text: "大M法：人工变量费用设 +M，一张表同时管可行性与最优性" },
+      { t: 6.45,  label: "2 / 7 · 三型约束",    text: "≤ 加松弛、≥ 减剩余再加人工、= 直接加人工；M 就是罚金" },
+      { t: 15.45, label: "3 / 7 · 初始表选基",  text: "σ₃ = -5M-4 最负（先比 M 系数再比常数）⇒ x3 入基，θ = 7/4 ⇒ a2 出基" },
+      { t: 25.45, label: "4 / 7 · 迭代①",       text: "主行归一 → 消去 → σ 重算；σ₂ = -15M/4-2 最负 ⇒ x2 入基，θ = 11/5 ⇒ a1 出基" },
+      { t: 34.45, label: "5 / 7 · 迭代②",       text: "a1、a2 全部离基；只剩 σ₅ = -8/15 为负 ⇒ 剩余变量 x5 入基" },
+      { t: 43.45, label: "6 / 7 · 迭代③",       text: "x5 入基、x4 出基；σ 全部 ≥ 0 ⇒ 达到最优" },
+      { t: 53.45, label: "7 / 7 · 答案与速记",  text: "x* = (0, 3, 1)，z* = -13；五步速记过一遍" },
+    ];
+    steps.forEach((s) => {
+      tl.set("#step-label3", { textContent: s.label }, s.t);
+      tl.set("#caption3", { innerHTML: s.text }, s.t);
+      tl.fromTo("#caption3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s.t + 0.05);
+    });
+    tl.fromTo("#prog3", { scaleX: 0 }, { scaleX: 1, duration: D, ease: "none" }, 0);
+    tl.from("#m1 .kicker", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    tl.from("#m1 h1", { y: 74, opacity: 0, scale: 0.94, duration: 0.75, ease: "power3.out" }, 0.5);
+    tl.from("#m1 .sub", { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+    tl.from("#m1 .badge", { y: 26, opacity: 0, scale: 0.9, duration: 0.45, ease: "back.out(1.7)", stagger: 0.13 }, 1.35);
+    tl.from("#m1 .formula", { x: -24, opacity: 0, duration: 0.55, ease: "power3.out" }, 2.1);
+    function push3(o, n, T) {
+      tl.to(o, { x: -1920, duration: 0.4, ease: "power3.inOut" }, T);
+      tl.fromTo(n, { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.inOut" }, T);
+    }
+    function blurX3(o, n, T) {
+      tl.to(o, { filter: "blur(12px)", scale: 1.02, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+      tl.fromTo(n, { filter: "blur(12px)", scale: 0.98, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+    }
+    push3("#m1", "#m2", 6); push3("#m2", "#m3", 15); blurX3("#m3", "#m4", 25);
+    blurX3("#m4", "#m5", 34); push3("#m5", "#m6", 43); push3("#m6", "#m7", 53);
+
+    /* scene 2 */
+    tl.from("#m2 .iter-left3 .panel3", { y: 34, opacity: 0, duration: 0.55, ease: "power3.out" }, 6.5);
+    tl.from("#m2 .std-banner3", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 6.9);
+    tl.from("#m2 .tcard", { y: 28, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.14 }, 7.8);
+    tl.fromTo("#m2 .iter-right3 .panel3", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 8.4);
+    tl.from("#m2 .fnode3", { x: 30, opacity: 0, duration: 0.4, ease: "power2.out", stagger: 0.09 }, 8.7);
+
+    /* scene 3 */
+    tl.from("#m3 .iter-left3 .std-banner3", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 15.5);
+    tl.from("#m3 .iter-left3 .panel3", { y: 32, opacity: 0, duration: 0.55, ease: "power3.out" }, 16.0);
+    tl.from("#m3 .thead3 .cell3", { y: -18, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 16.6);
+    tl.from("#m3 .row1 .cell3, #m3 .row2 .cell3, #m3 .row3 .cell3", { opacity: 0, duration: 0.3, stagger: 0.03 }, 17.0);
+    tl.from("#m3 .sigrow3 .cell3", { y: 16, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 17.5);
+    tl.fromTo("#z3", { scale: 1.3, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 18.2);
+    tl.to("#m3 .s1, #m3 .s2, #m3 .s3", { color: "#ffc53d", duration: 0.3 }, 18.6);
+    tl.to("#m3 .cx3", { backgroundColor: "rgba(255,197,61,0.14)", duration: 0.35 }, 19.2);
+    tl.fromTo("#note3m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 19.25);
+    tl.to("#m3 .row3", { backgroundColor: "rgba(255,107,107,0.10)", duration: 0.35 }, 20.8);
+    tl.to("#m3 .b3", { color: "#ff6b6b", opacity: 0.6, duration: 0.35 }, 20.8);
+    tl.to("#m3 .n3", { color: "#ffc53d", duration: 0.3 }, 21.1);
+    tl.to("#m3 .row3 .c3", { backgroundColor: "#ffc53d", color: "#0e1526", scale: 1.12, duration: 0.35, ease: "back.out(2)", transformOrigin: "center" }, 21.6);
+    tl.set("#note3m", { innerHTML: "θ 最小 = 7/4 ⇒ a2 出基；主元 = 第3行第3列的 4" }, 22.4);
+    tl.fromTo("#note3m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 22.45);
+    tl.fromTo("#m3 .iter-right3 .panel3", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 16.6);
+    tl.from("#m3 .fnode3", { x: 30, opacity: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 16.9);
+    tl.to("#m3 .cx3", { backgroundColor: "rgba(255,197,61,0)", duration: 0.3 }, 24.4);
+    tl.to("#m3 .row3", { backgroundColor: "rgba(255,107,107,0)", duration: 0.3 }, 24.4);
+    tl.to("#m3 .row3 .c3", { backgroundColor: "rgba(255,197,61,0)", color: "#e9eef8", scale: 1, duration: 0.3 }, 24.4);
+    tl.to("#m3 .b3", { color: "#ffc53d", opacity: 1, duration: 0.3 }, 24.4);
+
+    /* scene 4 */
+    tl.from("#m4 .iter-left3 .std-banner3", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 25.6);
+    tl.from("#m4 .iter-left3 .panel3", { y: 32, opacity: 0, duration: 0.55, ease: "power3.out" }, 26.0);
+    tl.from("#m4 .thead3 .cell3", { y: -18, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 26.5);
+    tl.from("#m4 .row1 .cell3, #m4 .row2 .cell3, #m4 .row3 .cell3", { opacity: 0, duration: 0.3, stagger: 0.03 }, 26.9);
+    tl.from("#m4 .sigrow3 .cell3", { y: 16, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 27.4);
+    tl.fromTo("#z4m", { scale: 1.3, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 28.0);
+    tl.set("#note4m", { innerHTML: "主行（a2 行）÷ 4（主行归一）" }, 28.6);
+    tl.fromTo("#note4m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 28.65);
+    tl.set("#m4 .row3 .num", { innerHTML: (i) => ["1/4", "1/4", "1", "0", "0", "0", "1/4", "7/4"][i] }, 29.2);
+    tl.fromTo("#m4 .row3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 29.2);
+    tl.set("#m4 .b3", { innerHTML: "x3" }, 29.3);
+    tl.fromTo("#m4 .b3", { scale: 1.4, color: "#ffc53d", transformOrigin: "left center" }, { scale: 1, color: "#ffc53d", duration: 0.45, ease: "back.out(2)" }, 29.3);
+    tl.set("#note4m", { innerHTML: "x4 行、a1 行各 − 1×新主行" }, 30.4);
+    tl.fromTo("#note4m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 30.45);
+    tl.set("#m4 .row1 .num", { innerHTML: (i) => ["3/4", "7/4", "0", "1", "0", "0", "-1/4", "21/4"][i] }, 31.0);
+    tl.fromTo("#m4 .row1 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 31.0);
+    tl.set("#m4 .row2 .num", { innerHTML: (i) => ["3/4", "15/4", "0", "0", "-1", "1", "-1/4", "33/4"][i] }, 31.4);
+    tl.fromTo("#m4 .row2 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 31.4);
+    tl.set("#note4m", { innerHTML: "σ 行按新基重算" }, 32.2);
+    tl.fromTo("#note4m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 32.25);
+    tl.set("#m4 .sigrow3 .num", { innerHTML: (i) => ["-3M/4-1", "-15M/4-2", "0", "0", "M", "0", "5M/4+1", "7-33M/4"][i] }, 32.6);
+    tl.fromTo("#m4 .sigrow3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 32.6);
+    tl.set("#z4m", { innerHTML: "z = 33M/4 - 7" }, 33.2);
+    tl.fromTo("#z4m", { scale: 1.3, transformOrigin: "left center" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, 33.2);
+    tl.to("#m4 .s2", { color: "#ffc53d", duration: 0.3 }, 33.4);
+    tl.fromTo("#m4 .iter-right3 .panel3", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 27.4);
+
+    /* scene 5 */
+    tl.from("#m5 .iter-left3 .std-banner3", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 34.6);
+    tl.from("#m5 .iter-left3 .panel3", { y: 32, opacity: 0, duration: 0.55, ease: "power3.out" }, 35.0);
+    tl.from("#m5 .thead3 .cell3", { y: -18, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 35.5);
+    tl.from("#m5 .row1 .cell3, #m5 .row2 .cell3, #m5 .row3 .cell3", { opacity: 0, duration: 0.3, stagger: 0.03 }, 35.9);
+    tl.from("#m5 .sigrow3 .cell3", { y: 16, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 36.4);
+    tl.fromTo("#z5m", { scale: 1.3, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 37.0);
+    tl.set("#note5m", { innerHTML: "主行（a1 行）× 4/15（主行归一）" }, 37.6);
+    tl.fromTo("#note5m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 37.65);
+    tl.set("#m5 .row2 .num", { innerHTML: (i) => ["1/5", "1", "0", "0", "-4/15", "4/15", "-1/15", "11/5"][i] }, 38.2);
+    tl.fromTo("#m5 .row2 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 38.2);
+    tl.set("#m5 .b2", { innerHTML: "x2" }, 38.3);
+    tl.fromTo("#m5 .b2", { scale: 1.4, color: "#ffc53d", transformOrigin: "left center" }, { scale: 1, color: "#ffc53d", duration: 0.45, ease: "back.out(2)" }, 38.3);
+    tl.set("#note5m", { innerHTML: "x4 行 − (7/4)×新主行；x3 行 − (1/4)×新主行" }, 39.4);
+    tl.fromTo("#note5m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 39.45);
+    tl.set("#m5 .row1 .num", { innerHTML: (i) => ["2/5", "0", "0", "1", "7/15", "-7/15", "-2/15", "7/5"][i] }, 40.0);
+    tl.fromTo("#m5 .row1 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 40.0);
+    tl.set("#m5 .row3 .num", { innerHTML: (i) => ["1/5", "0", "1", "0", "1/15", "-1/15", "4/15", "6/5"][i] }, 40.4);
+    tl.fromTo("#m5 .row3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 40.4);
+    tl.set("#note5m", { innerHTML: "σ 行重算：人工变量列 M 系数为正 ⇒ 禁止回基" }, 41.2);
+    tl.fromTo("#note5m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 41.25);
+    tl.set("#m5 .sigrow3 .num", { innerHTML: (i) => ["2/5", "0", "0", "0", "-8/15", "M+8/15", "M+13/15", "57/5"][i] }, 41.6);
+    tl.fromTo("#m5 .sigrow3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 41.6);
+    tl.set("#z5m", { innerHTML: "z = -57/5" }, 42.2);
+    tl.fromTo("#z5m", { scale: 1.3, transformOrigin: "left center" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, 42.2);
+    tl.to("#m5 .s5", { color: "#ffc53d", duration: 0.3 }, 42.4);
+    tl.fromTo("#m5 .iter-right3 .panel3", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 36.4);
+    tl.from("#m5 .fnode3", { x: 30, opacity: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 36.7);
+
+    /* scene 6 */
+    tl.from("#m6 .iter-left3 .std-banner3", { x: -26, opacity: 0, duration: 0.45, ease: "power2.out" }, 43.6);
+    tl.from("#m6 .iter-left3 .panel3", { y: 32, opacity: 0, duration: 0.55, ease: "power3.out" }, 44.0);
+    tl.from("#m6 .thead3 .cell3", { y: -18, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 44.5);
+    tl.from("#m6 .row1 .cell3, #m6 .row2 .cell3, #m6 .row3 .cell3", { opacity: 0, duration: 0.3, stagger: 0.03 }, 44.9);
+    tl.from("#m6 .sigrow3 .cell3", { y: 16, opacity: 0, duration: 0.35, ease: "power2.out", stagger: 0.05 }, 45.4);
+    tl.fromTo("#z6m", { scale: 1.3, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 46.0);
+    tl.to("#m6 .s5", { color: "#ffc53d", duration: 0.3 }, 46.5);
+    tl.to("#m6 .n3", { color: "#ffc53d", duration: 0.3 }, 46.8);
+    tl.to("#m6 .row1", { backgroundColor: "rgba(255,107,107,0.10)", duration: 0.35 }, 47.0);
+    tl.to("#m6 .b1", { color: "#ff6b6b", opacity: 0.6, duration: 0.35 }, 47.0);
+    tl.fromTo("#judge6m", { opacity: 0, y: 20, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 47.4);
+    tl.set("#note6m", { innerHTML: "主行（x4 行）× 15/7（主行归一）" }, 48.2);
+    tl.fromTo("#note6m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 48.25);
+    tl.set("#m6 .row1 .num", { innerHTML: (i) => ["6/7", "0", "0", "15/7", "1", "-1", "-2/7", "3"][i] }, 48.8);
+    tl.fromTo("#m6 .row1 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 48.8);
+    tl.set("#m6 .b1", { innerHTML: "x5" }, 48.9);
+    tl.fromTo("#m6 .b1", { scale: 1.4, color: "#ffc53d", transformOrigin: "left center" }, { scale: 1, color: "#ffc53d", duration: 0.45, ease: "back.out(2)" }, 48.9);
+    tl.set("#note6m", { innerHTML: "x2 行 + (4/15)×新主行；x3 行 − (1/15)×新主行" }, 49.8);
+    tl.fromTo("#note6m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 49.85);
+    tl.set("#m6 .row2 .num", { innerHTML: (i) => ["3/7", "1", "0", "4/7", "0", "0", "-1/7", "3"][i] }, 50.4);
+    tl.fromTo("#m6 .row2 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 50.4);
+    tl.set("#m6 .row3 .num", { innerHTML: (i) => ["1/7", "0", "1", "-1/7", "0", "0", "2/7", "1"][i] }, 50.8);
+    tl.fromTo("#m6 .row3 .num", { color: "#ffc53d" }, { color: "#e9eef8", duration: 0.55, stagger: 0.06, ease: "power2.out" }, 50.8);
+    tl.set("#note6m", { innerHTML: "σ 行重算" }, 51.8);
+    tl.fromTo("#note6m", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 51.85);
+    tl.set("#m6 .sigrow3 .num", { innerHTML: (i) => ["6/7", "0", "0", "8/7", "0", "M", "M+5/7", "13"][i] }, 52.2);
+    tl.fromTo("#m6 .sigrow3 .num", { color: "#ffc53d" }, { color: "#3ecf8e", duration: 0.5, stagger: 0.06, ease: "power2.out" }, 52.2);
+    tl.set("#z6m", { innerHTML: "z = -13" }, 52.8);
+    tl.fromTo("#z6m", { scale: 1.3, transformOrigin: "left center" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, 52.8);
+    tl.fromTo("#m6 .iter-right3 .panel3", { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 45.4);
+    tl.from("#m6 .fnode3", { x: 30, opacity: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 45.7);
+
+    /* scene 7 */
+    tl.from("#m7 .iter-left3 .panel3", { x: -44, opacity: 0, duration: 0.55, ease: "power3.out" }, 53.5);
+    tl.from("#m7 .iter-left3 .trow3", { opacity: 0, x: -20, duration: 0.4, ease: "power2.out", stagger: 0.1 }, 53.9);
+    tl.from("#m7 .iter-left3 .objread3", { scale: 1.3, opacity: 0, duration: 0.5, ease: "back.out(2)", transformOrigin: "left center" }, 54.6);
+    tl.to("#m7 .sigrow3.ok3 .num", { color: "#3ecf8e", duration: 0.4, stagger: 0.06 }, 55.0);
+    tl.fromTo("#m7 .iter-right3 .ans-card3", { x: 48, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 54.2);
+    tl.from("#m7 .ans-q3", { y: 18, opacity: 0, duration: 0.4, ease: "power2.out" }, 54.7);
+    tl.from("#m7 .ans-big3", { y: 22, opacity: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.16 }, 55.0);
+    tl.from("#m7 .ans-sub3", { y: 20, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.14 }, 55.8);
+    tl.from("#m7 .ans-warn3", { y: 20, opacity: 0, duration: 0.45, ease: "power2.out" }, 56.4);
+    tl.fromTo("#m7 .iter-right3 .panel3", { x: 48, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 56.8);
+    tl.from("#m7 .recap3", { x: -34, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.15 }, 57.1);
+    tl.fromTo("#m7 .iter-right3 .ans-card3", { scale: 1 }, { scale: 1.018, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "center" }, 58.0);
+    tl.to('[data-composition-id="bigm"]', { opacity: 0, duration: 0.8, ease: "power2.in" }, 62.2);
+    window.__timelines["bigm"] = tl;
+  </script>
+</template>
