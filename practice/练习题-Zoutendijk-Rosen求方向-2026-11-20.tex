@@ -1,0 +1,72 @@
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\definecolor{mygray}{gray}{0.45}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 练习题 · Zoutendijk + Rosen：求可行下降方向}\\[4pt]
+{\small\color{mygray}CH12 深度口径：只到``求可行下降方向''为止 ｜ 15 分档}
+\end{center}
+\vspace{-2pt}
+\hrule height 0.8pt
+\vspace{10pt}
+
+\textbf{第一部分（Zoutendijk 可行方向法，线性约束）}
+\[
+\min f(x)=x_1^2+2x_2^2+x_1x_2-2x_1-6x_2
+\]
+\[
+\text{s.t.}\quad
+\left\{
+\begin{aligned}
+x_1+x_2 &\leq 4\\
+x_1+3x_2 &\leq 6\\
+x_1,\,x_2 &\geq 0
+\end{aligned}
+\right.
+\qquad x^{(0)}=(3,1)^{\mathrm T}
+\]
+
+\begin{enumerate}
+\item 把约束写成 $g_i(x)\geq 0$ 形式，验证 $x^{(0)}$ 可行，并指出\textbf{哪些约束在 $x^{(0)}$ 处起作用}；
+\item 写出起作用约束梯度组成的矩阵 $A_1$，建立求可行下降方向的 LP 并求解，给出 $d$；
+\item 用 LP 最优值判断 $x^{(0)}$ 是否为 KKT 点，并说明依据；
+\item 验证你求出的 $d$：既满足下降性 $\nabla f^{\mathrm T}d<0$，又满足可行性 $A_1d\geq 0$。
+\end{enumerate}
+
+\vspace{8pt}
+\textbf{第二部分（Rosen 梯度投影法）}
+\[
+\min f(x)=x_1^2+2x_2^2-2x_1-2x_2
+\quad\text{s.t.}\quad x_1+x_2\geq 2,\ \ x_1,x_2\geq 0
+\]
+
+\begin{enumerate}
+\item[(1)] 在 $x=(1,1)^{\mathrm T}$ 处：指出起作用约束，写出 $M$，按
+$P_R(M^{\mathrm T})=M^{\mathrm T}(MM^{\mathrm T})^{-1}M$、$P_N(M)=I-P_R$ 算出 $P_N(M)$，
+再求 $d=-P_N(M)\nabla f(x)$；验证下降性与可行性。
+\item[(2)] 在 $x=\left(\tfrac43,\tfrac23\right)^{\mathrm T}$ 处重做：$P_N(M)\nabla f(x)$ 是否为 0？
+由此说明该点是不是 KKT 点，并求 $f^{*}$（可用沿约束面参数化或凸性论证）。
+\item[(3)] 用一句话解释：(2) 中 $d=0$ 而 (1) 中 $d\neq 0$，差别在哪里？
+\end{enumerate}
+
+\vspace{8pt}
+\textbf{方向提示（无数值）}
+\begin{itemize}\setlength{\itemsep}{2pt}
+\item 约束都要统一成 $g_i(x)\geq 0$ 再取梯度；直接拿``$\leq$''右边的梯度会让 $A_1d\geq 0$ 方向整个反掉。
+\item Zoutendijk 的 LP 是 \textbf{max} $-\nabla f^{\mathrm T}d$（带 $-1\leq d_j\leq 1$ 归一化），最优值 $>0$ 才是``非 KKT''的判据。
+\item Rosen 的投影公式是 $M^{\mathrm T}(MM^{\mathrm T})^{-1}M$，别把 $M$ 与 $M^{\mathrm T}$ 写反；$d$ 前面有负号。
+\item 求出 $d$ 后必须同时验证两件事：下降性、可行性（沿起作用约束面 $\nabla g_i^{\mathrm T}d\geq 0$）。
+\item 深度口径：$\lambda_{\max}$、一维搜索、完整迭代都\textbf{不考}，本题做到方向为止。
+\end{itemize}
+
+\vspace{10pt}
+\hrule height 0.4pt
+\vspace{4pt}
+{\small\color{mygray}验证情况：第一部分 LP 顶点精确分数枚举；第二部分投影、KKT、$f^{*}$ 均精确分数 + scipy/SLSQP 交叉一致。}
+
+\end{document}

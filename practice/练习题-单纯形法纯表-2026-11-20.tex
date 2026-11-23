@@ -1,0 +1,132 @@
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\definecolor{mygray}{gray}{0.45}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 练习题 · 单纯形法（表格形式）}\\[4pt]
+{\small\color{mygray}约束全部为 $\leq$ 型，无需人工变量 ｜ 20 分档}
+\end{center}
+\vspace{-2pt}
+\hrule height 0.8pt
+\vspace{10pt}
+
+\textbf{用单纯形法求解：}
+\[
+\min\; z = -4x_1 - 3x_2 - 5x_3
+\]
+\[
+\text{s.t.}\quad
+\left\{
+\begin{aligned}
+2x_1 + 3x_2 + 3x_3 &\leq 20\\
+2x_1 + 2x_2 + 4x_3 &\leq 24\\
+5x_1 + x_2 + 2x_3 &\leq 22\\
+x_1,\,x_2,\,x_3 &\geq 0
+\end{aligned}
+\right.
+\]
+
+\vspace{6pt}
+\begin{enumerate}
+\item 化为标准形（引入松弛变量），写出\textbf{初始单纯形表}（含 $\sigma$ 行）；
+\item 逐次迭代，每步写出一张\textbf{完整表}，并说明入基 / 出基变量的选取依据；
+\item 给出最优解与最优值，并写出最优性判别所依据的那一行；
+\item 枚举可行域全部顶点，交叉验证第 (3) 问的结论。
+\end{enumerate}
+
+\vspace{4pt}
+\textbf{方向提示（无数值）}
+\begin{itemize}\setlength{\itemsep}{2pt}
+\item 本题是\textbf{最小化}：$\sigma$ 行按 $\sigma = c_B B^{-1} A - c$ 计，哪种符号才进基？
+\item 入基变量在 $\sigma > 0$ 中取最大者；别跟最大化口径混。
+\item 出基用 $\theta$ 比值检验：只有主元列系数为正的行能参与比值，系数 $\leq 0$ 的行不参与（容易看错行）。
+\item 松弛变量也可能进基，别默认它永远在基外。
+\item 最后必须报出最优解 $x^{*}$ 与最优值 $z^{*}$。
+\end{itemize}
+
+\vspace{10pt}
+\hrule height 0.4pt
+\vspace{4pt}
+{\small\color{mygray}验证情况：精确分数脚本 + scipy/HiGHS 双交叉已过；3 次迭代，唯一最优顶点，$z^{*}$ 为整数。}
+
+\newpage
+
+\begin{center}
+{\Large\bfseries 答题表（空白模板）}
+\end{center}
+\vspace{6pt}
+
+列：$x_1\ x_2\ x_3\ x_4\ x_5\ x_6$ ｜ b\quad（$x_{4},x_{5},x_{6}$ 为松弛变量）
+
+\vspace{10pt}
+\textbf{初始表}
+\[
+\begin{array}{c|cccccc|c}
+ & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & b\\ \hline
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\ \hline
+\sigma &  &  &  &  &  &  &
+\end{array}
+\]
+
+\vspace{14pt}
+\textbf{迭代 1}
+\[
+\begin{array}{c|cccccc|c}
+ & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & b\\ \hline
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\ \hline
+\sigma &  &  &  &  &  &  &
+\end{array}
+\]
+
+\newpage
+
+\textbf{迭代 2}
+\[
+\begin{array}{c|cccccc|c}
+ & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & b\\ \hline
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\ \hline
+\sigma &  &  &  &  &  &  &
+\end{array}
+\]
+
+\vspace{14pt}
+\textbf{迭代 3（最优表）}
+\[
+\begin{array}{c|cccccc|c}
+ & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & b\\ \hline
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  & \\ \hline
+\sigma &  &  &  &  &  &  &
+\end{array}
+\]
+
+\vspace{16pt}
+\textbf{最优解与最优值：}\quad $x^{*} = (\ \ ,\ \ ,\ \ )$，\quad $z^{*} = $
+
+\vspace{10pt}
+\textbf{顶点枚举（第 4 问）：}
+\[
+\begin{array}{c|c|c}
+\text{顶点} & \text{是否可行} & z\text{ 值}\\ \hline
+ &  & \\
+ &  & \\
+ &  & \\
+ &  & \\
+ &  & \\
+\end{array}
+\]
+
+\end{document}

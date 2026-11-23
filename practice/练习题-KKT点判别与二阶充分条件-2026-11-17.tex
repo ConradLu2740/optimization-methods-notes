@@ -1,0 +1,130 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{a4paper,margin=2.2cm}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{center}\Large\bfseries 练习题：KKT 点判别与二阶充分条件\end{center}
+\vspace{2pt}
+\hrule
+\vspace{6pt}
+
+\section*{一、题目}
+
+\[
+\min\ f(x_1,x_2)=(x_1+1)^2+x_2^2
+\]
+\[
+\text{s.t.}\quad g(x_1,x_2)=x_1^2+x_2^2-1\ge 0
+\]
+
+\textbf{要求：}
+\begin{enumerate}
+\item 写出 Lagrange 函数，求出\textbf{所有} KKT 点（含乘子值）；
+\item 对每个 KKT 点，用\textbf{二阶充分条件}（临界锥上验证 $\nabla^2_{xx}L$）判断是否为局部极小点；
+\item 指出全局最小点和最小值。
+\end{enumerate}
+
+\textbf{口径提醒：}
+\begin{itemize}
+\item 本课程口径 $L=f-\sum_i u_i g_i(x)$，乘子 $u\ge 0$；
+\item 可行域是单位圆盘外（含边界），\textbf{不是凸集}，别用``凸规划''一句话跳过，必须走二阶条件；
+\item $u=0$ 和 $u>0$ 的候选都要求出来，别漏。
+\end{itemize}
+
+\section*{二、参考答案}
+
+\subsection*{1.\ KKT 条件}
+
+\[
+L(x,u)=f(x)-u\,g(x)=(x_1+1)^2+x_2^2-u(x_1^2+x_2^2-1)
+\]
+
+四条 KKT 条件：
+\[
+\text{（稳定性）}\ \nabla_x L=0:\quad 2(x_1+1)=2u x_1,\quad 2x_2=2u x_2
+\]
+\[
+\text{（乘子非负）}\ u\ge 0,\qquad
+\text{（可行）}\ g(x)=x_1^2+x_2^2-1\ge 0,\qquad
+\text{（互补松弛）}\ u\,g(x)=0
+\]
+
+\subsection*{2.\ 求所有 KKT 点}
+
+由第二个梯度方程 $x_2=u x_2$：
+
+\begin{itemize}
+\item 若 $u=1$，代入第一式得 $x_1+1=x_1$，矛盾，舍去；
+\item 故 $x_2=0$，第一式化为 $x_1+1=u x_1$，即 $u=\dfrac{x_1+1}{x_1}$（要求 $u\ge 0$）。
+\end{itemize}
+
+再看约束，按互补松弛分两支：
+
+\textbf{支 A（内点，$g>0$）}：需 $u=0$ 且 $\nabla f=0$，解得 $(-1,0)$；但该点 $g=0$ 恰在边界，不满足 $g>0$，此支无候选。
+
+\textbf{支 B（边界，$g=0$）}：$x_1^2+x_2^2=1$，结合 $x_2=0$ 得 $x_1=\pm1$：
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\hline
+候选点 & 乘子 & 校验 \\
+\hline
+$(-1,\,0)$ & $u=\dfrac{-1+1}{-1}=0\ge 0$ & KKT 点 \\
+$(1,\,0)$ & $u=\dfrac{1+1}{1}=2\ge 0$ & KKT 点 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{两个 KKT 点：$(-1,0)$（$u=0$）和 $(1,0)$（$u=2$）。}
+
+\subsection*{3.\ 二阶充分条件}
+
+\[
+\nabla^2_{xx}L=\nabla^2 f-u\nabla^2 g=2I-2uI=2(1-u)I
+\]
+
+临界锥：$\mathcal C=\{d\ne 0\mid \nabla g(x^*)^\top d=0\}$，只审贴着边界的方向。
+
+\textbf{（1）$x^*=(-1,0)$，$u=0$：}
+
+$\nabla g(-1,0)=(-2,0)$，锥条件 $-2d_1=0\Rightarrow d_1=0$；$\nabla^2_{xx}L=2I$，
+\[
+d^\top(2I)d=2d_2^2>0\quad(\forall\, d\in\mathcal C,\ d\ne 0)
+\]
+二阶充分条件满足 $\Rightarrow$ \textbf{严格局部极小点}。
+
+\textbf{（2）$x^*=(1,0)$，$u=2$：}
+
+$\nabla g(1,0)=(2,0)$，锥条件 $d_1=0$；$\nabla^2_{xx}L=2(1-2)I=-2I$，
+\[
+d^\top(-2I)d=-2d_2^2<0
+\]
+二阶\textbf{必要}条件被违反 $\Rightarrow$ \textbf{不是局部极小点}。
+
+直观验证：沿边界 $x_1^2+x_2^2=1$ 参数化，$f=2+2\cos\theta$，在 $(1,0)$（$\theta=0$）附近 $\cos\theta<1$ 使 $f$ 下降，确非极小。
+
+\subsection*{4.\ 全局最小}
+
+$f=(x_1+1)^2+x_2^2\ge 0$，而 $(-1,0)$ 可行且 $f=0$，故
+\[
+\boxed{x^*=(-1,\,0),\quad f^*=0}
+\]
+
+\subsection*{易错点}
+
+\begin{enumerate}
+\item \textbf{漏 $u=0$ 的候选}：只解``边界起作用''会丢掉全局最小点 $(-1,0)$（它梯度恰为零，``弱起作用''，最隐蔽）；
+\item \textbf{符号口径}：$\nabla^2_{xx}L=\nabla^2 f-u\nabla^2 g$（减号），$u=2$ 时 Hessian 整体翻负；
+\item \textbf{KKT 点 $\ne$ 极小点}：$(1,0)$ 一阶条件全满足却通不过二阶，必须逐个用临界锥判；
+\item \textbf{别用凸规划跳步}：$f$ 虽凸，可行域（圆盘外）非凸，凸组合性质不成立。
+\end{enumerate}
+
+\vspace{8pt}
+\hrule
+\vspace{4pt}
+{\small 2026-11-17 练题；候选点、乘子、二阶符号与全局值均经 SymPy 脚本 \texttt{\_verify\_kkt\_disk.py} 复核。}
+
+\end{document}
