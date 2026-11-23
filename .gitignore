@@ -1,0 +1,29 @@
+# 本仓库只收录自己整理的材料，以下内容一律不入库：
+# - 老师课件（.ppt）与课程 PDF 讲义
+# - 教材与习题解答扫描件
+# - 历年真题原卷
+# - 复验中间产物（裁图、渲染帧、LaTeX 辅文件）
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# LaTeX 辅文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# 动画渲染中间产物
+animations/renders/frames/
+
+# 编辑器与系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
